@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d625bdffc0cb92e4783558eca2ee901f, type: 3}
   m_Name: Movement Settings
   m_EditorClassIdentifier: 
-  _turnSpeed: 90
-  _lookSpeed: 35
+  _turnSensi: 0.125
+  _lookSensi: 0.125
   _minMaxLookAngle: {x: -90, y: 80}
   _moveSpeed: 5
   _crouchCurve:

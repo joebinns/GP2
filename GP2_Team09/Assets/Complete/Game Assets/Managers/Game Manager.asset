@@ -15,3 +15,4 @@ MonoBehaviour:
   _engineerPrefab: {fileID: 6566537215078335635, guid: 6e48eebdeb5391645bdcff6254812f35, type: 3}
   _crewPrefab: {fileID: 6566537215078335635, guid: cd3bbc81c1e65614fa3349de1c772489, type: 3}
   _camera: {fileID: 11400000, guid: 3e70316765c4c3a4f93d0df25fe59bc4, type: 2}
+  _hud: {fileID: 11400000, guid: 11ca518c0ac022249a362c89685593fa, type: 2}

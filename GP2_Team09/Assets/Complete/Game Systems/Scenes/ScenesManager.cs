@@ -1,7 +1,7 @@
 using SF = UnityEngine.SerializeField;
 using Action = System.Action;
-using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using GameProject.Updates;
 
@@ -110,6 +110,7 @@ namespace GameProject.Scenes
             yield return null;
             if (activate) SetActive(scene);
 
+            yield return new WaitForSeconds(0.1f);
             _onLoaded.NotifySubscribers();
         }
 
@@ -138,6 +139,7 @@ namespace GameProject.Scenes
                 yield return null;
             }
 
+            yield return null;
             _onUnloaded.NotifySubscribers();
         }
 

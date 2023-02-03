@@ -11,10 +11,10 @@ namespace GameProject.Movement
 
         [Header("Mouse Look Settings")]
         [SF, Tooltip("The camera turn movement speed, in degrees/s")] 
-        private float _turnSpeed = 225f;
+        private float _turnSensi = 0.75f;
 
         [SF, Tooltip("The camera tilt movement speed, in degrees/s")]
-        private float _lookSpeed = 35f;
+        private float _lookSensi = 0.75f;
 
         [SF, Tooltip("The camera min/max look angle, in degrees")]
         private Vector2 _minMaxLookAngle = new Vector2(-90, 80);
@@ -33,8 +33,8 @@ namespace GameProject.Movement
 
 // PROPERTIES
 
-        public float TurnSpeed => _turnSpeed;
-        public float LookSpeed => _lookSpeed;
+        public float TurnSensi => _turnSensi;
+        public float LookSensi => _lookSensi;
         public Vector2 MinMaxLookAngle => _minMaxLookAngle;
         public float MoveSpeed => _moveSpeed;
         public AnimationCurve CrouchCurve => _crouchCurve;

@@ -32,9 +32,12 @@ namespace GameProject.Interactions
         public void StopTimer(){
             ToggleTimer(false);
 
-            if (_time > 0f)
+            if (_time > 0f){ 
                  _onFailed.Invoke();
-            else _onSuccess.Invoke();
+
+            } else {
+                _onSuccess.Invoke();
+            }
         }
 
         /// <summary>

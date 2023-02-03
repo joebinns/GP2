@@ -220,6 +220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Engineer HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 8852704795500200980, guid: 783e2fdd7d8c8d74aafb7762190cf1f3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8852704795500200984, guid: 783e2fdd7d8c8d74aafb7762190cf1f3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -469,6 +473,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crew HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 1137105696945034189, guid: b74cd08fa5431ed4ea8fea977db8628b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b74cd08fa5431ed4ea8fea977db8628b, type: 3}
 --- !u!114 &1577260940 stripped
@@ -690,6 +698,10 @@ PrefabInstance:
     - target: {fileID: 9154421736756002680, guid: 8cf9c89001f907d4cb9c40628f5577cc, type: 3}
       propertyPath: m_Name
       value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154421736756002680, guid: 8cf9c89001f907d4cb9c40628f5577cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9154421736756002684, guid: 8cf9c89001f907d4cb9c40628f5577cc, type: 3}
       propertyPath: m_Pivot.x

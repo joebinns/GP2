@@ -1880,8 +1880,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levels: {fileID: 11400000, guid: 218c6a5ab975ac0438a03c75c0640439, type: 2}
   _scenes: {fileID: 11400000, guid: f13c1ac908f9ac24a894f2dc927fbd28, type: 2}
-  _menu: {fileID: 11400000, guid: b740b6b448bcab4419b74f202729663f, type: 2}
-  _camera: {fileID: 11400000, guid: 3e70316765c4c3a4f93d0df25fe59bc4, type: 2}
   _game: {fileID: 11400000, guid: 66e615f66c6327649b5d2b44251b4fa7, type: 2}
   _rooms:
   - {fileID: 11400000, guid: 1a03c7404f993754e96446cffe37c621, type: 2}
@@ -2052,6 +2050,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8809051100406594202, guid: 43539a994d4c33347919ce1efa690792, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809051100406594202, guid: 43539a994d4c33347919ce1efa690792, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6445217441519833294}
@@ -2065,6 +2067,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8809051100406594202, guid: 43539a994d4c33347919ce1efa690792, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809051100406594202, guid: 43539a994d4c33347919ce1efa690792, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8809051100406594202, guid: 43539a994d4c33347919ce1efa690792, type: 3}
@@ -2084,7 +2090,15 @@ PrefabInstance:
       value: GameProject.HUD.HUDManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8809051100406594202, guid: 43539a994d4c33347919ce1efa690792, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: GameProject.HUD.HUDManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809051100406594202, guid: 43539a994d4c33347919ce1efa690792, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809051100406594202, guid: 43539a994d4c33347919ce1efa690792, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8809051100406594202, guid: 43539a994d4c33347919ce1efa690792, type: 3}

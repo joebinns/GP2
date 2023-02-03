@@ -1,6 +1,7 @@
 using SF = UnityEngine.SerializeField;
 using UnityEngine;
 using GameProject.Cameras;
+using GameProject.HUD;
 
 namespace GameProject.Game
 {
@@ -11,6 +12,8 @@ namespace GameProject.Game
         [SF] private GameObject _crewPrefab = null;
         [Space]
         [SF] private CameraManager _camera = null;
+        [SF] private HUDManager _hud = null; // temporary
+        private GameObject _player = null;
 
 // INITIALISATION
 
@@ -40,11 +43,30 @@ namespace GameProject.Game
         /// Spawns the specified player
         /// </summary>
         private void SpawnPlayer(GameObject prefab){
-            var player = Instantiate(prefab);
-            var camTarget = player.transform.GetChild(0);
+            DespawnPLayer();
+
+            _player = Instantiate(prefab);
+            var camTarget = _player.transform.GetChild(0);
             
             _camera.SetTarget(null, camTarget);
             _camera.Camera.gameObject.SetActive(true);
+        }
+
+
+        /// <summary>
+        /// Removes the player from the world
+        /// </summary>
+        public void DespawnPLayer(){
+            if (_player == null) return;
+
+            // TEMPORARY
+            _hud.DisplayCrew(false);
+            _hud.DisplayEngineer(false);
+            _hud.DisplayWon(false);
+            _hud.DisplayLost(false);
+
+            _camera.SetTarget(null, null);
+            Destroy(_player);
         }
     }
 }

@@ -57,7 +57,7 @@ namespace GameProject.Movement
         /// Updates camera target rotation on controller update
         /// </summary>
         public override void OnUpdate(float deltaTime){
-            _angle += _direction * _settings.LookSpeed * deltaTime;
+            _angle += _direction * _settings.LookSensi;
 
             if (_angle > _settings.MinMaxLookAngle.y)
                 _angle = _settings.MinMaxLookAngle.y;

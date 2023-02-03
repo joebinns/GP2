@@ -5,6 +5,7 @@ using GameProject.Levels;
 using GameProject.Scenes;
 using GameProject.Game;
 using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 
 namespace GameProject.Interface
 {
@@ -12,6 +13,7 @@ namespace GameProject.Interface
     {
         [SF] private LevelManager _levels  = null;
         [SF] private ScenesManager _scenes = null;
+        [SF] private GameManager _game = null;
         [Space]
         [SF] private LevelInfo[] _rooms = null; // TEMPORARY FOR FIRST RELEASE
         [Space]
@@ -43,7 +45,7 @@ namespace GameProject.Interface
             if (_room != null && _scenes.IsLoaded(_room.BuildIndex)){
                 _scenes.SubscribeOnUnloaded(SelectControlRoom);
                 _scenes.UnloadScene(_room.BuildIndex);
-            
+
             } else {  
                 _levels.SubscribeOnLoaded(OnControlRoomLoaded);
                 _levels.LoadLevel(_levels.ControlRoom);

@@ -65,7 +65,7 @@ namespace GameProject.Movement
         public override void OnUpdate(float deltaTime){
             var euler = _transform.eulerAngles;
 
-            euler.y += _direction * _settings.TurnSpeed * deltaTime;
+            euler.y += _direction * _settings.TurnSensi;
 
             _transform.eulerAngles = euler;
         }
