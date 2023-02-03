@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 486fddaf0ad074d48a757fc427363068, type: 3}
+  m_Name: Level Manager
+  m_EditorClassIdentifier: 
+  _control: {fileID: 11400000, guid: 909298d0643274a4b8f3432d7008e228, type: 2}
+  _spaceship: {fileID: 11400000, guid: 18e4ed4635252804fa82dad7782fcfb6, type: 2}
+  _scene: {fileID: 11400000, guid: f13c1ac908f9ac24a894f2dc927fbd28, type: 2}
+  _menu: {fileID: 11400000, guid: b740b6b448bcab4419b74f202729663f, type: 2}

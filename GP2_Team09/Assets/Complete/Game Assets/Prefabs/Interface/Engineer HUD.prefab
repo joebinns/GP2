@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2489860866886657882
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647822, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_Name
+      value: Engineer HUD
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+--- !u!1 &8852704795500200980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6365525123243647822, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+  m_PrefabInstance: {fileID: 2489860866886657882}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1635243206931704504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8852704795500200980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391ee04eeccfc79478ed12f6cdbc9d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

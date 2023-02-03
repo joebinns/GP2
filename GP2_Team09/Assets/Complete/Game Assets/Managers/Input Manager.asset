@@ -1,0 +1,176 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717eff2a94e3e8e48bc6e39d54edcdca, type: 3}
+  m_Name: Input Manager
+  m_EditorClassIdentifier: 
+  _cursor:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _pointer:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _use:
+    Input: {fileID: 4540867357089126599, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Pressed: 1
+    Changed: 0
+    Released: 1
+    Sorted: 0
+  _primary:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _secondary:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _switch:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _character:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _inventory:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _skills:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _spells:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _journal:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _map:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _turn:
+    Input: {fileID: -3678981832579102873, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Pressed: 1
+    Changed: 0
+    Released: 1
+    Sorted: 0
+  _tilt:
+    Input: {fileID: -6365254074248733472, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Pressed: 1
+    Changed: 0
+    Released: 1
+    Sorted: 0
+  _roll:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _lean:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _move:
+    Input: {fileID: 5132432911371913066, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Pressed: 0
+    Changed: 1
+    Released: 1
+    Sorted: 0
+  _crouch:
+    Input: {fileID: -8627271658995936202, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Pressed: 1
+    Changed: 0
+    Released: 1
+    Sorted: 0
+  _sneak:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _walk:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _run:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _jump:
+    Input: {fileID: 7722455219619280100, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Pressed: 1
+    Changed: 0
+    Released: 1
+    Sorted: 0
+  _dodge:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _pause:
+    Input: {fileID: 4406681055525828069, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Pressed: 0
+    Changed: 0
+    Released: 1
+    Sorted: 0
+  _save:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _load:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
+  _screenshot:
+    Input: {fileID: 0}
+    Pressed: 0
+    Changed: 0
+    Released: 0
+    Sorted: 0
