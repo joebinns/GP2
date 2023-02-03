@@ -61,7 +61,7 @@ namespace GameProject.Interactions
             _isHeld = true;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (!_isHeld) return;
             _oscillator.LocalEquilibriumPosition = _holdPivot.position;
