@@ -13,7 +13,7 @@ namespace GameProject.Oscillators
     public class TorsionalOscillator : MonoBehaviour
     {
         [Tooltip("The local rotation about which oscillations are centered.")]
-        [SerializeField] private Vector3 _localEquilibriumRotation = Vector3.zero;
+        public Vector3 LocalEquilibriumRotation = Vector3.zero;
         [Tooltip("The center about which rotations should occur.")] 
         [SerializeField] private Vector3 _localPivotPosition = Vector3.zero;
         [Tooltip("The axes over which the oscillator applies torque. Within range [0, 1].")] 
@@ -53,7 +53,7 @@ namespace GameProject.Oscillators
         /// <returns>Damped restorative torque of the oscillator.</returns>
         private Vector3 CalculateRestoringTorque() {
             var parent = transform.parent;
-            var equilibriumRotation = Quaternion.Euler(_localEquilibriumRotation);
+            var equilibriumRotation = Quaternion.Euler(LocalEquilibriumRotation);
             if (parent != null) {
                 equilibriumRotation = parent.rotation * equilibriumRotation ;
             }
@@ -90,6 +90,8 @@ namespace GameProject.Oscillators
         /// Draws the pivot of rotation (wire sphere), the oscillator bob (sphere) and the equilibirum (wire sphere).
         /// </summary>
         void OnDrawGizmos() {
+            if (!isActiveAndEnabled) return;
+            
             Vector3 bob = transform.position;
             Vector3 axis = _rotAxis.normalized;
             float angle = _angularDisplacementMagnitude;

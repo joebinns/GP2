@@ -9,7 +9,7 @@ namespace GameProject.Oscillators
     public class Oscillator : MonoBehaviour
     {
         [Tooltip("The local position about which oscillations are centered.")]
-        [SerializeField] private Vector3 _localEquilibriumPosition = Vector3.zero;
+        public Vector3 LocalEquilibriumPosition = Vector3.zero;
         [Tooltip("The axes over which the oscillator applies force. Within range [0, 1].")]
         [SerializeField] private Vector3 _forceScale = Vector3.one;
         [Tooltip("The greater the stiffness constant, the lesser the amplitude of oscillations.")]
@@ -46,7 +46,7 @@ namespace GameProject.Oscillators
         private Vector3 CalculateRestoringForce() {
             var parent = transform.parent;
             var position = transform.localPosition;
-            var equilibrium = _localEquilibriumPosition;
+            var equilibrium = LocalEquilibriumPosition;
             if (parent != null) {
                 position = parent.TransformVector(position);
                 equilibrium = parent.TransformVector(equilibrium);
@@ -105,8 +105,10 @@ namespace GameProject.Oscillators
         /// Draws the oscillator bob (sphere) and the equilibrium (wire sphere).
         /// </summary>
         private void OnDrawGizmos() {
+            if (!isActiveAndEnabled) return;
+            
             Vector3 bob = transform.localPosition;
-            Vector3 equilibrium = _localEquilibriumPosition;
+            Vector3 equilibrium = LocalEquilibriumPosition;
             var parent = transform.parent;
             if (parent != null)
             {

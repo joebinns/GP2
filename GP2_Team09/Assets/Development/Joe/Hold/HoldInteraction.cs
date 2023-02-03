@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using SF = UnityEngine.SerializeField;
 using GameProject.Oscillators;
@@ -14,6 +15,7 @@ namespace GameProject.Interactions
         private Oscillator _oscillator;
         private TorsionalOscillator _torsionalOscillator;
         private bool _pressed;
+        private bool _isHeld;
         private const string HOLD_PIVOT = "Hold Pivot";
 
 // INITIALISATION
@@ -53,20 +55,27 @@ namespace GameProject.Interactions
         /// Grabs this game object
         /// </summary>
         private void Grab() {
-            transform.SetParent(_holdPivot);
             _rigidbody.useGravity = false;
             _oscillator.enabled = true;
             _torsionalOscillator.enabled = true;
+            _isHeld = true;
         }
-        
+
+        private void Update()
+        {
+            if (!_isHeld) return;
+            _oscillator.LocalEquilibriumPosition = _holdPivot.position;
+            _torsionalOscillator.LocalEquilibriumRotation = _holdPivot.rotation.eulerAngles;
+        }
+
         /// <summary>
         /// Releases this game object
         /// </summary>
         private void Release() {
-            transform.SetParent(null);
             _rigidbody.useGravity = true;
             _oscillator.enabled = false;
             _torsionalOscillator.enabled = false;
+            _isHeld = false;
         }
     }
 }
