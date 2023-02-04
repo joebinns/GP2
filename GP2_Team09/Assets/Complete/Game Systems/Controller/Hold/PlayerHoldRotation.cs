@@ -89,11 +89,33 @@ namespace GameProject.Hold
         /// <summary>
         /// Rotate hold pivot on controller update
         /// </summary>
-        public override void OnUpdate(float deltaTime)
-        {
+        public override void OnUpdate(float deltaTime) {
+            /*
             _angle.x += _direction.y * _settings.LookSensi;
             _angle.y += _direction.x * _settings.TurnSensi;
-            _holdPivot.localRotation = Quaternion.Euler(_angle.x, _angle.y, 0);
+            
+            _holdPivot.rotation = Quaternion.Inverse(_holdPivot.localRotation)
+                                  * Quaternion.Euler(_angle.x, _angle.y, 0);;
+            */
+            
+            /*
+            // Get input in CAMERA SPACE
+            var deltaRotation = Quaternion.Euler(new Vector3(_direction.y * _settings.LookSensi, _direction.x * _settings.TurnSensi, 0f));
+            
+            // Convert input from CAMERA SPACE to WORLD SPACE
+            deltaRotation = _holdPivot.parent.rotation * deltaRotation; // ?
+            
+            // Convert from WORLD SPACE to PIVOT SPACE
+            deltaRotation = Quaternion.Inverse(_holdPivot.rotation) * deltaRotation;
+            
+            // Apply
+            _holdPivot.localRotation *= deltaRotation;
+            */
+
+            var deltaAngle = new Vector3(_direction.y * _settings.LookSensi, _direction.x * _settings.TurnSensi, 0f);
+            deltaAngle = _holdPivot.parent.TransformDirection(deltaAngle);
+            _holdPivot.Rotate(deltaAngle, Space.World);
+
         }
     }
 }
