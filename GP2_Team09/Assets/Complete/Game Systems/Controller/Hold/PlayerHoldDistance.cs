@@ -18,6 +18,7 @@ namespace GameProject.Hold
         private PlayerHold _playerHold;
         private Transform _holdPivot;
         private float _direction = 0;
+        private bool _isHolding;
         
 // INITIALISATION
 
@@ -36,6 +37,8 @@ namespace GameProject.Hold
         private void OnEnable(){
             _controller.AddAction(this, UpdateMode.Update);
             _input.SubscribeFloat(OnReachInput, InputType.Reach, Priority);
+            _playerHold.OnGrab += OnGrab;
+            _playerHold.OnRelease += OnRelease;
         }
 
         /// <summary>
@@ -44,6 +47,8 @@ namespace GameProject.Hold
         private void OnDisable(){
             _controller.RemoveAction(this, UpdateMode.Update);
             _input.UnsubscribeFloat(OnReachInput, InputType.Reach);
+            _playerHold.OnGrab -= OnGrab;
+            _playerHold.OnRelease -= OnRelease;
         }
         
 // INPUT
@@ -51,10 +56,25 @@ namespace GameProject.Hold
         /// <summary>
         /// Updates hold distance direction on input callback
         /// </summary>
-        private void OnReachInput(float direction){
-            if (direction > 0f) _direction = 1f;
-            else if (direction < 0f) _direction = -1f;
-            else _direction = 0f;
+        private void OnReachInput(float direction) {
+            _direction = direction switch {
+                > 0f => 1f,
+                < 0f => -1f,
+                _ => 0f
+            };
+        }
+
+        private void OnGrab(HoldInteraction toHold) {
+            // Set variables
+            _isHolding = true;
+            
+            // Set hold distance
+            SetHoldDistance(Vector3.Distance(_holdPivot.parent.position, toHold.transform.position));
+        }
+        
+        private void OnRelease() {
+            // Set variables
+            _isHolding = false;
         }
         
 // MOVEMENT
@@ -63,22 +83,20 @@ namespace GameProject.Hold
         /// Checks hold distance direction on controller update
         /// </summary>
         public override bool OnCheck() {
-            if (!_playerHold.IsHolding) SetHoldDistance(_settings.DefaultHoldDistance); // Reset the hold distance between holding
-            return _direction != 0 && _playerHold.IsHolding;
+            return _direction != 0 && _isHolding;
         }
 
         /// <summary>
         /// Moves hold pivot on controller update
         /// </summary>
         public override void OnUpdate(float deltaTime) {
-            var holdDistanceRange = _settings.HoldDistanceRange;
-            var reach = Mathf.Clamp( _holdPivot.localPosition.z + _direction * _settings.HoldDistanceSensitivity * deltaTime, holdDistanceRange.x, holdDistanceRange.y);
-            SetHoldDistance(reach);
+            SetHoldDistance(_holdPivot.localPosition.z + _direction * _settings.HoldDistanceSensitivity * deltaTime);
         }
 
         private void SetHoldDistance(float distance) {
+            var holdDistanceRange = _settings.HoldDistanceRange;
             var holdPosition = _holdPivot.localPosition;
-            holdPosition.z = distance;
+            holdPosition.z = Mathf.Clamp(distance, holdDistanceRange.x, holdDistanceRange.y);
             _holdPivot.localPosition = holdPosition;
         }
     }

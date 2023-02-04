@@ -20,3 +20,4 @@ MonoBehaviour:
   _defaultHoldDistance: 3
   _holdDistanceSensitivity: 0.5
   _holdDistanceRange: {x: 2, y: 5}
+  _autoOrientOnGrab: 0

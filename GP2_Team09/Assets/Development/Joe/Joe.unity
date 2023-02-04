@@ -5507,7 +5507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d909134bcef48ee488697631fd6e2cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsHolding: 0
+  _settings: {fileID: 11400000, guid: a84519befde56774695cf23c5e6b6c7c, type: 2}
   _holdPivot: {fileID: 409099708}
 --- !u!114 &2106831151
 MonoBehaviour:

@@ -1,6 +1,7 @@
 using SF = UnityEngine.SerializeField;
 using GameProject.Actions;
 using GameProject.Inputs;
+using GameProject.Interactions;
 using GameProject.Movement;
 using UnityEngine;
 
@@ -21,14 +22,17 @@ namespace GameProject.Hold
         private Vector2 _angle;
         private Vector2 _direction;
         private bool _isRotatable;
+        private bool _isHolding;
         
 // INITIALISATION
 
+        /// <summary>
+        /// Initialise frequently used references
+        /// </summary>
         private void Awake() {
             _playerHold = GetComponent<PlayerHold>();
             _playerLook = GetComponent<PlayerLook>();
             _playerTurn = GetComponent<PlayerTurn>();
-            
             _holdPivot = _playerHold.HoldPivot;
         }
 
@@ -40,6 +44,8 @@ namespace GameProject.Hold
             _input.SubscribeKey(OnSecondaryInput, InputType.Secondary, Priority);
             _input.SubscribeFloat(OnLookInput, InputType.Tilt, Priority);
             _input.SubscribeFloat(OnTurnInput, InputType.Turn, Priority);
+            _playerHold.OnGrab += OnGrab;
+            _playerHold.OnRelease += OnRelease;
         }
 
         /// <summary>
@@ -50,8 +56,10 @@ namespace GameProject.Hold
             _input.UnsubscribeKey(OnSecondaryInput, InputType.Secondary);
             _input.UnsubscribeFloat(OnLookInput, InputType.Tilt);
             _input.UnsubscribeFloat(OnTurnInput, InputType.Turn);
+            _playerHold.OnGrab -= OnGrab;
+            _playerHold.OnRelease -= OnRelease;
         }
-        
+
 // INPUT
 
         /// <summary>
@@ -68,13 +76,26 @@ namespace GameProject.Hold
             _direction.x = direction;
         }
         
+        /// <summary>
+        /// Updates secondary on input callback
+        /// </summary>
         private void OnSecondaryInput(){
-            if (_playerHold.IsHolding) _isRotatable = !_isRotatable;
+            if (_isHolding) _isRotatable = !_isRotatable;
             else _isRotatable = false;
             
             //_input.SetInputState(InputType.Tilt, !_isRotatable); this disabled tilt input for both look and rotation
-            GetComponent<PlayerLook>().enabled = !_isRotatable;
-            GetComponent<PlayerTurn>().enabled = !_isRotatable;
+            _playerLook.enabled = !_isRotatable;
+            _playerTurn.enabled = !_isRotatable;
+        }
+        
+        private void OnGrab(HoldInteraction toHold) {
+            // Set variables
+            _isHolding = true;
+        }
+        
+        private void OnRelease() {
+            // Set variables
+            _isHolding = false;
         }
         
 // MOVEMENT
@@ -90,32 +111,8 @@ namespace GameProject.Hold
         /// Rotate hold pivot on controller update
         /// </summary>
         public override void OnUpdate(float deltaTime) {
-            /*
-            _angle.x += _direction.y * _settings.LookSensi;
-            _angle.y += _direction.x * _settings.TurnSensi;
-            
-            _holdPivot.rotation = Quaternion.Inverse(_holdPivot.localRotation)
-                                  * Quaternion.Euler(_angle.x, _angle.y, 0);;
-            */
-            
-            /*
-            // Get input in CAMERA SPACE
-            var deltaRotation = Quaternion.Euler(new Vector3(_direction.y * _settings.LookSensi, _direction.x * _settings.TurnSensi, 0f));
-            
-            // Convert input from CAMERA SPACE to WORLD SPACE
-            deltaRotation = _holdPivot.parent.rotation * deltaRotation; // ?
-            
-            // Convert from WORLD SPACE to PIVOT SPACE
-            deltaRotation = Quaternion.Inverse(_holdPivot.rotation) * deltaRotation;
-            
-            // Apply
-            _holdPivot.localRotation *= deltaRotation;
-            */
-
-            var deltaAngle = new Vector3(_direction.y * _settings.LookSensi, _direction.x * _settings.TurnSensi, 0f);
-            deltaAngle = _holdPivot.parent.TransformDirection(deltaAngle);
-            _holdPivot.Rotate(deltaAngle, Space.World);
-
+            var deltaAngle = new Vector3(_direction.y * _settings.LookSensi * 0.5f, _direction.x * _settings.TurnSensi * 0.5f, 0f);
+            _holdPivot.Rotate(_holdPivot.parent.TransformDirection(deltaAngle), Space.World);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace GameProject.Interactions
         [SF] private float _defaultHoldDistance = 3f;
         [SF][Range(0f, 1f)] private float _holdDistanceSensitivity = 0.5f;
         [SF] private Vector2 _holdDistanceRange = new Vector2(2f, 5f);
+        [SF] private bool _autoOrientOnGrab = false;
 
         private const float HOLD_DIST_SENS_MULT = 30f;
 
@@ -28,5 +29,6 @@ namespace GameProject.Interactions
         public float DefaultHoldDistance => _defaultHoldDistance;
         public float HoldDistanceSensitivity => _holdDistanceSensitivity * HOLD_DIST_SENS_MULT;
         public Vector2 HoldDistanceRange => _holdDistanceRange;
+        public bool AutoOrientOnGrab => _autoOrientOnGrab;
     }
 }
