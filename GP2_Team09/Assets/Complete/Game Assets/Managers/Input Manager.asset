@@ -37,10 +37,10 @@ MonoBehaviour:
     Released: 0
     Sorted: 0
   _secondary:
-    Input: {fileID: 0}
-    Pressed: 0
+    Input: {fileID: 8897836525344711354, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Pressed: 1
     Changed: 0
-    Released: 0
+    Released: 1
     Sorted: 0
   _switch:
     Input: {fileID: 0}

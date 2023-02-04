@@ -52,8 +52,9 @@ namespace GameProject.Hold
         /// Updates hold distance direction on input callback
         /// </summary>
         private void OnReachInput(float direction){
-            if (direction == 0f) return;
-            _direction = Mathf.Sign(direction);
+            if (direction > 0f) _direction = 1f;
+            else if (direction < 0f) _direction = -1f;
+            else _direction = 0f;
         }
         
 // MOVEMENT

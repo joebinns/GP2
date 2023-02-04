@@ -41,6 +41,7 @@ namespace GameProject.Hold
         /// </summary>
         private void OnDisable(){
             _controller.RemoveAction(this, UpdateMode.LateUpdate);
+            _input.UnsubscribeKey(OnSecondaryInput, InputType.Secondary);
             _input.UnsubscribeFloat(OnLookInput, InputType.Tilt);
         }
         
@@ -53,8 +54,12 @@ namespace GameProject.Hold
             _direction = -direction;
         }
         
-        private void OnSecondaryInput() {
-            _isRotatable = _playerHold.IsHolding && !_isRotatable;
+        private void OnSecondaryInput(){
+            if (_playerHold.IsHolding) _isRotatable = !_isRotatable;
+            else _isRotatable = false;
+
+            GetComponent<PlayerLook>().enabled = !_isRotatable;
+            //_input.SetInputState(InputType.Tilt, !_isRotatable); this disabled tilt input for both look and rotation
         }
         
 // MOVEMENT

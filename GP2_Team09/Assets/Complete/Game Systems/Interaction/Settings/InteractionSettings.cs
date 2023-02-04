@@ -17,6 +17,8 @@ namespace GameProject.Interactions
         [SF][Range(0f, 1f)] private float _holdDistanceSensitivity = 0.5f;
         [SF] private Vector2 _holdDistanceRange = new Vector2(2f, 5f);
 
+        private const float HOLD_DIST_SENS_MULT = 30f;
+
 // PROPERTIES
 
         public float Radius => _radius;
@@ -24,7 +26,7 @@ namespace GameProject.Interactions
         public LayerMask Mask => _mask;
 
         public float DefaultHoldDistance => _defaultHoldDistance;
-        public float HoldDistanceSensitivity => _holdDistanceSensitivity * 10f;
+        public float HoldDistanceSensitivity => _holdDistanceSensitivity * HOLD_DIST_SENS_MULT;
         public Vector2 HoldDistanceRange => _holdDistanceRange;
     }
 }
