@@ -1,17 +1,18 @@
 using SF = UnityEngine.SerializeField;
-using UnityEngine;
 using GameProject.Actions;
 using GameProject.Inputs;
+using GameProject.Interactions;
 using GameProject.Movement;
+using UnityEngine;
 
 namespace GameProject.Hold
 {
     public class PlayerHoldDistance : BaseAction
     {
         [SF] private PlayerController _controller = null;
-        [SF] private CharacterController _characterController = null;
+        [SF] private Transform _holdPivot;
         [Space]
-        [SF] private MovementSettings _settings = null; // TODO: Change this to Interaction settings
+        [SF] private InteractionSettings _settings = null; // TODO: Change this to Interaction settings
         [SF] private InputManager _input = null;
         
         private float _direction = 0;
@@ -37,7 +38,7 @@ namespace GameProject.Hold
 // INPUT
 
         /// <summary>
-        /// Updates move direction on input callback
+        /// Updates hold distance direction on input callback
         /// </summary>
         private void OnReachInput(float direction){
             _direction = direction;
@@ -46,18 +47,21 @@ namespace GameProject.Hold
 // MOVEMENT
 
         /// <summary>
-        /// Checks move direction on controller update
+        /// Checks hold distance direction on controller update
         /// </summary>
         public override bool OnCheck(){
             return _direction != 0;
         }
 
         /// <summary>
-        /// Moves character controller on controller update
+        /// Moves hold pivot on controller update
         /// </summary>
-        public override void OnUpdate(float deltaTime){
-            Debug.Log(_direction);
-            //_characterController.Move(transform.TransformDirection(_direction * _settings.MoveSpeed * deltaTime));
+        public override void OnUpdate(float deltaTime) {
+            var localPosition = _holdPivot.localPosition;
+            var holdDistanceRange = _settings.HoldDistanceRange;
+            var reach = Mathf.Clamp(localPosition.z + _direction * _settings.HoldDistanceSensitivity * deltaTime, holdDistanceRange.x, holdDistanceRange.y);
+            localPosition.z = reach;
+            _holdPivot.localPosition = localPosition;
         }
     }
 }
