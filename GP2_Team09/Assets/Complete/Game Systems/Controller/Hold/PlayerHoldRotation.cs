@@ -30,7 +30,7 @@ namespace GameProject.Hold
         /// <summary>
         /// Adds this action to the player controller
         /// </summary>
-        private void OnEnable(){ // TODO: Subscribe to check right click
+        private void OnEnable(){
             _controller.AddAction(this, UpdateMode.LateUpdate);
             _input.SubscribeKey(OnSecondaryInput, InputType.Secondary, Priority);
             _input.SubscribeFloat(OnLookInput, InputType.Tilt, Priority);
@@ -41,7 +41,7 @@ namespace GameProject.Hold
         /// </summary>
         private void OnDisable(){
             _controller.RemoveAction(this, UpdateMode.LateUpdate);
-            _input.SubscribeFloat(OnLookInput, InputType.Tilt);
+            _input.UnsubscribeFloat(OnLookInput, InputType.Tilt);
         }
         
 // INPUT

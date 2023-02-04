@@ -33,7 +33,7 @@ namespace GameProject.Interactions
         /// </summary>
         private void OnDisable(){
             _controller.RemoveAction(this, UpdateMode.LateUpdate);
-            _input.SubscribeKey(OnActionInput, InputType.Use);
+            _input.UnsubscribeKey(OnActionInput, InputType.Use);
         }
 
 // INTERACTION

@@ -31,7 +31,7 @@ namespace GameProject.Movement
         /// </summary>
         private void OnDisable(){
             _controller.RemoveAction(this, UpdateMode.LateUpdate);
-            _input.SubscribeFloat(OnLookInput, InputType.Tilt);
+            _input.UnsubscribeFloat(OnLookInput, InputType.Tilt);
         }
 
 // INPUT
