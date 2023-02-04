@@ -50,7 +50,7 @@ namespace GameProject.Hold
         /// Checks hold distance direction on controller update
         /// </summary>
         public override bool OnCheck(){
-            return _direction != 0;
+            return _direction != 0; // TODO: Additionally check if holding something
         }
 
         /// <summary>
