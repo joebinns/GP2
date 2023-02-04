@@ -26,6 +26,10 @@ namespace GameProject.Hold
             _holdPivot = _playerHold.HoldPivot;
         }
 
+        private void Start() {
+            SetHoldDistance(_settings.DefaultHoldDistance);
+        }
+
         /// <summary>
         /// Adds this action to the player controller
         /// </summary>
@@ -48,7 +52,8 @@ namespace GameProject.Hold
         /// Updates hold distance direction on input callback
         /// </summary>
         private void OnReachInput(float direction){
-            _direction = direction;
+            if (direction == 0f) return;
+            _direction = Mathf.Sign(direction);
         }
         
 // MOVEMENT
@@ -57,6 +62,7 @@ namespace GameProject.Hold
         /// Checks hold distance direction on controller update
         /// </summary>
         public override bool OnCheck() {
+            if (!_playerHold.IsHolding) SetHoldDistance(_settings.DefaultHoldDistance); // Reset the hold distance between holding
             return _direction != 0 && _playerHold.IsHolding;
         }
 
@@ -64,11 +70,15 @@ namespace GameProject.Hold
         /// Moves hold pivot on controller update
         /// </summary>
         public override void OnUpdate(float deltaTime) {
-            var localPosition = _holdPivot.localPosition;
             var holdDistanceRange = _settings.HoldDistanceRange;
-            var reach = Mathf.Clamp(localPosition.z + _direction * _settings.HoldDistanceSensitivity * deltaTime, holdDistanceRange.x, holdDistanceRange.y);
-            localPosition.z = reach;
-            _holdPivot.localPosition = localPosition;
+            var reach = Mathf.Clamp( _holdPivot.localPosition.z + _direction * _settings.HoldDistanceSensitivity * deltaTime, holdDistanceRange.x, holdDistanceRange.y);
+            SetHoldDistance(reach);
+        }
+
+        private void SetHoldDistance(float distance) {
+            var holdPosition = _holdPivot.localPosition;
+            holdPosition.z = distance;
+            _holdPivot.localPosition = holdPosition;
         }
     }
 }

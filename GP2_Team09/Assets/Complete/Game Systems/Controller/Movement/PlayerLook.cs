@@ -2,7 +2,6 @@ using SF = UnityEngine.SerializeField;
 using UnityEngine;
 using GameProject.Actions;
 using GameProject.Inputs;
-using GameProject.Cameras;
 
 namespace GameProject.Movement
 {

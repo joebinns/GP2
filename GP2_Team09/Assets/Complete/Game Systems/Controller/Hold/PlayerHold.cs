@@ -6,10 +6,9 @@ namespace GameProject.Hold
 {
     public class PlayerHold : MonoBehaviour
     {
+        [HideInInspector] public bool IsHolding;
         [SF] private Transform _holdPivot;
 
-        public bool IsHolding;
-        
         public Transform HoldPivot => _holdPivot;
 
         /// <summary>
