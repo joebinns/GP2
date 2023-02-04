@@ -30,6 +30,9 @@ namespace GameProject.Inputs {
 
         [SF, Tooltip("Output: Integer Number or Direction")]
         private InputInfo _switch = null;
+        
+        [SF, Tooltip("Output: Direction")]
+        private InputInfo _reach = null;
 
         private Subscription<ActionPlane> _onCursor    = null;
         private Subscription<ActionPlane> _onPointer   = null;
@@ -37,8 +40,9 @@ namespace GameProject.Inputs {
         private Subscription<ActionKey>   _onPrimary   = null;
         private Subscription<ActionKey>   _onSecondary = null;
         private Subscription<ActionIndex> _onSwitch    = null;
+        private Subscription<ActionValue> _onReach     = null;
 
-// INITIALISATION AND DENITIALISATION
+// INITIALISATION AND DEINITIALISATION
 
         /// <summary>
         /// Initialises the action inputs
@@ -50,6 +54,7 @@ namespace GameProject.Inputs {
             InitialiseInput<ActionKey>(ref _onPrimary, _primary, OnPrimaryInput);
             InitialiseInput<ActionKey>(ref _onSecondary, _secondary, OnSecondaryInput);
             InitialiseInput<ActionIndex>(ref _onSwitch, _switch, OnSwitchInput);
+            InitialiseInput<ActionValue>(ref _onReach, _reach, OnReachInput);
         }
 
         /// <summary>
@@ -62,6 +67,7 @@ namespace GameProject.Inputs {
             DeinitialiseInput<ActionKey>(ref _onPrimary, _primary, OnPrimaryInput);
             DeinitialiseInput<ActionKey>(ref _onSecondary, _secondary, OnSecondaryInput);
             DeinitialiseInput<ActionIndex>(ref _onSwitch, _switch, OnSwitchInput);
+            DeinitialiseInput<ActionValue>(ref _onReach, _reach, OnReachInput);
         }
 
 // ACTION INPUTS
@@ -118,6 +124,14 @@ namespace GameProject.Inputs {
                 var direction = context.ReadValue<float>();
                 _onSwitch.NotifySubscribers((int)direction);
             }
+        }
+
+        /// <summary>
+        /// On reach input action callback
+        /// </summary>
+        private void OnReachInput(InputAction.CallbackContext context) {
+            var direction = context.ReadValue<float>();
+            _onReach.NotifySubscribers(direction);
         }
     }
 }

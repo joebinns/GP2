@@ -10,7 +10,7 @@ namespace GameProject.Inputs
     {
 // INITIALISATION
 
-        public readonly InputType[] ActionGroup = {InputType.Use, InputType.Primary, InputType.Secondary, InputType.Switch};
+        public readonly InputType[] ActionGroup = {InputType.Use, InputType.Primary, InputType.Secondary, InputType.Switch, InputType.Reach};
         public readonly InputType[] InterfaceGroup = {InputType.Character, InputType.Inventory, InputType.Skills, InputType.Spells, InputType.Journal, InputType.Map};
         public readonly InputType[] MovementGroup = {InputType.Turn, InputType.Tilt, InputType.Roll, InputType.Lean, InputType.Crouch, InputType.Walk, InputType.Move, InputType.Run, InputType.Jump, InputType.Dodge};
         public readonly InputType[] VariousGroup = {InputType.Pause, InputType.Save, InputType.Load, InputType.Screenshot};
@@ -78,6 +78,7 @@ namespace GameProject.Inputs
                 case InputType.Primary:  SetInput(_primary.Input, enabled);  break;
                 case InputType.Secondary:SetInput(_secondary.Input, enabled);break;
                 case InputType.Switch:   SetInput(_switch.Input, enabled);   break;
+                case InputType.Reach:    SetInput(_reach.Input, enabled);    break;
 
                 case InputType.Character:SetInput(_character.Input, enabled);break;
                 case InputType.Inventory:SetInput(_inventory.Input, enabled);break;
@@ -92,15 +93,15 @@ namespace GameProject.Inputs
                 case InputType.Lean:  SetInput(_lean.Input, enabled);  break;
                 case InputType.Crouch:SetInput(_crouch.Input, enabled);break;
                 case InputType.Walk:  SetInput(_walk.Input, enabled);  break;
-                case InputType.Move:   SetInput(_move.Input, enabled);   break;
-                case InputType.Run:SetInput(_run.Input, enabled);break;
+                case InputType.Move:  SetInput(_move.Input, enabled);   break;
+                case InputType.Run:   SetInput(_run.Input, enabled);break;
                 case InputType.Jump:  SetInput(_jump.Input, enabled);  break;
                 case InputType.Dodge: SetInput(_dodge.Input, enabled); break;
 
-                case InputType.Pause: SetInput(_pause.Input, enabled); break;
-                case InputType.Save: SetInput(_save.Input, enabled);   break;
-                case InputType.Load: SetInput(_load.Input, enabled);   break;
-                case InputType.Screenshot: SetInput(_screenshot.Input, enabled); break;
+                case InputType.Pause:     SetInput(_pause.Input, enabled); break;
+                case InputType.Save:      SetInput(_save.Input, enabled);   break;
+                case InputType.Load:      SetInput(_load.Input, enabled);   break;
+                case InputType.Screenshot:SetInput(_screenshot.Input, enabled); break;
 
                 default: MissingType(input); break;
             }

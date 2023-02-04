@@ -220,6 +220,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Reach",
+                    "type": "PassThrough",
+                    "id": "acd35a47-2d20-4903-8cba-3d433b1f4ec8",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -242,6 +251,17 @@
                     "processors": "",
                     "groups": "Console",
                     "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8cd56e00-2050-4c3e-85e6-450bcbd0ee31",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Desktop",
+                    "action": "Reach",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

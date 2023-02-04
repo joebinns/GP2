@@ -48,6 +48,12 @@ MonoBehaviour:
     Changed: 0
     Released: 0
     Sorted: 0
+  _reach:
+    Input: {fileID: 6907808679849732277, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Pressed: 0
+    Changed: 1
+    Released: 0
+    Sorted: 0
   _character:
     Input: {fileID: 0}
     Pressed: 0
