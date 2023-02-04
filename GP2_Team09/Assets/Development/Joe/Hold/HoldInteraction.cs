@@ -1,6 +1,5 @@
-using System;
-using System.Collections;
 using SF = UnityEngine.SerializeField;
+using GameProject.Hold;
 using GameProject.Oscillators;
 using UnityEngine;
 
@@ -10,13 +9,14 @@ namespace GameProject.Interactions
     [RequireComponent(typeof(Oscillator), typeof(TorsionalOscillator))]
     public class HoldInteraction : MonoBehaviour, IInteractable
     {
-        private Transform _holdPivot;
+        [HideInInspector] public PlayerHold PlayerHold;
+        [HideInInspector] public Transform HoldPivot;
+        
         private Rigidbody _rigidbody;
         private Oscillator _oscillator;
         private TorsionalOscillator _torsionalOscillator;
         private bool _pressed;
         private bool _isHeld;
-        private const string HOLD_PIVOT = "Hold Pivot";
 
 // INITIALISATION
 
@@ -28,21 +28,15 @@ namespace GameProject.Interactions
             _oscillator = GetComponent<Oscillator>();
             _torsionalOscillator = GetComponent<TorsionalOscillator>();
         }
-
-        /// <summary>
-        /// TEMP: Set the hold pivot once the player has loaded
-        /// </summary>
-        private IEnumerator Start() { // TODO: Call this when the player is loaded
-            yield return new WaitForSeconds(1f);
-            _holdPivot = GameObject.FindWithTag(HOLD_PIVOT).transform;
-        }
-
+        
 // HOLD HANDLING
 
         /// <summary>
         /// Toggles hold on player interaction
         /// </summary>
-        public void Trigger(){
+        public void Trigger() {
+            if (!HoldPivot) return;
+            
             _pressed = !_pressed;
 
             if (_pressed) 
@@ -59,13 +53,14 @@ namespace GameProject.Interactions
             _oscillator.enabled = true;
             _torsionalOscillator.enabled = true;
             _isHeld = true;
+            PlayerHold.IsHolding = true;
         }
 
         private void FixedUpdate()
         {
             if (!_isHeld) return;
-            _oscillator.LocalEquilibriumPosition = _holdPivot.position;
-            _torsionalOscillator.LocalEquilibriumRotation = _holdPivot.rotation.eulerAngles;
+            _oscillator.LocalEquilibriumPosition = HoldPivot.position;
+            _torsionalOscillator.LocalEquilibriumRotation = HoldPivot.rotation.eulerAngles;
         }
 
         /// <summary>
@@ -76,6 +71,7 @@ namespace GameProject.Interactions
             _oscillator.enabled = false;
             _torsionalOscillator.enabled = false;
             _isHeld = false;
+            PlayerHold.IsHolding = false;
         }
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine;
 namespace GameProject.Hold
 {
     [RequireComponent(typeof(PlayerHold))]
-    public class PlayerHoldDistance : BaseAction
+    public class PlayerHoldRotation : BaseAction
     {
         [SF] private PlayerController _controller = null;
         [Space]
@@ -64,11 +64,6 @@ namespace GameProject.Hold
         /// Moves hold pivot on controller update
         /// </summary>
         public override void OnUpdate(float deltaTime) {
-            var localPosition = _holdPivot.localPosition;
-            var holdDistanceRange = _settings.HoldDistanceRange;
-            var reach = Mathf.Clamp(localPosition.z + _direction * _settings.HoldDistanceSensitivity * deltaTime, holdDistanceRange.x, holdDistanceRange.y);
-            localPosition.z = reach;
-            _holdPivot.localPosition = localPosition;
         }
     }
 }

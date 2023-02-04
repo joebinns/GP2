@@ -17,3 +17,5 @@ MonoBehaviour:
   _mask:
     serializedVersion: 2
     m_Bits: 64
+  _holdDistanceSensitivity: 0.1
+  _holdDistanceRange: {x: 2, y: 5}

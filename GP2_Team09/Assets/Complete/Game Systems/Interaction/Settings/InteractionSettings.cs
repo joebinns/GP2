@@ -13,7 +13,7 @@ namespace GameProject.Interactions
         [SF] private LayerMask _mask = 1 << 0;
 
         [Header("Hold Settings")]
-        [SF] private float _holdDistanceSensitivity = 0.05f;
+        [SF] private float _holdDistanceSensitivity = 0.1f;
         [SF] private Vector2 _holdDistanceRange = new Vector2(2f, 5f);
 
 // PROPERTIES
