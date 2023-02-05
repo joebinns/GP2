@@ -13,25 +13,12 @@ namespace GameProject.Movement
         [Space]
         [SF] private MovementSettings _settings = null;
         [SF] private InputManager _input = null;
-
-        private bool _isJumping;
-        private JumpState _jumpState;
-        private Coroutine _jumpRise;
-        private Vector3 _gravity;
         
-        private enum JumpState {
-            Rising,
-            Falling
-        }
+        private bool _isJumping;
+        private Coroutine _jumpRise;
+        private bool _isRising;
 
 // INITIALISATION
-
-        /// <summary>
-        /// Fetch values from frequently used references
-        /// </summary>
-        private void Awake() {
-            _gravity = Physics.gravity;
-        }
 
         /// <summary>
         /// Adds this action to the player controller
@@ -80,25 +67,17 @@ namespace GameProject.Movement
         /// </summary>
         public override void OnExit() {
             base.OnExit();
-            if (_jumpState != JumpState.Rising) return;
+            if (!_isRising) return;
             StopCoroutine(_jumpRise);
-            StartCoroutine(Fall());
         }
 
         private IEnumerator Jump() {
             yield return _jumpRise = StartCoroutine(JumpRise());
-            yield return StartCoroutine(Fall());
         }
         
-        /// <summary>
-        /// Check if the character controller is grounded
-        /// </summary>
-        private bool IsGrounded => Physics.SphereCast(transform.position + _characterController.center,
-            _characterController.radius, _gravity.normalized, out var hit, 
-            (_characterController.height * 0.51f - _characterController.radius * 0.5f));
-
         private IEnumerator JumpRise() {
-            _jumpState = JumpState.Rising;
+            _isRising = true;
+            
             var t = 0f;
             var curve = _settings.JumpRiseCurve;
             var previousValue = curve.Evaluate(t);
@@ -111,30 +90,8 @@ namespace GameProject.Movement
                 yield return new WaitForEndOfFrame();
             }
             SetVerticalPosition(finalFrame.value - previousValue);
-        }
-        
-        private IEnumerator Fall() {
-            _jumpState = JumpState.Falling;
-            var t = 0f;
-            var curve = _settings.FallCurve;
-            var previousValue = curve.Evaluate(t);
-            var finalFrame = curve[curve.length - 1];
-            while (t < finalFrame.time) {
-                t += Time.deltaTime;
-                var value = curve.Evaluate(t);
-                SetVerticalPosition(value - previousValue);
-                previousValue = value;
-                yield return new WaitForEndOfFrame();
-            }
-            SetVerticalPosition(finalFrame.value - previousValue);
-            
-            
-            // Continue falling along the same trajectory, until _grounded
-            var velocityY = curve.Differentiate(curve[curve.length - 1].time);
-            while (!IsGrounded) {
-                SetVerticalPosition(velocityY * Time.deltaTime);
-                yield return new WaitForEndOfFrame();
-            }
+
+            _isRising = false;
         }
 
         /// <summary>
