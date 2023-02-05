@@ -1,7 +1,5 @@
-using System;
 using SF = UnityEngine.SerializeField;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace GameProject.Movement
@@ -13,6 +11,10 @@ namespace GameProject.Movement
         [SF] private MovementSettings _settings = null;
 
         private Vector3 _gravity;
+        private bool _isFalling;
+        private float _previousPositionY;
+        
+        private const float GROUND_CHECK_DISTANCE_EPSILON = 0.05f;
 
 // INITIALISATION
 
@@ -28,26 +30,16 @@ namespace GameProject.Movement
             _previousPositionY = _characterController.transform.position.y;
         }
 
-        // MOVEMENT
+// MOVEMENT
 
-        /// <summary>
-        /// Check if the character controller is grounded
-        /// </summary>
-        private bool IsGrounded => Physics.SphereCast(transform.position + _characterController.center,
-            _characterController.radius, _gravity.normalized, out var hit, 
-            (_characterController.height * 0.51f - _characterController.radius * 0.5f));
-        
         //private bool IsRising => _characterController.velocity.y > 0; // Character controller velocity not updating properly
-        private float _previousPositionY;
         private bool IsRising() {
             var positionY = _characterController.transform.position.y;
             var velocityY = positionY - _previousPositionY;
             _previousPositionY = positionY;
             return velocityY > 0;
         }
-        
-        private bool _isFalling;
-        
+
         private void Update() {
             var isRising = IsRising();
             if (!IsGrounded && !_isFalling && !isRising) {
@@ -87,5 +79,17 @@ namespace GameProject.Movement
         /// Move character controller vertically, given a desired and previous vertical position
         /// </summary>
         private void SetVerticalPosition(float deltaVerticalPosition) => _characterController.Move(Vector3.up * (0.5f * deltaVerticalPosition));
+
+        /// <summary>
+        /// Check if the character controller is grounded
+        /// </summary>
+        public bool IsGrounded => Physics.SphereCast(transform.position + _characterController.center,
+            _characterController.radius, _gravity.normalized, out var hit, 
+            _characterController.height * (0.5f + GROUND_CHECK_DISTANCE_EPSILON) - _characterController.radius); // TODO: Prevent falling when crouching
+        
+        private void OnDrawGizmos() {
+            if (!enabled) return;
+            Gizmos.DrawWireSphere((transform.position + _characterController.center) + (_gravity.normalized * (_characterController.height * (0.5f + GROUND_CHECK_DISTANCE_EPSILON) - _characterController.radius)), _characterController.radius);
+        }
     }
 }

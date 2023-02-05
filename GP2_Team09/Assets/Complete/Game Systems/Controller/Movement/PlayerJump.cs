@@ -1,3 +1,4 @@
+using System;
 using SF = UnityEngine.SerializeField;
 using System.Collections;
 using UnityEngine;
@@ -6,6 +7,7 @@ using GameProject.Inputs;
 
 namespace GameProject.Movement
 {
+    [RequireComponent(typeof(PlayerFall))]
     public class PlayerJump : BaseAction
     {
         [SF] private PlayerController _controller = null;
@@ -17,8 +19,14 @@ namespace GameProject.Movement
         private bool _isJumping;
         private Coroutine _jumpRise;
         private bool _isRising;
+        private PlayerFall _playerFall;
 
 // INITIALISATION
+
+        private void Awake()
+        {
+            _playerFall = GetComponent<PlayerFall>();
+        }
 
         /// <summary>
         /// Adds this action to the player controller
@@ -59,6 +67,7 @@ namespace GameProject.Movement
         /// </summary>
         public override void OnEnter() {
             base.OnEnter();
+            if (!_playerFall.IsGrounded) return;
             StartCoroutine(Jump());
         }
         
