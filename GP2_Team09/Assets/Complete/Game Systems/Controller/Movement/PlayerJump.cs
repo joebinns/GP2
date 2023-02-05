@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using GameProject.Actions;
 using GameProject.Inputs;
+using Unity.VisualScripting;
 
 namespace GameProject.Movement
 {
@@ -57,7 +58,12 @@ namespace GameProject.Movement
         /// </summary>
         public override void OnEnter() {
             base.OnEnter();
-            StartCoroutine(Transition(_settings.JumpRiseCurve));
+            StartCoroutine(Jump());
+        }
+
+        private IEnumerator Jump() {
+            yield return StartCoroutine(JumpRise());
+            yield return StartCoroutine(Fall());
         }
 
         /// <summary>
@@ -65,14 +71,27 @@ namespace GameProject.Movement
         /// </summary>
         public override void OnExit() {
             base.OnExit();
-            StartCoroutine(Transition(_settings.FallCurve));
+            //StartCoroutine(Fall());
         }
-
-        /// <summary>
-        /// Transition to and from crouching by manipulating height and vertical position
-        /// </summary>
-        private IEnumerator Transition(AnimationCurve curve) {
+        
+        private IEnumerator JumpRise() {
             var t = 0f;
+            var curve = _settings.JumpRiseCurve;
+            var previousValue = curve.Evaluate(t);
+            var finalFrame = curve[curve.length - 1];
+            while (t < finalFrame.time) {
+                t += Time.deltaTime;
+                var value = curve.Evaluate(t);
+                SetVerticalPosition(value - previousValue);
+                previousValue = value;
+                yield return new WaitForEndOfFrame();
+            }
+            SetVerticalPosition(finalFrame.value - previousValue);
+        }
+        
+        private IEnumerator Fall() {
+            var t = 0f;
+            var curve = _settings.FallCurve;
             var previousValue = curve.Evaluate(t);
             var finalFrame = curve[curve.length - 1];
             while (t < finalFrame.time) {
