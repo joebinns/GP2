@@ -125,7 +125,7 @@ namespace GameProject.Movement
         /// <summary>
         /// Move character controller vertically, given a desired and previous vertical position
         /// </summary>
-        private void SetVerticalPosition(float deltaVerticalPosition) => _characterController.Move(Vector3.up * (0.5f * _height * deltaVerticalPosition));
+        private void SetVerticalPosition(float deltaVerticalPosition) => _characterController.Move(Vector3.up * (_height * deltaVerticalPosition));
         
         /// <summary>
         /// Set center of the character controller given a relative center
