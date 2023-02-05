@@ -1,4 +1,3 @@
-using System;
 using SF = UnityEngine.SerializeField;
 using System.Collections;
 using UnityEngine;
@@ -22,6 +21,8 @@ namespace GameProject.Movement
         private PlayerFall _playerFall;
         public JumpState State = JumpState.Default;
         private float _time;
+        
+        // TODO: Add coyote time and input buffer
 
         public enum JumpState {
             Rising,
@@ -74,7 +75,6 @@ namespace GameProject.Movement
         /// </summary>
         public override void OnEnter() {
             base.OnEnter();
-            if (!_playerFall.IsGrounded) return;
             StartCoroutine(Jump());
         }
         
@@ -88,9 +88,19 @@ namespace GameProject.Movement
         }
 
         private IEnumerator Jump() {
-            State = JumpState.Rising;
-            yield return _jumpRise = StartCoroutine(JumpRise());
-            State = JumpState.Default;
+            var t = 0f;
+            var jumpInputBuffer = _settings.JumpInputBuffer;
+            while (t < jumpInputBuffer) {
+                t += Time.deltaTime;
+                if (_playerFall.TimeSinceUngrounded < _settings.CoyoteTime) {
+                    _playerFall.CancelFall();
+                    State = JumpState.Rising;
+                    yield return _jumpRise = StartCoroutine(JumpRise());
+                    State = JumpState.Default;
+                    t = jumpInputBuffer;
+                }
+                yield return new WaitForEndOfFrame();
+            }
         }
 
         private IEnumerator CancelJump() {

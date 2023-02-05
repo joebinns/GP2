@@ -38,6 +38,12 @@ namespace GameProject.Movement
         [SF, Range(0f, 1f), Tooltip("")]
         private float _riseCancelThreshold = 0.5f;
         
+        [SF, Tooltip("")]
+        private float _coyoteTime = 0.1f;
+        
+        [SF, Tooltip("")]
+        private float _jumpInputBuffer = 0.1f;
+        
         [Header("Gravity")]
         [SF, Tooltip("")]
         private AnimationCurve _fallCurve;
@@ -49,11 +55,16 @@ namespace GameProject.Movement
         public float LookSensi => _lookSensi;
         public Vector2 MinMaxLookAngle => _minMaxLookAngle;
         
+        
         public float MoveSpeed => _moveSpeed;
+        
         public AnimationCurve CrouchCurve => _crouchCurve;
         public AnimationCurve StandCurve => _standCurve;
+        
         public AnimationCurve JumpRiseCurve => _jumpRiseCurve;
         public AnimationCurve FallCurve => _fallCurve;
         public float RiseCancelThreshold => _riseCancelThreshold;
+        public float CoyoteTime => _coyoteTime;
+        public float JumpInputBuffer => _jumpInputBuffer;
     }
 }

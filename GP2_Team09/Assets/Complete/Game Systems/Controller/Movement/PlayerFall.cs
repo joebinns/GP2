@@ -14,8 +14,11 @@ namespace GameProject.Movement
         private bool _isFalling;
         private PlayerCrouch _playerCrouch;
         private PlayerJump _playerJump;
-        private float _previousPositionY;
         private float _radius;
+        private float _timeSinceUngrounded;
+        private Coroutine _fall;
+
+        public float TimeSinceUngrounded => _timeSinceUngrounded;
 
         private const float GROUND_CHECK_DISTANCE_EPSILON = 0.1f;
 
@@ -28,20 +31,18 @@ namespace GameProject.Movement
             _gravity = Physics.gravity;
             _playerCrouch = GetComponent<PlayerCrouch>();
             _playerJump = GetComponent<PlayerJump>();
-        }
-
-        private void Start() {
-            _previousPositionY = _characterController.transform.position.y;
             _radius = _characterController.radius;
         }
 
 // MOVEMENT
 
         private void Update() {
-            if (IsGrounded || _isFalling) return;
+            if (IsGrounded) { _timeSinceUngrounded = 0f; return; }
+            _timeSinceUngrounded += Time.deltaTime;
+            if (_isFalling) return;
             if (_playerJump) if (_playerJump.State == PlayerJump.JumpState.Rising) return;
             if (_playerCrouch) if (_playerCrouch.State == PlayerCrouch.CrouchState.Crouching) return; // TODO: Hard to tell how much difference this is making, if any
-            StartCoroutine(Fall());
+            _fall = StartCoroutine(Fall());
         }
         
         private IEnumerator Fall() {
@@ -56,7 +57,7 @@ namespace GameProject.Movement
                 var value = curve.Evaluate(t);
                 SetVerticalPosition(value - previousValue);
                 previousValue = value;
-                if (IsGrounded) { // TODO: Prevent this if just recently starting jumping
+                if (IsGrounded) {
                     t = finalFrame.time;
                 }
                 yield return new WaitForEndOfFrame();
@@ -71,6 +72,12 @@ namespace GameProject.Movement
 
             _isFalling = false;
         }
+        
+        public void CancelFall() {
+            if (!_isFalling) return;
+            StopCoroutine(_fall);
+            _isFalling = false;
+        }
 
         /// <summary>
         /// Move character controller vertically, given a desired and previous vertical position
@@ -80,7 +87,7 @@ namespace GameProject.Movement
         /// <summary>
         /// Check if the character controller is grounded
         /// </summary>
-        public bool IsGrounded => Physics.SphereCast(transform.position + _characterController.center,
+        private bool IsGrounded => Physics.SphereCast(transform.position + _characterController.center,
             _characterController.radius, _gravity.normalized, out var hit, 
             _characterController.height * 0.5f - _characterController.radius + GROUND_CHECK_DISTANCE_EPSILON);
         

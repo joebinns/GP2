@@ -106,6 +106,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _riseCancelThreshold: 0.5
+  _coyoteTime: 0.1
+  _jumpInputBuffer: 0.1
   _fallCurve:
     serializedVersion: 2
     m_Curve:
