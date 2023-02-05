@@ -21,6 +21,7 @@ namespace GameProject.Movement
         private bool _isRising;
         private PlayerFall _playerFall;
         public JumpState State = JumpState.Default;
+        private float _time;
 
         public enum JumpState {
             Rising,
@@ -83,8 +84,7 @@ namespace GameProject.Movement
         public override void OnExit() {
             base.OnExit();
             if (State != JumpState.Rising) return;
-            StopCoroutine(_jumpRise);
-            State = JumpState.Default;
+            StartCoroutine(CancelJump());
         }
 
         private IEnumerator Jump() {
@@ -92,15 +92,25 @@ namespace GameProject.Movement
             yield return _jumpRise = StartCoroutine(JumpRise());
             State = JumpState.Default;
         }
+
+        private IEnumerator CancelJump() {
+            var curve = _settings.JumpRiseCurve;
+            var cancelThreshold = _settings.RiseCancelThreshold * curve[curve.length - 1].time;
+            while (_time < cancelThreshold) {
+                yield return new WaitForEndOfFrame();
+            }
+            StopCoroutine(_jumpRise);
+            State = JumpState.Default;
+        }
         
         private IEnumerator JumpRise() {
-            var t = 0f;
+            _time = 0f;
             var curve = _settings.JumpRiseCurve;
-            var previousValue = curve.Evaluate(t);
+            var previousValue = curve.Evaluate(_time);
             var finalFrame = curve[curve.length - 1];
-            while (t < finalFrame.time) {
-                t += Time.deltaTime;
-                var value = curve.Evaluate(t);
+            while (_time < finalFrame.time) {
+                _time += Time.deltaTime;
+                var value = curve.Evaluate(_time);
                 SetVerticalPosition(value - previousValue);
                 previousValue = value;
                 yield return new WaitForEndOfFrame();

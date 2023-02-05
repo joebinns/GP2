@@ -35,6 +35,9 @@ namespace GameProject.Movement
         [SF, Tooltip("")]
         private AnimationCurve _jumpRiseCurve;
         
+        [SF, Range(0f, 1f), Tooltip("")]
+        private float _riseCancelThreshold = 0.5f;
+        
         [Header("Gravity")]
         [SF, Tooltip("")]
         private AnimationCurve _fallCurve;
@@ -51,5 +54,6 @@ namespace GameProject.Movement
         public AnimationCurve StandCurve => _standCurve;
         public AnimationCurve JumpRiseCurve => _jumpRiseCurve;
         public AnimationCurve FallCurve => _fallCurve;
+        public float RiseCancelThreshold => _riseCancelThreshold;
     }
 }
