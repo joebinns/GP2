@@ -66,14 +66,14 @@ namespace GameProject.Hold
         /// Updates look direction on input callback
         /// </summary>
         private void OnLookInput(float direction){
-            _direction.y = -direction;
+            _direction.y = direction;
         }
         
         /// <summary>
         /// Updates turn direction on input callback
         /// </summary>
         private void OnTurnInput(float direction){
-            _direction.x = direction;
+            _direction.x = -direction;
         }
         
         /// <summary>
