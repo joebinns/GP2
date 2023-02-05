@@ -12,9 +12,12 @@ namespace GameProject.Movement
 
         private Vector3 _gravity;
         private bool _isFalling;
-        private float _previousPositionY;
+        private PlayerCrouch _playerCrouch;
         
-        private const float GROUND_CHECK_DISTANCE_EPSILON = 0.05f;
+        private float _previousPositionY;
+        private float _radius;
+
+        private const float GROUND_CHECK_DISTANCE_EPSILON = 0.1f;
 
 // INITIALISATION
 
@@ -23,11 +26,12 @@ namespace GameProject.Movement
         /// </summary>
         private void Awake() {
             _gravity = Physics.gravity;
-            
+            _playerCrouch = GetComponent<PlayerCrouch>();
         }
 
         private void Start() {
             _previousPositionY = _characterController.transform.position.y;
+            _radius = _characterController.radius;
         }
 
 // MOVEMENT
@@ -42,9 +46,11 @@ namespace GameProject.Movement
 
         private void Update() {
             var isRising = IsRising();
-            if (!IsGrounded && !_isFalling && !isRising) {
-                StartCoroutine(Fall());
+            if (IsGrounded || _isFalling || isRising) return;
+            if (_playerCrouch) {
+                if (_playerCrouch.State == PlayerCrouch.CrouchState.Crouching) return;
             }
+            StartCoroutine(Fall());
         }
         
         private IEnumerator Fall() {
@@ -85,11 +91,11 @@ namespace GameProject.Movement
         /// </summary>
         public bool IsGrounded => Physics.SphereCast(transform.position + _characterController.center,
             _characterController.radius, _gravity.normalized, out var hit, 
-            _characterController.height * (0.5f + GROUND_CHECK_DISTANCE_EPSILON) - _characterController.radius); // TODO: Prevent falling when crouching
+            _characterController.height * 0.5f - _characterController.radius + GROUND_CHECK_DISTANCE_EPSILON);
         
         private void OnDrawGizmos() {
             if (!enabled) return;
-            Gizmos.DrawWireSphere((transform.position + _characterController.center) + (_gravity.normalized * (_characterController.height * (0.5f + GROUND_CHECK_DISTANCE_EPSILON) - _characterController.radius)), _characterController.radius);
+            Gizmos.DrawWireSphere((transform.position + _characterController.center) + (_gravity.normalized * (_characterController.height * 0.5f - _radius + GROUND_CHECK_DISTANCE_EPSILON)), _radius);
         }
     }
 }

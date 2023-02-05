@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using GameProject.Actions;
 using GameProject.Inputs;
+using Unity.VisualScripting;
 
 namespace GameProject.Movement
 {
@@ -17,7 +18,15 @@ namespace GameProject.Movement
         private bool _isCrouched;
         private float _height;
         private Vector3 _center;
+        public CrouchState State = CrouchState.Stood;
 
+        public enum CrouchState {
+            Crouching,
+            Crouched,
+            Standing,
+            Stood
+        }
+        
 // INITIALISATION
 
         private void Awake() {
@@ -64,7 +73,7 @@ namespace GameProject.Movement
         /// </summary>
         public override void OnEnter() {
             base.OnEnter();
-            StartCoroutine(Transition(_settings.CrouchCurve));
+            StartCoroutine(Crouch());
         }
 
         /// <summary>
@@ -72,7 +81,19 @@ namespace GameProject.Movement
         /// </summary>
         public override void OnExit() {
             base.OnExit();
-            StartCoroutine(Transition(_settings.StandCurve));
+            StartCoroutine(Stand());
+        }
+
+        private IEnumerator Crouch() {
+            State = CrouchState.Crouching;
+            yield return StartCoroutine(Transition(_settings.CrouchCurve));
+            State = CrouchState.Crouched;
+        }
+        
+        private IEnumerator Stand() {
+            State = CrouchState.Standing;
+            yield return StartCoroutine(Transition(_settings.StandCurve));
+            State = CrouchState.Stood;
         }
 
         /// <summary>
