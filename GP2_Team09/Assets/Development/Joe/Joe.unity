@@ -530,6 +530,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1070039948304624117, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6785539469645937651, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -5522,6 +5526,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 2106831132}
+  _settings: {fileID: 11400000, guid: 4d87708e956e6f640818f7d133e4cdef, type: 2}
+  _input: {fileID: 11400000, guid: 2c815377b3595ff4da70f69fa0d98561, type: 2}
+--- !u!143 &2106831159 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 9054369476191048528, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
+  m_PrefabInstance: {fileID: 1443371571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2106831160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106831124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b24bcbed638a634cbba0bd87998abb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controller: {fileID: 2106831132}
+  _characterController: {fileID: 2106831159}
   _settings: {fileID: 11400000, guid: 4d87708e956e6f640818f7d133e4cdef, type: 2}
   _input: {fileID: 11400000, guid: 2c815377b3595ff4da70f69fa0d98561, type: 2}
 --- !u!1001 &2137651417

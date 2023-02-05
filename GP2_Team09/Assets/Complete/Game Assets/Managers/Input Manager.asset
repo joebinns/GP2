@@ -147,7 +147,7 @@ MonoBehaviour:
   _jump:
     Input: {fileID: 7722455219619280100, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
     Pressed: 1
-    Changed: 0
+    Changed: 1
     Released: 1
     Sorted: 0
   _dodge:

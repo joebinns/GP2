@@ -36,7 +36,7 @@
                     "name": "Jump",
                     "type": "Value",
                     "id": "cf0aa9a2-deff-4fcf-be22-8657c630c1b0",
-                    "expectedControlType": "Analog",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
