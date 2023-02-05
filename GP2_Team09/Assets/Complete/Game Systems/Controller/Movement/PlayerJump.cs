@@ -16,9 +16,8 @@ namespace GameProject.Movement
 
         private bool _isJumping;
         private JumpState _jumpState;
-
-        private IEnumerator _jumpRise;
-        private IEnumerator _fall;
+        private Coroutine _jumpRise;
+        private Vector3 _gravity;
         
         private enum JumpState {
             Rising,
@@ -27,9 +26,11 @@ namespace GameProject.Movement
 
 // INITIALISATION
 
+        /// <summary>
+        /// Fetch values from frequently used references
+        /// </summary>
         private void Awake() {
-            _jumpRise = JumpRise();
-            _fall = Fall();
+            _gravity = Physics.gravity;
         }
 
         /// <summary>
@@ -80,15 +81,21 @@ namespace GameProject.Movement
         public override void OnExit() {
             base.OnExit();
             if (_jumpState != JumpState.Rising) return;
-            StopCoroutine(nameof(JumpRise));
-            StartCoroutine(nameof(Fall));
-
+            StopCoroutine(_jumpRise);
+            StartCoroutine(Fall());
         }
 
         private IEnumerator Jump() {
-            yield return StartCoroutine(nameof(JumpRise));
-            yield return StartCoroutine(nameof(Fall));
+            yield return _jumpRise = StartCoroutine(JumpRise());
+            yield return StartCoroutine(Fall());
         }
+        
+        /// <summary>
+        /// Check if the character controller is grounded
+        /// </summary>
+        private bool IsGrounded => Physics.SphereCast(transform.position + _characterController.center,
+            _characterController.radius, _gravity.normalized, out var hit, 
+            (_characterController.height * 0.51f - _characterController.radius * 0.5f));
 
         private IEnumerator JumpRise() {
             _jumpState = JumpState.Rising;
@@ -120,6 +127,14 @@ namespace GameProject.Movement
                 yield return new WaitForEndOfFrame();
             }
             SetVerticalPosition(finalFrame.value - previousValue);
+            
+            
+            // Continue falling along the same trajectory, until _grounded
+            var velocityY = curve.Differentiate(curve[curve.length - 1].time);
+            while (!IsGrounded) {
+                SetVerticalPosition(velocityY * Time.deltaTime);
+                yield return new WaitForEndOfFrame();
+            }
         }
 
         /// <summary>
