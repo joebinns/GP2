@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine;
 using GameProject.Actions;
 using GameProject.Inputs;
-using Unity.VisualScripting;
 
 namespace GameProject.Movement
 {
@@ -16,8 +15,22 @@ namespace GameProject.Movement
         [SF] private InputManager _input = null;
 
         private bool _isJumping;
+        private JumpState _jumpState;
+
+        private IEnumerator _jumpRise;
+        private IEnumerator _fall;
+        
+        private enum JumpState {
+            Rising,
+            Falling
+        }
 
 // INITIALISATION
+
+        private void Awake() {
+            _jumpRise = JumpRise();
+            _fall = Fall();
+        }
 
         /// <summary>
         /// Adds this action to the player controller
@@ -54,27 +67,31 @@ namespace GameProject.Movement
         }
 
         /// <summary>
-        /// Initiate crouching transition
+        /// 
         /// </summary>
         public override void OnEnter() {
             base.OnEnter();
             StartCoroutine(Jump());
         }
-
-        private IEnumerator Jump() {
-            yield return StartCoroutine(JumpRise());
-            yield return StartCoroutine(Fall());
-        }
-
+        
         /// <summary>
-        /// Initiate standing transition
+        /// 
         /// </summary>
         public override void OnExit() {
             base.OnExit();
-            //StartCoroutine(Fall());
+            if (_jumpState != JumpState.Rising) return;
+            StopCoroutine(nameof(JumpRise));
+            StartCoroutine(nameof(Fall));
+
         }
-        
+
+        private IEnumerator Jump() {
+            yield return StartCoroutine(nameof(JumpRise));
+            yield return StartCoroutine(nameof(Fall));
+        }
+
         private IEnumerator JumpRise() {
+            _jumpState = JumpState.Rising;
             var t = 0f;
             var curve = _settings.JumpRiseCurve;
             var previousValue = curve.Evaluate(t);
@@ -90,6 +107,7 @@ namespace GameProject.Movement
         }
         
         private IEnumerator Fall() {
+            _jumpState = JumpState.Falling;
             var t = 0f;
             var curve = _settings.FallCurve;
             var previousValue = curve.Evaluate(t);
