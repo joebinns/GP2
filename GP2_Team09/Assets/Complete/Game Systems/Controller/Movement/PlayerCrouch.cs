@@ -18,13 +18,13 @@ namespace GameProject.Movement
         private bool _isCrouched;
         private float _height;
         private Vector3 _center;
-        public CrouchState State = CrouchState.Stood;
+        public CrouchState State = CrouchState.Default;
 
         public enum CrouchState {
             Crouching,
             Crouched,
             Standing,
-            Stood
+            Default
         }
         
 // INITIALISATION
@@ -93,7 +93,7 @@ namespace GameProject.Movement
         private IEnumerator Stand() {
             State = CrouchState.Standing;
             yield return StartCoroutine(Transition(_settings.StandCurve));
-            State = CrouchState.Stood;
+            State = CrouchState.Default;
         }
 
         /// <summary>

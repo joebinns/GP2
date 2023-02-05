@@ -13,7 +13,7 @@ namespace GameProject.Movement
         private Vector3 _gravity;
         private bool _isFalling;
         private PlayerCrouch _playerCrouch;
-        
+        private PlayerJump _playerJump;
         private float _previousPositionY;
         private float _radius;
 
@@ -27,6 +27,7 @@ namespace GameProject.Movement
         private void Awake() {
             _gravity = Physics.gravity;
             _playerCrouch = GetComponent<PlayerCrouch>();
+            _playerJump = GetComponent<PlayerJump>();
         }
 
         private void Start() {
@@ -36,20 +37,10 @@ namespace GameProject.Movement
 
 // MOVEMENT
 
-        //private bool IsRising => _characterController.velocity.y > 0; // Character controller velocity not updating properly
-        private bool IsRising() {
-            var positionY = _characterController.transform.position.y;
-            var velocityY = positionY - _previousPositionY;
-            _previousPositionY = positionY;
-            return velocityY > 0;
-        }
-
         private void Update() {
-            var isRising = IsRising();
-            if (IsGrounded || _isFalling || isRising) return;
-            if (_playerCrouch) {
-                if (_playerCrouch.State == PlayerCrouch.CrouchState.Crouching) return;
-            }
+            if (IsGrounded || _isFalling) return;
+            if (_playerJump) if (_playerJump.State == PlayerJump.JumpState.Rising) return;
+            if (_playerCrouch) if (_playerCrouch.State == PlayerCrouch.CrouchState.Crouching) return; // TODO: Hard to tell how much difference this is making, if any
             StartCoroutine(Fall());
         }
         

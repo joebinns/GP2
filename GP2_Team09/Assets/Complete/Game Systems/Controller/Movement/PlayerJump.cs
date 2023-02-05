@@ -20,6 +20,12 @@ namespace GameProject.Movement
         private Coroutine _jumpRise;
         private bool _isRising;
         private PlayerFall _playerFall;
+        public JumpState State = JumpState.Default;
+
+        public enum JumpState {
+            Rising,
+            Default
+        }
 
 // INITIALISATION
 
@@ -76,17 +82,18 @@ namespace GameProject.Movement
         /// </summary>
         public override void OnExit() {
             base.OnExit();
-            if (!_isRising) return;
+            if (State != JumpState.Rising) return;
             StopCoroutine(_jumpRise);
+            State = JumpState.Default;
         }
 
         private IEnumerator Jump() {
+            State = JumpState.Rising;
             yield return _jumpRise = StartCoroutine(JumpRise());
+            State = JumpState.Default;
         }
         
         private IEnumerator JumpRise() {
-            _isRising = true;
-            
             var t = 0f;
             var curve = _settings.JumpRiseCurve;
             var previousValue = curve.Evaluate(t);
@@ -99,8 +106,6 @@ namespace GameProject.Movement
                 yield return new WaitForEndOfFrame();
             }
             SetVerticalPosition(finalFrame.value - previousValue);
-
-            _isRising = false;
         }
 
         /// <summary>
