@@ -97,5 +97,26 @@ namespace GameProject
 
             return current;
         }
+
+        /// <summary>
+        /// Component-wise Vector3 multiplication.
+        /// </summary>
+        public static Vector3 Multiply(Vector3 a, Vector3 b) {
+            return (new Vector3(a.x * b.x, a.y * b.y, a.z * b.z));
+        }
+        
+        /// <summary>
+        /// Component-wise Vector3 multiplication and sum.
+        /// </summary>
+        public static float MultiplySum(Vector3 a, Vector3 b) {
+            return a.x * b.x + a.y * b.y + a.z * b.z;
+        }
+        
+        /// <summary>
+        /// Component-wise Vector3 division.
+        /// </summary>
+        public static Vector3 Divide(Vector3 a, Vector3 b) {
+            return (new Vector3(a.x / b.x, a.y / b.y, a.z / b.z));
+        }
     }
 }

@@ -1,21 +1,18 @@
-using System;
 using SF = UnityEngine.SerializeField;
-using GameProject.Hold;
 using GameProject.Oscillators;
+using GameProject.Grab;
 using UnityEngine;
 
 namespace GameProject.Interactions
 {
-    [RequireComponent(typeof(Rigidbody), typeof(Collider))]
-    [RequireComponent(typeof(Oscillator), typeof(TorsionalOscillator))]
-    public class HoldInteraction : MonoBehaviour, IInteractable
+    [RequireComponent(typeof(Rigidbody), typeof(Collider), typeof(TorsionalOscillator))]
+    public class GrabInteraction : MonoBehaviour, IInteractable
     {
-        [HideInInspector] public PlayerHold PlayerHold;
+        [HideInInspector] public PlayerGrab PlayerGrab;
         
         private bool _pressed;
 
         public Rigidbody Rigidbody { get; private set; }
-        public Oscillator Oscillator { get; private set; }
         public TorsionalOscillator TorsionalOscillator { get; private set; }
 
 // INITIALISATION
@@ -25,7 +22,6 @@ namespace GameProject.Interactions
         /// </summary>
         private void Awake() {
             Rigidbody = GetComponent<Rigidbody>();
-            Oscillator = GetComponent<Oscillator>();
             TorsionalOscillator = GetComponent<TorsionalOscillator>();
         }
         
@@ -46,14 +42,14 @@ namespace GameProject.Interactions
         /// Grabs this game object
         /// </summary>
         private void Grab() {
-            PlayerHold.Grab(this);
+            PlayerGrab.Grab(this);
         }
 
         /// <summary>
         /// Releases this game object
         /// </summary>
         private void Release() {
-            PlayerHold.Release();
+            PlayerGrab.Release();
         }
     }
 }
