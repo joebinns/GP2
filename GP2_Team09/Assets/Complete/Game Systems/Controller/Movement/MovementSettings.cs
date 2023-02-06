@@ -3,8 +3,7 @@ using UnityEngine;
 
 namespace GameProject.Movement
 {
-    [CreateAssetMenu(fileName = "Movement Settings",
-     menuName = "Settings/Movement Settings")]
+    [CreateAssetMenu(fileName = "Movement Settings", menuName = "Settings/Movement Settings")]
     public class MovementSettings : ScriptableObject
     {
 // SETTINGS
@@ -32,20 +31,23 @@ namespace GameProject.Movement
         private AnimationCurve _standCurve;
 
         [Header("Jump")]
-        [SF, Tooltip("")]
+        [SF, Tooltip("The initial gradient of the curve is followed until the minimum jump threshold is crossed, at which point the curve is followed")]
         private AnimationCurve _jumpRiseCurve;
         
-        [SF, Range(0f, 1f), Tooltip("")]
-        private float _riseCancelThreshold = 0.5f;
+        [SF, Range(0f, 1f), Tooltip("Minimum time over which the rise curve is followed")]
+        private float _riseCancelThreshold = 0.325f;
         
-        [SF, Tooltip("")]
+        [SF, Range(0f, 1f), Tooltip("Maximum time before the rise curve is followed")]
+        private float _riseMaximumThreshold = 0.75f;
+        
+        [SF, Tooltip("The time up to which the player may jump after becoming ungrounded")]
         private float _coyoteTime = 0.1f;
         
-        [SF, Tooltip("")]
+        [SF, Tooltip("Time over which presses of the jump may be applied retrospectively if conditions for jump are met at a later time")]
         private float _jumpInputBuffer = 0.1f;
         
         [Header("Gravity")]
-        [SF, Tooltip("")]
+        [SF, Tooltip("The curve followed until grounded. Once exhausted, the curve's final gradient is followed")]
         private AnimationCurve _fallCurve;
         
 
@@ -64,6 +66,7 @@ namespace GameProject.Movement
         public AnimationCurve JumpRiseCurve => _jumpRiseCurve;
         public AnimationCurve FallCurve => _fallCurve;
         public float RiseCancelThreshold => _riseCancelThreshold;
+        public float RiseMaximumThreshold => _riseMaximumThreshold;
         public float CoyoteTime => _coyoteTime;
         public float JumpInputBuffer => _jumpInputBuffer;
     }

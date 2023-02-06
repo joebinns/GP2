@@ -1,10 +1,12 @@
 using SF = UnityEngine.SerializeField;
+using System;
 using UnityEngine;
 using GameProject.Actions;
 using GameProject.Movement;
 using GameProject.Inputs;
 using GameProject.Cameras;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GameProject.Interactions
 {
@@ -16,7 +18,9 @@ namespace GameProject.Interactions
         [SF] private InputManager _input = null;
         [SF] private CameraManager _camera = null;
 
+        private List<IInteractable> _actions = new();
         private List<IInteractable> _triggered = new();
+        
 
 // INITIALISATION
 
@@ -50,24 +54,38 @@ namespace GameProject.Interactions
         /// <summary>
         /// Stores interactables
         /// </summary>
-        private void GetSelected(){
+        private void GetSelected() {
+            foreach (var action in _actions) {
+                action.Trigger();
+                _triggered.Add(action);
+            }
+        }
+        
+        /// <summary>
+        /// Check the available actions
+        /// </summary>
+        public void Update() {
+            var actions = GetActions();
+            if (actions != _actions) OnActionsChanged?.Invoke(actions); // TODO: This is being called even when the lists are the same...
+            _actions = actions;
+        }
+
+        /// <summary>
+        /// Get all intercepted actions
+        /// </summary>
+        private List<IInteractable> GetActions() {
             var camera = _camera.Transform;
             var radius = _settings.Radius;
             var distance = _settings.Distance;
             var mask = _settings.Mask;
 
             var ray = new Ray(camera.position, camera.forward);
-
-            if (Physics.SphereCast(ray, radius, out var hit, distance, mask)){
-                var actions = hit.collider.GetComponents<IInteractable>();
-
-                for (int i = 0; i < actions.Length; i++){
-                    var action = actions[i];
-                    
-                    action.Trigger();
-                    _triggered.Add(action);
-                }
+            
+            var actions = new List<IInteractable>();
+            if (Physics.SphereCast(ray, radius, out var hit, distance, mask)) {
+                actions = hit.collider.GetComponents<IInteractable>().ToList();
             }
+            return actions;
         }
 
         /// <summary>
@@ -80,5 +98,7 @@ namespace GameProject.Interactions
 
             _triggered.Clear();
         }
+
+        public event Action<List<IInteractable>> OnActionsChanged;
     }
 }

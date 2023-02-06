@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GameProject.Interactions
 {
     [CreateAssetMenu(fileName = "Interaction Settings",
-     menuName = "Settings/Interaction Settings")]
+        menuName = "Settings/Interaction Settings")]
     public class InteractionSettings : ScriptableObject
     {
         [Header("Interaction Settings")]
@@ -18,7 +18,7 @@ namespace GameProject.Interactions
         [SF] private Vector2 _holdDistanceRange = new Vector2(2f, 5f);
         [SF] private bool _autoOrientOnGrab = false;
 
-        private const float HOLD_DIST_SENS_MULT = 30f;
+        private const float HOLD_DIST_SENS_MULT = 120f;
 
 // PROPERTIES
 

@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3401057945160390381, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
+      propertyPath: _settings
+      value: 
+      objectReference: {fileID: 11400000, guid: a84519befde56774695cf23c5e6b6c7c, type: 2}
+    - target: {fileID: 5873773417839059984, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
+      propertyPath: _settings
+      value: 
+      objectReference: {fileID: 11400000, guid: a84519befde56774695cf23c5e6b6c7c, type: 2}
     - target: {fileID: 6785539469645937651, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +61,78 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6785539469645937663, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player Crew
       objectReference: {fileID: 0}
+    - target: {fileID: 7289782461614197659, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
+      propertyPath: _settings
+      value: 
+      objectReference: {fileID: 11400000, guid: a84519befde56774695cf23c5e6b6c7c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
+--- !u!1 &6566537215078335635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6785539469645937663, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
+  m_PrefabInstance: {fileID: 363123593976217452}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4590043678917638827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6566537215078335635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce64be326f7b6794baf6d652dfa5a299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterController: {fileID: 8695755907918867516}
+  _settings: {fileID: 11400000, guid: 4d87708e956e6f640818f7d133e4cdef, type: 2}
+--- !u!114 &5952474304048126997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6566537215078335635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf3fb5bfa332b54f80fc86f1f26b827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controller: {fileID: 6566537215078335646}
+  _characterController: {fileID: 8695755907918867516}
+  _settings: {fileID: 11400000, guid: 4d87708e956e6f640818f7d133e4cdef, type: 2}
+  _input: {fileID: 11400000, guid: 977019ccfc90d1049952bd8f77dc777c, type: 2}
+--- !u!114 &3227104675346676470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6566537215078335635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2da3544c996f6846badbde3eab11d15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controller: {fileID: 6566537215078335646}
+  _characterController: {fileID: 8695755907918867516}
+  _settings: {fileID: 11400000, guid: 4d87708e956e6f640818f7d133e4cdef, type: 2}
+  _input: {fileID: 11400000, guid: 977019ccfc90d1049952bd8f77dc777c, type: 2}
+--- !u!114 &6566537215078335646 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6785539469645937650, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
+  m_PrefabInstance: {fileID: 363123593976217452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6566537215078335635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a755ae5991d96447b1285cfb8ae11fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!143 &8695755907918867516 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 9054369476191048528, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
+  m_PrefabInstance: {fileID: 363123593976217452}
+  m_PrefabAsset: {fileID: 0}

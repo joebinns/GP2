@@ -114,7 +114,7 @@ Rigidbody:
   m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &8464084955079775489
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389f37ac68ceb374287b55ff05be0177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _localEquilibriumPosition: {x: 0, y: 0, z: 0}
+  LocalEquilibriumPosition: {x: 0, y: 0, z: 0}
   _forceScale: {x: 1, y: 1, z: 1}
   _stiffness: 50
   _damper: 5
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1386ff400d48040832677588e508e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _localEquilibriumRotation: {x: 0, y: 0, z: 0}
+  LocalEquilibriumRotation: {x: 0, y: 0, z: 0}
   _localPivotPosition: {x: 0, y: 0, z: 0}
   _torqueScale: {x: 1, y: 1, z: 1}
   _stiffness: 500
@@ -163,4 +163,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f336b0b078023f4dbb302d24c7c8e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _holdPivot: {fileID: 0}
+  PlayerHold: {fileID: 0}

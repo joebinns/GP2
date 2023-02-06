@@ -163,7 +163,7 @@ RectTransform:
   m_GameObject: {fileID: 1293435075238158916}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4555269974058648253}
@@ -608,6 +608,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+--- !u!114 &1137105696478310464 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6365525123836002499, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+  m_PrefabInstance: {fileID: 6309873777303384195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ed5dc9b3a437145a3d2c21f7119a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1137105696945034177 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
@@ -630,5 +641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b0dd709de564a4f95d6cdd6accc227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reticle: {fileID: 1137105696478310464}
   _uiLost: {fileID: 1060546487435625464}
   _uiWon: {fileID: 4975011974567274208}

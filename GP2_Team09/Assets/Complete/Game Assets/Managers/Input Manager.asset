@@ -25,7 +25,7 @@ MonoBehaviour:
     Released: 0
     Sorted: 0
   _use:
-    Input: {fileID: 4540867357089126599, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Input: {fileID: 4540867357089126599, guid: 1993c7cf629502b4cac190781179b6ba, type: 3}
     Pressed: 1
     Changed: 0
     Released: 1
@@ -37,7 +37,7 @@ MonoBehaviour:
     Released: 0
     Sorted: 0
   _secondary:
-    Input: {fileID: 8897836525344711354, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Input: {fileID: 8897836525344711354, guid: 1993c7cf629502b4cac190781179b6ba, type: 3}
     Pressed: 1
     Changed: 0
     Released: 1
@@ -49,7 +49,7 @@ MonoBehaviour:
     Released: 0
     Sorted: 0
   _reach:
-    Input: {fileID: 6907808679849732277, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Input: {fileID: 6907808679849732277, guid: 1993c7cf629502b4cac190781179b6ba, type: 3}
     Pressed: 0
     Changed: 1
     Released: 0
@@ -91,13 +91,13 @@ MonoBehaviour:
     Released: 0
     Sorted: 0
   _turn:
-    Input: {fileID: -3678981832579102873, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Input: {fileID: -3678981832579102873, guid: 1993c7cf629502b4cac190781179b6ba, type: 3}
     Pressed: 1
     Changed: 0
     Released: 1
     Sorted: 0
   _tilt:
-    Input: {fileID: -6365254074248733472, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Input: {fileID: -6365254074248733472, guid: 1993c7cf629502b4cac190781179b6ba, type: 3}
     Pressed: 1
     Changed: 0
     Released: 1
@@ -115,13 +115,13 @@ MonoBehaviour:
     Released: 0
     Sorted: 0
   _move:
-    Input: {fileID: 5132432911371913066, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Input: {fileID: 5132432911371913066, guid: 1993c7cf629502b4cac190781179b6ba, type: 3}
     Pressed: 0
     Changed: 1
     Released: 1
     Sorted: 0
   _crouch:
-    Input: {fileID: -8627271658995936202, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Input: {fileID: -8627271658995936202, guid: 1993c7cf629502b4cac190781179b6ba, type: 3}
     Pressed: 1
     Changed: 0
     Released: 1
@@ -145,7 +145,7 @@ MonoBehaviour:
     Released: 0
     Sorted: 0
   _jump:
-    Input: {fileID: 7722455219619280100, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Input: {fileID: 7722455219619280100, guid: 1993c7cf629502b4cac190781179b6ba, type: 3}
     Pressed: 1
     Changed: 1
     Released: 1
@@ -157,7 +157,7 @@ MonoBehaviour:
     Released: 0
     Sorted: 0
   _pause:
-    Input: {fileID: 4406681055525828069, guid: 294f5454d1903ec488187a3acafcf5e3, type: 3}
+    Input: {fileID: 4406681055525828069, guid: 1993c7cf629502b4cac190781179b6ba, type: 3}
     Pressed: 0
     Changed: 0
     Released: 1

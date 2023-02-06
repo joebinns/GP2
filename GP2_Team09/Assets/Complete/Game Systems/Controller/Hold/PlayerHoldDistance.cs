@@ -22,13 +22,12 @@ namespace GameProject.Hold
         
 // INITIALISATION
 
+        /// <summary>
+        /// Sets frequently used references
+        /// </summary>
         private void Awake() {
             _playerHold = GetComponent<PlayerHold>();
             _holdPivot = _playerHold.HoldPivot;
-        }
-
-        private void Start() {
-            SetHoldDistance(_settings.DefaultHoldDistance);
         }
 
         /// <summary>
@@ -64,6 +63,9 @@ namespace GameProject.Hold
             };
         }
 
+        /// <summary>
+        /// Set if the object is grabbed, potentially adjusting the position to be clamped within the hold distance range
+        /// </summary>
         private void OnGrab(HoldInteraction toHold) {
             // Set variables
             _isHolding = true;
@@ -72,6 +74,9 @@ namespace GameProject.Hold
             SetHoldDistance(Vector3.Distance(_holdPivot.parent.position, toHold.transform.position));
         }
         
+        /// <summary>
+        /// Set if the object is released, clamping it's distance to be within the hold distance range
+        /// </summary>
         private void OnRelease() {
             // Set variables
             _isHolding = false;
@@ -93,6 +98,9 @@ namespace GameProject.Hold
             SetHoldDistance(_holdPivot.localPosition.z + _direction * _settings.HoldDistanceSensitivity * deltaTime);
         }
 
+        /// <summary>
+        /// Set the hold pivot's local z distance, clamped within a range
+        /// </summary>
         private void SetHoldDistance(float distance) {
             var holdDistanceRange = _settings.HoldDistanceRange;
             var holdPosition = _holdPivot.localPosition;

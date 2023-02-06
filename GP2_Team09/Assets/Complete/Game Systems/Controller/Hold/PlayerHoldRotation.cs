@@ -88,13 +88,17 @@ namespace GameProject.Hold
             _playerTurn.enabled = !_isRotatable;
         }
         
+        /// <summary>
+        /// Set if the object is grabbed
+        /// </summary>
         private void OnGrab(HoldInteraction toHold) {
-            // Set variables
             _isHolding = true;
         }
         
+        /// <summary>
+        /// Set if the object is released
+        /// </summary>
         private void OnRelease() {
-            // Set variables
             _isHolding = false;
         }
         

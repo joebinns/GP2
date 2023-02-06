@@ -10,12 +10,13 @@ namespace GameProject.Hold
         [SF] private InteractionSettings _settings = null;
         [Space]
         [SF] private Transform _holdPivot;
-
-        private HoldInteraction _holding;
-        private bool _isHolding;
-        
         public Transform HoldPivot => _holdPivot;
+        
+        private HoldInteraction _holding;
+        private bool IsHolding => _holding != null;
 
+// INITIALISATION
+        
         /// <summary>
         /// Initialise the player hold and hold pivot references on all holdable game objects
         /// </summary>
@@ -25,35 +26,54 @@ namespace GameProject.Hold
             }
         }
 
+// HOLD HANDLING
+        
+        /// <summary>
+        /// Grab the object to hold
+        /// </summary>
         public void Grab(HoldInteraction toHold) {
-            _holding = toHold;
-            _isHolding = true;
-            _holding.Rigidbody.useGravity = false;
-            _holding.Oscillator.enabled = true;
-            _holding.TorsionalOscillator.enabled = true;
+            SetHold(toHold);
             
             // Set hold rotation
-            if (!_settings.AutoOrientOnGrab) _holdPivot.rotation = _holding.transform.rotation;
-            else _holdPivot.localRotation = Quaternion.identity;
+            if (_settings.AutoOrientOnGrab) _holdPivot.localRotation = Quaternion.identity;
+            else _holdPivot.rotation = _holding.transform.rotation;
             
             OnGrab?.Invoke(_holding);
         }
         
-        private void FixedUpdate()
-        {
-            if (!_isHolding) return;
+        /// <summary>
+        /// Update the oscillator and torsional oscillator equilibrium's, such as to copy the HoldPivot
+        /// </summary>
+        private void FixedUpdate() {
+            if (!IsHolding) return;
             _holding.Oscillator.LocalEquilibriumPosition = HoldPivot.position;
             _holding.TorsionalOscillator.LocalEquilibriumRotation = HoldPivot.rotation.eulerAngles;
         }
 
+        /// <summary>
+        /// Release any held object
+        /// </summary>
         public void Release() {
-            _holding.Rigidbody.useGravity = true;
-            _holding.Oscillator.enabled = false;
-            _holding.TorsionalOscillator.enabled = false;
-            _isHolding = false;
+            SetHold(null);
             _holding = null;
             OnRelease?.Invoke();
         }
+
+        /// <summary>
+        /// Sets the appropriate components controlling a game objects hold behaviour on or off as appropriate
+        /// </summary>
+        private void SetHold(HoldInteraction toHold) {
+            var shouldHold = toHold != null;
+            var holding = shouldHold ? toHold : _holding;
+            
+            holding.Rigidbody.useGravity = !shouldHold;
+            holding.Oscillator.enabled = shouldHold;
+            holding.TorsionalOscillator.enabled = shouldHold;
+
+            _holding = toHold;
+        }
+        
+// ACTIONS
         
         public event Action<HoldInteraction> OnGrab;
         public event Action OnRelease;

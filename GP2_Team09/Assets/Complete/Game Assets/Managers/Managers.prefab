@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e63193cbd726449bc4d71c032b7e19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _manager: {fileID: 11400000, guid: 2c815377b3595ff4da70f69fa0d98561, type: 2}
+  _manager: {fileID: 11400000, guid: 977019ccfc90d1049952bd8f77dc777c, type: 2}
 --- !u!114 &5881958090672870251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _manager: {fileID: 11400000, guid: b740b6b448bcab4419b74f202729663f, type: 2}
-  _menuCamera: {fileID: 0}
+  _uiMainMenu: {fileID: 0}
 --- !u!114 &572560423797827153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d999b6710ecbbd34cb99a3beaa155309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiWin: {fileID: 0}
-  _uiLose: {fileID: 0}
   _manager: {fileID: 11400000, guid: 11ca518c0ac022249a362c89685593fa, type: 2}
+  _uiEngineer: {fileID: 0}
+  _uiCrew: {fileID: 0}

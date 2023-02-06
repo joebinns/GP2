@@ -16,12 +16,12 @@ namespace GameProject.Movement
         [SF] private InputManager _input = null;
         
         private bool _isJumping;
-        private Coroutine _jumpRise;
         private bool _isRising;
         private PlayerFall _playerFall;
-        public JumpState State = JumpState.Default;
         private float _time;
         private bool _shouldCancel;
+        
+        public JumpState State { get; private set; } = JumpState.Default;
 
         public enum JumpState {
             Rising,
@@ -30,8 +30,10 @@ namespace GameProject.Movement
 
 // INITIALISATION
 
-        private void Awake()
-        {
+        /// <summary>
+        /// Store frequently used references
+        /// </summary>
+        private void Awake() {
             _playerFall = GetComponent<PlayerFall>();
         }
 
@@ -70,7 +72,7 @@ namespace GameProject.Movement
         }
 
         /// <summary>
-        /// 
+        /// Trigger a jump
         /// </summary>
         public override void OnEnter() {
             base.OnEnter();
@@ -78,7 +80,7 @@ namespace GameProject.Movement
         }
         
         /// <summary>
-        /// 
+        /// Trigger a jump cancel
         /// </summary>
         public override void OnExit() {
             base.OnExit();
@@ -86,6 +88,9 @@ namespace GameProject.Movement
             _shouldCancel = true;
         }
 
+        /// <summary>
+        /// Start jumping once input buffer and coyote time are satisfied (if not satisfied, then exit)
+        /// </summary>
         private IEnumerator Jump() {
             var t = 0f;
             var jumpInputBuffer = _settings.JumpInputBuffer;
@@ -94,7 +99,7 @@ namespace GameProject.Movement
                 if (_playerFall.TimeSinceUngrounded < _settings.CoyoteTime) {
                     _playerFall.CancelFall();
                     State = JumpState.Rising;
-                    yield return _jumpRise = StartCoroutine(JumpRise());
+                    yield return StartCoroutine(JumpRise());
                     State = JumpState.Default;
                     t = jumpInputBuffer;
                 }
@@ -102,13 +107,23 @@ namespace GameProject.Movement
             }
         }
         
+        /*
+        TODO: For greater control and cleaner code:
+        #1. Follow the rise curve until released or complete (AS BEFORE, REVERT)
+        #2. To fall off smoothly, interpolate between the last followed point on the rise curve and a desired target
+        #3. The desired target should be positioned at a future time and height formulated as a function of the progress through the rise curve
+        */
+        /// <summary>
+        /// Rise following the rise curve's initial gradient, fall off following the rise curve
+        /// </summary>
         private IEnumerator JumpRise() {
             var time = 0f;
             var curve = _settings.JumpRiseCurve;
-            var cancelThreshold = _settings.RiseCancelThreshold * curve[curve.length - 1].time;
-            var maxThreshold = cancelThreshold * 2f;
+            var finalFrame = curve[curve.length - 1];
+            var cancelThreshold = _settings.RiseCancelThreshold * finalFrame.time;
+            var maxThreshold = _settings.RiseMaximumThreshold * finalFrame.time;
 
-            // Begin rising along the same trajectory
+            // Begin rising along the rise curve's initial gradient
             var shouldCancel = false;
             var velocityY = curve.Differentiate(curve.Evaluate(time));
             while (!shouldCancel) {
@@ -120,9 +135,9 @@ namespace GameProject.Movement
             }
             _shouldCancel = false;
 
+            // Follow the rise curve
             time = 0f;
             var previousValue = curve.Evaluate(time);
-            var finalFrame = curve[curve.length - 1];
             while (time < finalFrame.time) {
                 time += Time.deltaTime;
                 var value = curve.Evaluate(time);

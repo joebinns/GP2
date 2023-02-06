@@ -17,7 +17,8 @@ namespace GameProject.Movement
         private bool _isCrouched;
         private float _height;
         private Vector3 _center;
-        public CrouchState State = CrouchState.Default;
+        
+        public CrouchState State { get; private set; } = CrouchState.Default;
 
         public enum CrouchState {
             Crouching,
@@ -28,6 +29,9 @@ namespace GameProject.Movement
         
 // INITIALISATION
 
+        /// <summary>
+        /// Store frequently used variables
+        /// </summary>
         private void Awake() {
             _height = _characterController.height;
             _center = _characterController.center;
@@ -54,18 +58,14 @@ namespace GameProject.Movement
         /// <summary>
         /// Toggle crouching
         /// </summary>
-        private void OnCrouchInput() {
-            _isCrouched = !_isCrouched;
-        }
+        private void OnCrouchInput() { _isCrouched = !_isCrouched; }
 
 // MOVEMENT
 
         /// <summary>
         /// Checks is crouched on controller update
         /// </summary>
-        public override bool OnCheck() {
-            return _isCrouched;
-        }
+        public override bool OnCheck() => _isCrouched;
 
         /// <summary>
         /// Initiate crouching transition
@@ -83,12 +83,18 @@ namespace GameProject.Movement
             StartCoroutine(Stand());
         }
 
+        /// <summary>
+        /// Crouch
+        /// </summary>
         private IEnumerator Crouch() {
             State = CrouchState.Crouching;
             yield return StartCoroutine(Transition(_settings.CrouchCurve));
             State = CrouchState.Crouched;
         }
         
+        /// <summary>
+        /// Stand
+        /// </summary>
         private IEnumerator Stand() {
             State = CrouchState.Standing;
             yield return StartCoroutine(Transition(_settings.StandCurve));
