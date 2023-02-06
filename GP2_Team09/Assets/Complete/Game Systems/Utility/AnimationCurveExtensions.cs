@@ -42,6 +42,7 @@ namespace GameProject
         {
             var x1 = Mathf.Max(xMin, x - Delta);
             var x2 = Mathf.Min(xMax, x + Delta);
+            x1 = Mathf.Max(x1, curve[0].time);
             x2 = Mathf.Min(x2, curve[curve.length - 1].time);
             var y1 = curve.Evaluate(x1);
             var y2 = curve.Evaluate(x2);

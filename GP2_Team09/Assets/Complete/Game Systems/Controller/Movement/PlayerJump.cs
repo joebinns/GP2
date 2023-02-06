@@ -21,8 +21,7 @@ namespace GameProject.Movement
         private PlayerFall _playerFall;
         public JumpState State = JumpState.Default;
         private float _time;
-        
-        // TODO: Add coyote time and input buffer
+        private bool _shouldCancel;
 
         public enum JumpState {
             Rising,
@@ -84,7 +83,7 @@ namespace GameProject.Movement
         public override void OnExit() {
             base.OnExit();
             if (State != JumpState.Rising) return;
-            StartCoroutine(CancelJump());
+            _shouldCancel = true;
         }
 
         private IEnumerator Jump() {
@@ -102,25 +101,31 @@ namespace GameProject.Movement
                 yield return new WaitForEndOfFrame();
             }
         }
-
-        private IEnumerator CancelJump() {
-            var curve = _settings.JumpRiseCurve;
-            var cancelThreshold = _settings.RiseCancelThreshold * curve[curve.length - 1].time;
-            while (_time < cancelThreshold) {
-                yield return new WaitForEndOfFrame();
-            }
-            StopCoroutine(_jumpRise);
-            State = JumpState.Default;
-        }
         
         private IEnumerator JumpRise() {
-            _time = 0f;
+            var time = 0f;
             var curve = _settings.JumpRiseCurve;
-            var previousValue = curve.Evaluate(_time);
+            var cancelThreshold = _settings.RiseCancelThreshold * curve[curve.length - 1].time;
+            var maxThreshold = cancelThreshold * 2f;
+
+            // Begin rising along the same trajectory
+            var shouldCancel = false;
+            var velocityY = curve.Differentiate(curve.Evaluate(time));
+            while (!shouldCancel) {
+                time += Time.deltaTime;
+                if (time >= maxThreshold) _shouldCancel = true;
+                SetVerticalPosition(velocityY * Time.deltaTime);
+                shouldCancel = _shouldCancel && time >= cancelThreshold;
+                yield return new WaitForEndOfFrame();
+            }
+            _shouldCancel = false;
+
+            time = 0f;
+            var previousValue = curve.Evaluate(time);
             var finalFrame = curve[curve.length - 1];
-            while (_time < finalFrame.time) {
-                _time += Time.deltaTime;
-                var value = curve.Evaluate(_time);
+            while (time < finalFrame.time) {
+                time += Time.deltaTime;
+                var value = curve.Evaluate(time);
                 SetVerticalPosition(value - previousValue);
                 previousValue = value;
                 yield return new WaitForEndOfFrame();
