@@ -17,11 +17,13 @@ namespace GameProject.Oscillators
         [Tooltip("The center about which rotations should occur.")] 
         [SerializeField] private Vector3 _localPivotPosition = Vector3.zero;
         [Tooltip("The axes over which the oscillator applies torque. Within range [0, 1].")] 
-        [SerializeField] private Vector3 _torqueScale = Vector3.one;
+        [SerializeField] private Vector3 _localTorqueScale = Vector3.one;
         [Tooltip("The greater the stiffness constant, the lesser the amplitude of oscillations.")] 
-        [SerializeField]private float _stiffness = 500f;
+        [SerializeField] private float _stiffness = 500f;
         [Tooltip("The greater the damper constant, the faster that oscillations will disappear.")] 
         [SerializeField] private float _damper = 50f;
+
+        public Vector3 TorqueScale => _localTorqueScale;
 
         private Rigidbody _rb;
         private float _angularDisplacementMagnitude;
@@ -83,7 +85,7 @@ namespace GameProject.Oscillators
         /// </summary>
         /// <param name="torque">The torque to be applied.</param>
         private void ApplyTorque(Vector3 torque) {
-            _rb.AddTorque(Vector3.Scale(torque, _torqueScale));
+            _rb.AddTorque(Vector3.Scale(torque, transform.TransformDirection(_localTorqueScale)));
         }
 
         /// <summary>

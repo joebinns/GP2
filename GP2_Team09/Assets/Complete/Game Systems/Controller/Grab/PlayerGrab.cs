@@ -35,6 +35,7 @@ namespace GameProject.Grab
         /// </summary>
         public void Grab(GrabInteraction toGrab) {
             SetGrab(toGrab);
+            // TODO: Prevent local equilibrium rotation resetting when grabbed... (since _initialAngle - GetAngle() = 0)
             _initialAngle = GetAngle();
         }
         
@@ -43,7 +44,7 @@ namespace GameProject.Grab
         /// </summary>
         private void FixedUpdate() {
             if (!IsGrabbing) return;
-            _grabbing.TorsionalOscillator.LocalEquilibriumRotation = Vector3.back * (GetAngle() - _initialAngle);
+            _grabbing.TorsionalOscillator.LocalEquilibriumRotation = _grabbing.TorsionalOscillator.TorqueScale * (_initialAngle - GetAngle());
         }
 
         private float GetAngle() {
