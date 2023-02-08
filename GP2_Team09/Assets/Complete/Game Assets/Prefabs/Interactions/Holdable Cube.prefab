@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LocalEquilibriumRotation: {x: 0, y: 0, z: 0}
   _localPivotPosition: {x: 0, y: 0, z: 0}
-  _torqueScale: {x: 1, y: 1, z: 1}
+  _localTorqueScale: {x: 1, y: 1, z: 1}
   _stiffness: 500
   _damper: 50
 --- !u!114 &8464084955079775495
@@ -164,3 +164,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHold: {fileID: 0}
+  _hoverReticle: {fileID: 21300000, guid: 235ed8af8e8b5e34fbad687dd7db4eb7, type: 3}
+  _actionReticle: {fileID: 21300000, guid: c6be87c337bc9ce4f9df7cd5fb9e92f1, type: 3}

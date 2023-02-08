@@ -5,6 +5,8 @@ namespace GameProject.Interactions
 {
     public interface IInteractable
     {
-        void Trigger();
+        public Sprite HoverReticle { get; }
+        public Sprite ActionReticle { get; }
+        public void Perform();
     }
 }

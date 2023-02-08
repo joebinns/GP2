@@ -8744,7 +8744,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-537734
+  m_Name: pb_Mesh-92322
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28388,24 +28388,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reticle: {fileID: 0}
   _onPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 11ca518c0ac022249a362c89685593fa, type: 2}
-        m_TargetAssemblyTypeName: GameProject.HUD.HUDManager, Assembly-CSharp
-        m_MethodName: DisplayWon
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+  - Target: {fileID: 0}
+    Action: 0
   _onReleased:
-    m_PersistentCalls:
-      m_Calls: []
+  - Target: {fileID: 0}
+    Action: 0
 --- !u!95 &1341922698
 Animator:
   serializedVersion: 5
@@ -28697,6 +28686,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 361730373}
+    - target: {fileID: 6094268982059722747, guid: 1318898ad45182c49ba5b1f23e47dc70, type: 3}
+      propertyPath: m_VersionIndex
+      value: 5183
+      objectReference: {fileID: 0}
     - target: {fileID: 6889114196884546442, guid: 1318898ad45182c49ba5b1f23e47dc70, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -29056,24 +29049,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reticle: {fileID: 0}
   _onPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 11ca518c0ac022249a362c89685593fa, type: 2}
-        m_TargetAssemblyTypeName: GameProject.HUD.HUDManager, Assembly-CSharp
-        m_MethodName: DisplayWon
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+  - Target: {fileID: 0}
+    Action: 0
   _onReleased:
-    m_PersistentCalls:
-      m_Calls: []
+  - Target: {fileID: 0}
+    Action: 0
 --- !u!95 &1704035585
 Animator:
   serializedVersion: 5
@@ -34144,24 +34126,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reticle: {fileID: 0}
   _onPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 11ca518c0ac022249a362c89685593fa, type: 2}
-        m_TargetAssemblyTypeName: GameProject.HUD.HUDManager, Assembly-CSharp
-        m_MethodName: DisplayLost
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+  - Target: {fileID: 0}
+    Action: 0
   _onReleased:
-    m_PersistentCalls:
-      m_Calls: []
+  - Target: {fileID: 0}
+    Action: 0
 --- !u!95 &2145293814
 Animator:
   serializedVersion: 5
@@ -34304,39 +34275,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _threshold: 4
   _update: {fileID: 11400000, guid: 9b090228707952e448427620a3dcfa31, type: 2}
-  _onSuccess:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1824986385}
-        m_TargetAssemblyTypeName: GameProject.Environment.Door, Assembly-CSharp
-        m_MethodName: OpenDoor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onFailed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 11ca518c0ac022249a362c89685593fa, type: 2}
-        m_TargetAssemblyTypeName: GameProject.HUD.HUDManager, Assembly-CSharp
-        m_MethodName: DisplayLost
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+  _onSucceess: []
+  _onFailure: []
   _onChange:
-    m_PersistentCalls:
-      m_Calls: []
+  - Target: {fileID: 0}
+    Action: 0
 --- !u!114 &4419068305463920888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34349,36 +34292,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reticle: {fileID: 0}
   _onPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4419068305463920887}
-        m_TargetAssemblyTypeName: GameProject.Interactions.TimerInteraction, Assembly-CSharp
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  - Target: {fileID: 0}
+    Action: 0
   _onReleased:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4419068305463920887}
-        m_TargetAssemblyTypeName: GameProject.Interactions.TimerInteraction, Assembly-CSharp
-        m_MethodName: StopTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  - Target: {fileID: 0}
+    Action: 0
+--- !u!95 &4419068305463920889
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4419068305463920886}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!4 &8683497053424767905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5031177904991869780, guid: d7d1227a8aa374548b064b1861fab020, type: 3}

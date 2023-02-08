@@ -7,12 +7,14 @@ using GameProject.Inputs;
 using GameProject.Cameras;
 using System.Collections.Generic;
 using System.Linq;
+using GameProject.HUD;
 
 namespace GameProject.Interactions
 {
     public class PlayerInteract : BaseAction
     {
         [SF] private PlayerController _controller = null;
+        [SF] private HUDController _hudController = null;
         [Space]
         [SF] private InteractionSettings _settings = null;
         [SF] private InputManager _input = null;
@@ -20,7 +22,7 @@ namespace GameProject.Interactions
 
         private List<IInteractable> _actions = new();
         private List<IInteractable> _triggered = new();
-        
+
 
 // INITIALISATION
 
@@ -48,7 +50,12 @@ namespace GameProject.Interactions
         private void OnActionInput(){
             if (_triggered.Count > 0)
                  ClearSelected();
-            else GetSelected();
+            else {
+                GetSelected();
+                
+                if (_triggered != null && _triggered.Count > 0) 
+                    _hudController.SwitchReticle(_triggered[0].ActionReticle);
+            } 
         }
 
         /// <summary>
@@ -56,7 +63,7 @@ namespace GameProject.Interactions
         /// </summary>
         private void GetSelected() {
             foreach (var action in _actions) {
-                action.Trigger();
+                action.Perform();
                 _triggered.Add(action);
             }
         }
@@ -65,9 +72,13 @@ namespace GameProject.Interactions
         /// Check the available actions
         /// </summary>
         public void Update() {
-            var actions = GetActions();
-            if (actions != _actions) OnActionsChanged?.Invoke(actions); // TODO: This is being called even when the lists are the same...
-            _actions = actions;
+            if (_triggered.Count > 0) return;
+            
+            _actions = GetActions();
+            if (_actions != null && _actions.Count > 0) 
+                _hudController.SwitchReticle(_actions[0].HoverReticle);
+            else 
+                _hudController.SwitchReticle(null);
         }
 
         /// <summary>
@@ -93,12 +104,10 @@ namespace GameProject.Interactions
         /// </summary>
         private void ClearSelected(){
             for (int i = 0; i < _triggered.Count; i++){
-                _triggered[i].Trigger();
+                _triggered[i].Perform();
             }
 
             _triggered.Clear();
         }
-
-        public event Action<List<IInteractable>> OnActionsChanged;
     }
 }

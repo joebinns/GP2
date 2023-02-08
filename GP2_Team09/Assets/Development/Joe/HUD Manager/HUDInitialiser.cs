@@ -20,8 +20,9 @@ namespace GameProject.HUD
         /// Initialises the input manager
         /// </summary>
         private void Awake(){
-            if (s_active == null){
-                _manager.Initialise(_uiEngineer, _uiCrew);
+            if (s_active == null) {
+                if (_uiCrew) _manager.Initialise(_uiCrew);
+                else if (_uiEngineer)_manager.Initialise(_uiEngineer);
                 s_active = this;
 
             } else Destroy(this);

@@ -15,10 +15,8 @@ GameObject:
   - component: {fileID: 5881958090672870250}
   - component: {fileID: 5881958090672870251}
   - component: {fileID: 4782147891240524749}
-  - component: {fileID: 572560423797827153}
-  - component: {fileID: 6561653430869405879}
   m_Layer: 0
-  m_Name: Managers
+  m_Name: GLOBAL MANAGERS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,31 +120,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _manager: {fileID: 11400000, guid: b740b6b448bcab4419b74f202729663f, type: 2}
   _uiMainMenu: {fileID: 0}
---- !u!114 &572560423797827153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5881958090672870255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b79c8eab74bcdf24cb6d32d0b6dd3062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _manager: {fileID: 11400000, guid: 66e615f66c6327649b5d2b44251b4fa7, type: 2}
---- !u!114 &6561653430869405879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5881958090672870255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d999b6710ecbbd34cb99a3beaa155309, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _manager: {fileID: 11400000, guid: 11ca518c0ac022249a362c89685593fa, type: 2}
-  _uiEngineer: {fileID: 0}
-  _uiCrew: {fileID: 0}

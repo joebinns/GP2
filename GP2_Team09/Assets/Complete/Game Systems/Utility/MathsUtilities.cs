@@ -104,19 +104,21 @@ namespace GameProject
         public static Vector3 Multiply(Vector3 a, Vector3 b) {
             return (new Vector3(a.x * b.x, a.y * b.y, a.z * b.z));
         }
-        
-        /// <summary>
-        /// Component-wise Vector3 multiplication and sum.
-        /// </summary>
-        public static float MultiplySum(Vector3 a, Vector3 b) {
-            return a.x * b.x + a.y * b.y + a.z * b.z;
-        }
-        
+
         /// <summary>
         /// Component-wise Vector3 division.
         /// </summary>
         public static Vector3 Divide(Vector3 a, Vector3 b) {
             return (new Vector3(a.x / b.x, a.y / b.y, a.z / b.z));
         }
+        
+        /// <summary>
+        /// Get the intersection between a line and a plane (only works if the line and plane are not parallel)
+        /// </summary>
+        public static Vector3 GetIntersection(Ray line, Ray plane) {
+            var parameter = Vector3.Dot(plane.direction, plane.origin - line.origin) / Vector3.Dot(plane.direction, line.direction);
+            return line.origin + line.direction * parameter;
+        }
+        
     }
 }

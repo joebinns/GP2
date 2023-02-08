@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8c57b438823a34aa4b72fd2403cb91, type: 3}
   m_Name: Menu Manager
   m_EditorClassIdentifier: 
-  _input: {fileID: 11400000, guid: 2c815377b3595ff4da70f69fa0d98561, type: 2}
+  _input: {fileID: 11400000, guid: 977019ccfc90d1049952bd8f77dc777c, type: 2}

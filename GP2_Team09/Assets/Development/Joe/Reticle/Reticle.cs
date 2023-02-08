@@ -1,3 +1,4 @@
+using System;
 using SF = UnityEngine.SerializeField;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,27 +8,22 @@ namespace GameProject.HUD
     [RequireComponent(typeof(Image))]
     public class Reticle : MonoBehaviour
     {
-        [SF] private Image _image;
+        [SF] private Image _reticle;
         [Space]
         [SF] private Sprite _default;
-        [SF] private Sprite _pointer;
-        [SF] private Sprite _grabOpen;
-        [SF] private Sprite _grabClosed;
         
         // TODO: Call SetCursor whenever interactables are hovered, unhovered, pressed and released
         
-        public void SetCursor(CursorType cursorType) {
-            _image.sprite = cursorType switch {
-                CursorType.Default => _default,
-                CursorType.Pointer => _pointer,
-                CursorType.GrabOpen => _grabOpen,
-                CursorType.GrabClosed => _grabClosed,
-                _ => _image.sprite
-            };
+        public void SetReticle(Sprite sprite) {
+            _reticle.sprite = sprite;
+        }
+        
+        public void ResetReticle() {
+            _reticle.sprite = _default;
         }
     }
     
-    public enum CursorType
+    public enum ReticleType
     {
         Default,
         Pointer,

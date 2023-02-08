@@ -1,18 +1,18 @@
 using SF = UnityEngine.SerializeField;
-using UnityEngine.Events;
+using System.Collections.Generic;
 using UnityEngine;
 using GameProject.Updates;
 
 namespace GameProject.Interactions
 {
-    public class TimerInteraction : MonoBehaviour
+    public class TimerInteraction : BaseInteraction
     {
         [SF] private float _threshold = 3f;
         [SF] private UpdateManager _update = null;
-        [Space]
-        [SF] private UnityEvent _onSuccess = new();
-        [SF] private UnityEvent _onFailed  = new();
-        [SF] private UnityEvent<float> _onChange = new();
+
+        [Space, SF] private List<ActionInfo> _onSuccess = null;
+        [Space, SF] private List<ActionInfo> _onFailure  = null;
+        [Space, SF] private List<ActionInfo> _onChange   = null;
 
         protected float _time = 0f;
 
@@ -21,7 +21,7 @@ namespace GameProject.Interactions
         /// <summary>
         /// Starts the timer
         /// </summary>
-        public void StartTimer(){
+        public override void Begin(){
             _time = _threshold;
             ToggleTimer(true);
         }
@@ -29,26 +29,24 @@ namespace GameProject.Interactions
         /// <summary>
         /// Stops the timer and invokes events based on result
         /// </summary>
-        public void StopTimer(){
+        public override void End(){
             ToggleTimer(false);
 
-            if (_time > 0f){ 
-                 _onFailed.Invoke();
-
-            } else {
-                _onSuccess.Invoke();
-            }
+            if (_time > 0f) Interact(_onFailure);
+            else Interact(_onSuccess);
         }
+
 
         /// <summary>
         /// Increments the timer on update callback
         /// </summary>
         protected virtual void OnUpdateTimer(float deltaTime){
             _time -= deltaTime;
-            _onChange.Invoke(_time);
 
             if (_time <= 0f)
                 ToggleTimer(false);
+
+            Interact(_onChange, _time);
         }
 
         /// <summary>
@@ -57,6 +55,19 @@ namespace GameProject.Interactions
         private void ToggleTimer(bool enabled){
             if (enabled) _update.Subscribe(OnUpdateTimer, UpdateType.Update);
             else _update.Unsubscribe(OnUpdateTimer, UpdateType.Update);
+        }
+
+// DATA HANDLING
+
+        /// <summary>
+        /// Returns the timer action lists
+        /// </summary>
+        public override List<List<ActionInfo>> GetActions(){
+            return new List<List<ActionInfo>>(){
+                _onSuccess,
+                _onFailure,
+                _onChange,
+            };
         }
     }
 }

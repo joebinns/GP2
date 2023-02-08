@@ -17,3 +17,7 @@ MonoBehaviour:
   _mask:
     serializedVersion: 2
     m_Bits: 64
+  _defaultHoldDistance: 1
+  _holdDistanceSensitivity: 0.5
+  _holdDistanceRange: {x: 0.75, y: 2}
+  _autoOrientOnGrab: 1

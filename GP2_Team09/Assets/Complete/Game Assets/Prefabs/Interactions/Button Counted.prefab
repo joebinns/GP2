@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2893932773191772890}
   m_Layer: 6
   m_Name: Button Counted
-  m_TagString: Untagged
+  m_TagString: Gameplay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -132,24 +132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onPressed:
-    m_PersistentCalls:
-      m_Calls: []
+  _reticle: {fileID: 0}
+  _onPressed: []
   _onReleased:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2893932773191772890}
-        m_TargetAssemblyTypeName: Magnuth.Interactions.CounterInteraction, Assembly-CSharp
-        m_MethodName: Increment
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  - Target: {fileID: 2893932773191772890}
+    Action: 3
 --- !u!114 &2893932773191772890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,27 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _start: 0
   _threshold: 3
-  _onSuccess:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2893932773191772890}
-        m_TargetAssemblyTypeName: Magnuth.Interactions.CounterInteraction, Assembly-CSharp
-        m_MethodName: Reset
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onIncrement:
-    m_PersistentCalls:
-      m_Calls: []
-  _onDecrement:
-    m_PersistentCalls:
-      m_Calls: []
-  _onReset:
-    m_PersistentCalls:
-      m_Calls: []
+  _onSuccess: []
+  _onIncrement: []
+  _onDecrement: []
+  _onReset: []

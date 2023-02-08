@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2636482281535253056}
   m_Layer: 6
   m_Name: Button Simple
-  m_TagString: Untagged
+  m_TagString: Gameplay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -131,9 +131,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reticle: {fileID: 0}
   _onPressed:
-    m_PersistentCalls:
-      m_Calls: []
+  - Target: {fileID: 0}
+    Action: 0
   _onReleased:
-    m_PersistentCalls:
-      m_Calls: []
+  - Target: {fileID: 0}
+    Action: 0

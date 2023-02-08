@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace GameProject.Interactions
 {
-    public class PatternInteraction : MonoBehaviour
+    public class PatternInteraction : BaseInteraction
     {
         [SS] public struct StateInfo {
             public GameObject Interactable;
@@ -15,8 +15,8 @@ namespace GameProject.Interactions
 
         [SF] private StateInfo[] _pattern = null;
         [Space]
-        [SF] private UnityEvent _onSuccess = new();
-        [SF] private UnityEvent _onChange  = new();
+        [SF] private List<ActionInfo> _onSuccess = null;
+        [SF] private List<ActionInfo> _onChange  = null;
 
         private Dictionary<GameObject, bool> _states = null;
 
@@ -43,7 +43,7 @@ namespace GameProject.Interactions
         public void UpdateState(GameObject interactable){
             if (_states.TryGetValue(interactable, out var value)){
                 _states[interactable] = !value;
-                _onChange.Invoke();
+                Interact(_onChange);
 
             } else LogNotInPattern(interactable);
         }
@@ -64,7 +64,7 @@ namespace GameProject.Interactions
             }
 
             if (!match) return;
-            _onSuccess.Invoke();
+            Interact(_onSuccess);
         }
 
 // ERRORS
@@ -83,6 +83,18 @@ namespace GameProject.Interactions
         private void LogNotInPattern(GameObject interactable){
             var msg = "has not been assigned to the pattern";
             Debug.LogError($"{interactable.name} {msg}");
+        }
+
+// DATA HANDLING
+
+        /// <summary>
+        /// Returns the trigger action lists
+        /// </summary>
+        public override List<List<ActionInfo>> GetActions(){
+            return new List<List<ActionInfo>>(){
+                _onSuccess,
+                _onChange,
+            };
         }
     }
 }

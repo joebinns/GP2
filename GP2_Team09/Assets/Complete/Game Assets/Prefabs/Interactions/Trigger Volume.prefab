@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2638299759991690486}
   m_Layer: 6
   m_Name: Trigger Volume
-  m_TagString: Untagged
+  m_TagString: Gameplay
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -61,9 +61,5 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  _onEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  _onExited:
-    m_PersistentCalls:
-      m_Calls: []
+  _onEntered: []
+  _onExited: []

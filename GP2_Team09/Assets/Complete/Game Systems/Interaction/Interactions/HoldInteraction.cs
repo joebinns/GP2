@@ -1,4 +1,3 @@
-using System;
 using SF = UnityEngine.SerializeField;
 using GameProject.Hold;
 using GameProject.Oscillators;
@@ -12,8 +11,15 @@ namespace GameProject.Interactions
     {
         [HideInInspector] public PlayerHold PlayerHold;
         
+        [SF] private Sprite _hoverReticle = null;
+        [SF] private Sprite _actionReticle = null;
+        
         private bool _pressed;
 
+// PROPERTIES
+
+        public Sprite HoverReticle => _hoverReticle;
+        public Sprite ActionReticle => _actionReticle;
         public Rigidbody Rigidbody { get; private set; }
         public Oscillator Oscillator { get; private set; }
         public TorsionalOscillator TorsionalOscillator { get; private set; }
@@ -34,7 +40,7 @@ namespace GameProject.Interactions
         /// <summary>
         /// Toggles hold on player interaction
         /// </summary>
-        public void Trigger() {
+        public void Perform() {
             _pressed = !_pressed;
 
             if (_pressed) Grab();

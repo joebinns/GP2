@@ -10,7 +10,8 @@ namespace GameProject.HUD
         [SF] private TMP_Text _text;
 
         private void Start() {
-            StartTimer(); // TODO: Run this when players are ready
+            //StartTimer(); 
+            Begin(); // TODO: Run this when players are ready
         }
 
         protected override void OnUpdateTimer(float deltaTime)

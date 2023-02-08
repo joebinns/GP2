@@ -8,6 +8,8 @@ namespace GameProject.Game
     public sealed class GameInitialiser : MonoBehaviour
     {
         [SF] private GameManager _manager = null;
+        [Space]
+        [SF] private GameObject _player = null;
 
         private static GameInitialiser s_active = null;
 
@@ -18,7 +20,7 @@ namespace GameProject.Game
         /// </summary>
         private void Awake(){
             if (s_active == null){
-                _manager.Initialise();
+                _manager.Initialise(_player);
                 s_active = this;
 
             } else Destroy(this);

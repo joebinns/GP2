@@ -1,16 +1,15 @@
 using SF = UnityEngine.SerializeField;
-using UnityEngine.Events;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameProject.Interactions
 {
     [RequireComponent(typeof(Collider))]
-    public class TriggerInteraction : MonoBehaviour
+    public class TriggerInteraction : BaseInteraction
     {
         [SF] private LayerMask _playerLayer = 1 << 0;
-        [Space]
-        [SF] private UnityEvent _onEntered = new();
-        [SF] private UnityEvent _onExited  = new();
+        [Space, SF] private List<ActionInfo> _onEntered = null;
+        [Space, SF] private List<ActionInfo> _onExited  = null;
 
 // TRIGGER HANDLING
 
@@ -21,7 +20,7 @@ namespace GameProject.Interactions
             var layer = other.gameObject.layer;
 
             if (((1 << layer) & _playerLayer) != 0){
-                _onEntered.Invoke();
+                Interact(_onEntered);
             }
         }
 
@@ -32,8 +31,20 @@ namespace GameProject.Interactions
             var layer = other.gameObject.layer;
 
             if (((1 << layer) & _playerLayer) != 0){
-                _onExited.Invoke();
+                Interact(_onExited);
             }
+        }
+
+// DATA HANDLING
+
+        /// <summary>
+        /// Returns the trigger action lists
+        /// </summary>
+        public override List<List<ActionInfo>> GetActions(){
+            return new List<List<ActionInfo>>(){
+                _onEntered,
+                _onExited,
+            };
         }
     }
 }

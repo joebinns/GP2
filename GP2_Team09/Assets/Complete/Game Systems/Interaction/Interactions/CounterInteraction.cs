@@ -1,18 +1,18 @@
 using SF = UnityEngine.SerializeField;
-using UnityEngine.Events;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameProject.Interactions
 {
-    public class CounterInteraction : MonoBehaviour
+    public class CounterInteraction : BaseInteraction
     {
         [SF] private int _start = 0;
         [SF] private int _threshold = 3;
         [Space]
-        [SF] private UnityEvent _onSuccess = new();
-        [SF] private UnityEvent<int> _onIncrement = new();
-        [SF] private UnityEvent<int> _onDecrement = new();
-        [SF] private UnityEvent<int> _onReset     = new();
+        [Space, SF] private List<ActionInfo> _onSuccess   = null;
+        [Space, SF] private List<ActionInfo> _onIncrement = null;
+        [Space, SF] private List<ActionInfo> _onDecrement = null;
+        [Space, SF] private List<ActionInfo> _onReset     = null;
 
         private int _count = 0;
 
@@ -25,30 +25,44 @@ namespace GameProject.Interactions
         /// <summary>
         /// Increments the counter and invokes events based on count
         /// </summary>
-        public void Increment(){
+        public override void Increment(){
             if (++_count >= _threshold)
-                _onSuccess.Invoke();
+                Interact(_onSuccess);
 
-            _onIncrement.Invoke(_count);
+            Interact(_onIncrement, _count);
         }
 
         /// <summary>
         /// Decrements the counter and invokes events based on count
         /// </summary>
-        public void Decrement(){
+        public override void Decrement(){
             if (--_count <= _threshold)
-                _onSuccess.Invoke();
+                Interact(_onSuccess);
 
-            _onDecrement.Invoke(_count);
+            Interact(_onDecrement, _count);
         }
 
         /// <summary>
         /// Resets the counter
         /// </summary>
-        public void Reset(){
+        public override void Restore(){
             Start();
 
-            _onReset.Invoke(_count);
+            Interact(_onReset, _count);
+        }
+
+// DATA HANDLING
+
+        /// <summary>
+        /// Returns the counter action lists
+        /// </summary>
+        public override List<List<ActionInfo>> GetActions(){
+            return new List<List<ActionInfo>>(){
+                _onSuccess,
+                _onIncrement,
+                _onDecrement,
+                _onReset
+            };
         }
     }
 }

@@ -5,8 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hold Pivot
-  - UI Lost
-  - UI Win
+  - Layout
+  - Light
+  - Effect
+  - Reflection
+  - Gameplay
   layers:
   - Default
   - TransparentFX

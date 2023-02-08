@@ -1,16 +1,13 @@
+using System;
 using SF = UnityEngine.SerializeField;
 using GameProject.Interactions;
 using UnityEngine;
-using System;
 
 namespace GameProject.Grab
 {
     public class PlayerGrab : MonoBehaviour
     {
-        [SF] private InteractionSettings _settings = null;
-        [Space]
         [SF] private Transform _cameraTarget;
-        [SF] private Transform _grabPivot;
         
         private GrabInteraction _grabbing;
         private float _initialAngle;
@@ -35,8 +32,7 @@ namespace GameProject.Grab
         /// </summary>
         public void Grab(GrabInteraction toGrab) {
             SetGrab(toGrab);
-            // TODO: Prevent local equilibrium rotation resetting when grabbed... (since _initialAngle - GetAngle() = 0)
-            _initialAngle = GetAngle();
+            _initialAngle = GetAngle() + _grabbing.TorsionalOscillator.LocalEquilibriumRotation.z;
         }
         
         /// <summary>
@@ -44,28 +40,18 @@ namespace GameProject.Grab
         /// </summary>
         private void FixedUpdate() {
             if (!IsGrabbing) return;
-            _grabbing.TorsionalOscillator.LocalEquilibriumRotation = _grabbing.TorsionalOscillator.TorqueScale * (_initialAngle - GetAngle());
+            _grabbing.TorsionalOscillator.LocalEquilibriumRotation = Vector3.back * (GetAngle() - _initialAngle);
         }
 
+        /// <summary>
+        /// Intersects the line of sight into the plane represented by the normal of the grabbed objects parent, from which the angle from to the pivot is determined
+        /// </summary>
         private float GetAngle() {
             var plane = _grabbing.transform.parent;
-            var f = _cameraTarget.forward; // Camera forward direction
-            var p = _cameraTarget.position; // Camera position
-            var n = plane.forward; // Plane normal
-            var p0 = plane.TransformPoint(Vector3.zero); // A (any) point on the plane
-            var parameter = MathsUtilities.MultiplySum(n, p0 - p) / MathsUtilities.MultiplySum(n, f);
-
-            var projectedGrabPosition = p + f * parameter;
-
-            projectedGrabPosition -= plane.position;
-            
-            // Project _grabPivot position onto _grabbing's parent
-            //var projectedGrabPosition = _grabbing.transform.parent.InverseTransformPoint(_grabPivot.position);
-            //projectedGrabPosition.z = 0;
-
-            // Trigonometry
+            var projectedGrabPosition = MathsUtilities.GetIntersection(new Ray(_cameraTarget.position, _cameraTarget.forward),
+                new Ray(plane.TransformPoint(Vector3.zero), plane.forward));
+            projectedGrabPosition = plane.InverseTransformPoint(projectedGrabPosition);
             var angle = Mathf.Atan2(projectedGrabPosition.x, projectedGrabPosition.y) * Mathf.Rad2Deg;
-
             return angle;
         }
 
@@ -74,7 +60,6 @@ namespace GameProject.Grab
         /// </summary>
         public void Release() {
             SetGrab(null);
-            _grabbing = null;
         }
 
         /// <summary>
@@ -82,6 +67,17 @@ namespace GameProject.Grab
         /// </summary>
         private void SetGrab(GrabInteraction toGrab) {
             _grabbing = toGrab;
+        }
+
+        /// <summary>
+        /// Draw a line indicating the grab positions projection on the plane
+        /// </summary>
+        private void OnDrawGizmos() {
+            if (!IsGrabbing) return;
+            var plane = _grabbing.transform.parent;
+            var projectedGrabPosition = MathsUtilities.GetIntersection(new Ray(_cameraTarget.position, _cameraTarget.forward),
+                new Ray(plane.TransformPoint(Vector3.zero), plane.forward));
+            Gizmos.DrawLine(projectedGrabPosition, projectedGrabPosition + plane.forward);
         }
     }
 }

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6008632012694267170}
   m_Layer: 6
   m_Name: Button Timed
-  m_TagString: Untagged
+  m_TagString: Gameplay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6008632012694267164}
-  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.25, y: 0.75, z: 7.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -132,36 +132,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reticle: {fileID: 0}
   _onPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6008632012694267170}
-        m_TargetAssemblyTypeName: Magnuth.Interactions.TimerInteraction, Assembly-CSharp
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  - Target: {fileID: 6008632012694267170}
+    Action: 1
   _onReleased:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6008632012694267170}
-        m_TargetAssemblyTypeName: Magnuth.Interactions.TimerInteraction, Assembly-CSharp
-        m_MethodName: StopTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  - Target: {fileID: 6008632012694267170}
+    Action: 2
 --- !u!114 &6008632012694267170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,12 +153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _threshold: 3
   _update: {fileID: 11400000, guid: 9b090228707952e448427620a3dcfa31, type: 2}
-  _onSuccess:
-    m_PersistentCalls:
-      m_Calls: []
-  _onFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  _onChange:
-    m_PersistentCalls:
-      m_Calls: []
+  _onSucceess: []
+  _onFailure: []
+  _onChange: []

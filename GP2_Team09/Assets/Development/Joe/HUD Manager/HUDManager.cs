@@ -18,16 +18,22 @@ namespace GameProject.HUD
 // INITIALISATION
 
         /// <summary>
-        /// Initialises the game manager
+        /// Initialises the engineer HUD manager
         /// </summary>
-        public void Initialise(EngineerHUDController engineer, CrewHUDController crew) {
+        public void Initialise(EngineerHUDController engineer) {
             _input.SubscribeKey(OnPauseInput, InputType.Pause);
             _engineer = engineer;
+        }
+        /// <summary> 
+        /// Initialises the crew HUD manager
+        /// </summary>
+        public void Initialise(CrewHUDController crew) {
+            _input.SubscribeKey(OnPauseInput, InputType.Pause);
             _crew = crew;
         }
 
         /// <summary>
-        /// Deinitialise the game manager
+        /// Deinitialise the HUD manager
         /// </summary>
         public void OnDestroy(){
             _input.UnsubscribeKey(OnPauseInput, InputType.Pause);
@@ -36,36 +42,15 @@ namespace GameProject.HUD
 // INPUT HANDLING
 
         /// <summary>
-        /// 
+        /// Toggle pause menu
         /// </summary>
         public void OnPauseInput(){
-            Debug.Log("Input");
             _current.gameObject.SetActive(
                 !_menu.Opened
             );
         }
 
 // HUD Handling
-
-        /// <summary>
-        /// Display only engineer HUD based on parameter
-        /// </summary>
-        public void DisplayEngineer(bool display){
-            //DisplayCrew(!display); caused infinite loop
-            _crew.gameObject.SetActive(!display);
-            _engineer.gameObject.SetActive(display);
-            _current = _engineer;
-        }
-        
-        /// <summary>
-        /// Display only crew HUD based on parameter
-        /// </summary>
-        public void DisplayCrew(bool display){
-            //DisplayEngineer(!display); caused infinite loop
-            _engineer.gameObject.SetActive(!display);
-            _crew.gameObject.SetActive(display);
-            _current = _crew;
-        }
 
         /// <summary>
         /// Display win HUD based on parameter
