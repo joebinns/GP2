@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2841287548238135540}
   - component: {fileID: 2841287548238135499}
   - component: {fileID: 4353659324005798017}
+  - component: {fileID: 8213655680015777660}
   - component: {fileID: 2841287548238135498}
   - component: {fileID: 2893932773191772890}
   m_Layer: 6
@@ -120,6 +121,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &8213655680015777660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2841287548238135497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5681e01c5ea70ee4b9ce204b64db61f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 
 --- !u!114 &2841287548238135498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reticle: {fileID: 0}
+  _hoverReticle: {fileID: 21300000, guid: ef57afa8d32b6b046bd8d989d8cbc65d, type: 3}
+  _actionReticle: {fileID: 21300000, guid: c6be87c337bc9ce4f9df7cd5fb9e92f1, type: 3}
   _onPressed: []
   _onReleased:
   - Target: {fileID: 2893932773191772890}

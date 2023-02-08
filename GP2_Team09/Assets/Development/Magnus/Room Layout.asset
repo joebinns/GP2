@@ -12,7 +12,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4176e81edb1ab8e4da7db7f32f170eb0, type: 3}
   m_Name: Room Layout
   m_EditorClassIdentifier: 
-  _layout: []
-  _lights: []
+  _layout:
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: -3.8399997, y: 0, z: -5.12}
+    Rotation: {x: -0, y: -0.70710576, z: -0, w: 0.7071079}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: -1.2799997, y: 0, z: -5.12}
+    Rotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: 1.2800002, y: 0, z: -5.12}
+    Rotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: 3.84, y: 0, z: -5.12}
+    Rotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: 3.84, y: 0, z: -5.12}
+    Rotation: {x: -0, y: -0.70710576, z: -0, w: 0.7071079}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: 3.84, y: 0, z: -2.56}
+    Rotation: {x: -0, y: -0.70710576, z: -0, w: 0.7071079}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: 3.84, y: 0, z: 0}
+    Rotation: {x: -0, y: -0.70710576, z: -0, w: 0.7071079}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: 3.84, y: 0, z: 2.56}
+    Rotation: {x: -0, y: -0.7068969, z: -0, w: 0.70731664}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: 3.84, y: 0, z: 5.12}
+    Rotation: {x: -0, y: -1, z: -0, w: 0.0002982169}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: 1.2800002, y: 0, z: 5.12}
+    Rotation: {x: -0, y: -1, z: -0, w: 0.0002982169}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: -1.2799997, y: 0, z: 5.12}
+    Rotation: {x: -0, y: -1, z: -0, w: 0.0002982169}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: -3.8399997, y: 0, z: -2.56}
+    Rotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: -6.3999996, y: 0, z: -2.56}
+    Rotation: {x: -0, y: -0.70710576, z: -0, w: 0.7071079}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: -3.8399997, y: 0, z: 2.56}
+    Rotation: {x: -0, y: -0.70710576, z: -0, w: 0.7071079}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: -6.3999996, y: 0, z: 0}
+    Rotation: {x: -0, y: -0.70710576, z: -0, w: 0.7071079}
+    Scale: {x: 1, y: 1, z: 1}
+  - Prefab: {fileID: 2701163320171009344, guid: 5786813c889d9184ab69a2cca4e5258f, type: 3}
+    Position: {x: -6.3999996, y: 0, z: 2.56}
+    Rotation: {x: -0, y: -0.0002056956, z: -0, w: 1}
+    Scale: {x: 1, y: 1, z: 1}
+  _lights:
+  - Prefab: {fileID: 1923269231688232056, guid: 951779d16e57b4d4fa71ffab36a0bda8, type: 3}
+    Position: {x: -4.75, y: 1.5, z: 0}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+    Range: 10
+    Angle: 30
+    Intensity: 2
+    Colour: {r: 1, g: 0, b: 0, a: 1}
+  _effects: []
   _reflections: []
-  _buttons: []

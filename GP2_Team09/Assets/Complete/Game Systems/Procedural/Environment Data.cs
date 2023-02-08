@@ -30,6 +30,18 @@ namespace GameProject.Procedural
     }
 
     /// <summary>
+	/// Contains the light object data
+	/// </summary>
+	[SS] public struct EffectData {
+        public GameObject Prefab;
+		
+        public Vector3 Position;
+        public Quaternion Rotation;
+
+		
+    }
+
+    /// <summary>
     /// Contains the reflection probe object data
     /// </summary>
     [SS] public struct ReflectionData {

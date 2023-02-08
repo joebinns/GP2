@@ -3,16 +3,16 @@ using UnityEditor;
 
 namespace GameProject.Procedural
 {
-    [CustomEditor(typeof(RoomCreator))]
-    public class RoomCreatorEditor : Editor
+    [CustomEditor(typeof(GameplayCreator))]
+    public class GameplayCreatorEditor : Editor
     {
-        private RoomCreator _target = null;
+        private GameplayCreator _target = null;
 
         /// <summary>
         /// Initialises the editor
         /// </summary>
         private void OnEnable(){
-            _target = (RoomCreator)target;
+            _target = (GameplayCreator)target;
         }
 
         /// <summary>
@@ -22,11 +22,11 @@ namespace GameProject.Procedural
             base.OnInspectorGUI();
             EditorGUILayout.Space();
 
-            if (GUILayout.Button("Assign Layout"))
-                _target.AssignToLayout();
+            if (GUILayout.Button("Assign Gameplay"))
+                _target.AssignToGameplay();
 
-            if (GUILayout.Button("Rebuild Layout"))
-                _target.RebuildLayout();
+            if (GUILayout.Button("Rebuild Gameplay"))
+                _target.RebuildGameplay();
         }
     }
 }

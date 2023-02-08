@@ -1,10 +1,8 @@
 #if UNITY_EDITOR
 using SF = UnityEngine.SerializeField;
-using GUID = System.Guid;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using GameProject.Interactions;
 
 namespace GameProject.Procedural
 {
@@ -12,12 +10,11 @@ namespace GameProject.Procedural
     public class RoomCreator : MonoBehaviour
     {
         [SF] private RoomLayout _layout = null;
-        private Dictionary<GUID, GameObject> _gameplay = null;
 
         private const string TAG_LAYOUT = "Layout";
         private const string TAG_LIGHT  = "Light";
+        private const string TAG_EFFECT = "Effect";
         private const string TAG_REFLECTION = "Reflection";
-        private const string TAG_BUTTON = "Button";
 
 // LAYOUT CREATION
 
@@ -28,21 +25,25 @@ namespace GameProject.Procedural
             var layout  = new List<ObjectData>();
             var lights  = new List<LightData>();
             var reflections = new List<ReflectionData>();
-            var buttons = new List<SimpleButtonData>();
+            var effects = new List<EffectData>();
             var parent  = this.transform;
 
             for (int i = 0; i < parent.childCount; i++){
-                var child = parent.GetChild(i);
+                var group = parent.GetChild(i);
 
-                switch (child.gameObject.tag){
-                    case TAG_LAYOUT: AddToLayout(layout,  child); break;
-                    case TAG_LIGHT:  AddToLights(lights,  child); break;
-                    case TAG_REFLECTION: AddToReflections(reflections, child); break;
-                    case TAG_BUTTON: AddToButton(buttons, child); break;
+                for (int j = 0; j < group.childCount; j++){
+                    var child = group.GetChild(j);
+
+                    switch (child.gameObject.tag){
+                        case TAG_LAYOUT: AddToLayout(layout,   child); break;
+                        case TAG_LIGHT:  AddToLights(lights,   child); break;
+                        case TAG_EFFECT: AddToEffects(effects, child); break;
+                        case TAG_REFLECTION: AddToReflections(reflections, child); break;
+                    }
                 }
             }
 
-            _layout.AssignData(layout, lights, reflections, buttons);
+            _layout.AssignData(layout, lights, effects, reflections);
             EditorUtility.SetDirty(_layout);
         }
 		
@@ -57,6 +58,7 @@ namespace GameProject.Procedural
 				Rotation = obj.localRotation, 
 				Scale    = obj.localScale
 			};
+
             list.Add(data);
 		}
 
@@ -77,6 +79,25 @@ namespace GameProject.Procedural
                 Intensity = light.intensity,
                 Colour    = light.color,
             };
+
+            list.Add(data);
+		}
+
+        /// <summary>
+        /// Adds the effect object to the list of light data
+        /// </summary>
+		private void AddToEffects(List<EffectData> list, Transform obj){
+            var light = obj.GetComponent<Light>();
+
+			var data = new EffectData(){
+				Prefab = GetPrefab(obj.gameObject),
+				
+				Position = obj.localPosition, 
+				Rotation = obj.localRotation,
+				
+                
+            };
+
             list.Add(data);
 		}
 
@@ -95,39 +116,9 @@ namespace GameProject.Procedural
                 Size   = probe.size,
                 Center = probe.center,
             };
+
             list.Add(data);
 		}
-
-        /// <summary>
-        /// Adds the button object to the list of button data
-        /// </summary>
-        private void AddToButton(List<SimpleButtonData> list, Transform obj){
-            var interactions = obj.GetComponents<BaseInteraction>();
-
-            for (int i = 0; i < interactions.Length; i++){
-                var action = interactions[i];
-
-                var data = new SimpleButtonData(){
-                    Prefab = GetPrefab(obj.gameObject),
-
-                    Position = obj.localPosition,
-                    Rotation = obj.localRotation,
-
-                    // IDEA 1: Cast action to correct script from System.Type
-                    // Get all action lists from script (hard code on a script to script basis)
-
-                    // IDEA 2: Have an abstract List<List<ActionInfo> GetActions method in BaseInteraction
-                    // Each script has to define the return value
-
-                    // IDEA 3: Cast action to correct script from System.Type
-                    // Use reflection to get the lists in each script
-
-                    // Convert all ActionInfo's into ActionData
-                };
-
-                list.Add(data);
-            }
-        }
 		
         /// <summary>
         /// Returns the prefab asset from game object instance
@@ -142,21 +133,18 @@ namespace GameProject.Procedural
         /// <summary>
         /// Rebuilds the layout in the scene (edit mode only)
         /// </summary>
-        public void BuildLayout(){
+        public void RebuildLayout(){
             var parent = this.transform;
 
-            BuildEnvironment(parent);
-            BuildLights(parent);
-            BuildReflections(parent);
-            BuildButtons(parent);
-
-            //ConnectButtons();
+            RebuildEnvironment(parent);
+            RebuildLights(parent);
+            RebuildReflections(parent);
         }
 
         /// <summary>
         /// Rebuilds the environment
         /// </summary>
-        private void BuildEnvironment(Transform parent){
+        private void RebuildEnvironment(Transform parent){
             var layout = _layout.Layout;
             
             for (int i = 0; i < layout.Count; i++){
@@ -173,7 +161,7 @@ namespace GameProject.Procedural
         /// <summary>
         /// Rebuilds the lights
         /// </summary>
-        private void BuildLights(Transform parent){
+        private void RebuildLights(Transform parent){
             var lights = _layout.Lights;
             
             for (int i = 0; i < lights.Count; i++){
@@ -195,7 +183,7 @@ namespace GameProject.Procedural
         /// <summary>
         /// Rebuilds the reflection probes
         /// </summary>
-        private void BuildReflections(Transform parent){
+        private void RebuildReflections(Transform parent){
             var lights = _layout.Reflections;
             
             for (int i = 0; i < lights.Count; i++){
@@ -213,49 +201,10 @@ namespace GameProject.Procedural
         }
 
         /// <summary>
-        /// Rebuilds the buttons
-        /// </summary>
-        private void BuildButtons(Transform parent){
-            _gameplay = new Dictionary<GUID, GameObject>();
-            var buttons = _layout.Buttons;
-
-            for (int i = 0; i < buttons.Count; i++){
-                var data  = buttons[i];
-                var child = SpawnPrefab(data.Prefab, parent);
-
-                var tfm = child.transform;
-                tfm.localPosition = data.Position;
-                tfm.localRotation = data.Rotation;
-                tfm.localScale    = data.Scale;
-
-                // Assign stored guid back to obj
-
-                _gameplay.Add(data.Guid, child);
-            }
-        }
-
-        /// <summary>
         /// Instatiates the prefab in the scene
         /// </summary>
         private GameObject SpawnPrefab(GameObject prefab, Transform parent){
             return PrefabUtility.InstantiatePrefab(prefab, parent) as GameObject;
-        }
-
-// REBUILD GAMEPLAY
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void ConnectButtons(){
-            var buttons = _layout.Buttons;
-
-            for (int i = 0; i < buttons.Count; i++){
-                var data  = buttons[i];
-                var child = _gameplay[data.Guid];
-
-                //var button = child.GetComponent<ButtonInteraction>();
-
-            }
         }
     }
 }

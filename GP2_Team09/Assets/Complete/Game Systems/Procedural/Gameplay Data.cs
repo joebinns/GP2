@@ -10,7 +10,7 @@ namespace GameProject.Procedural
     /// 
     /// </summary>
     [SS] public struct ActionData {
-        public GUID Guid;
+        public string Guid;
         public System.Type Target;
         public InteractionType Action;
     }
@@ -25,7 +25,7 @@ namespace GameProject.Procedural
         public Quaternion Rotation;
         public Vector3 Scale;
 
-        public GUID Guid;
+        public string Guid;
         public List<List<ActionData>> Actions;
     }
 
@@ -39,7 +39,7 @@ namespace GameProject.Procedural
         public Quaternion Rotation;
         public Vector3 Scale;
 
-        public GUID Guid;
+        public string Guid;
         public float Threshold;
         
 
