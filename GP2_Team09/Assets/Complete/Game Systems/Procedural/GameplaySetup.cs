@@ -7,18 +7,18 @@ namespace GameProject.Procedural
     [CreateAssetMenu(fileName = "Gameplay Setup", menuName = "Procedural/Gameplay Setup")]
     public class GameplaySetup : ScriptableObject
     {
-		[SF] private List<SimpleButtonData> _buttons = null;
+		[SF] private List<InteractionData> _buttons = null;
 
 // PROPERTIES
 
-        public List<SimpleButtonData> Buttons => _buttons;
+        public List<InteractionData> Interactables => _buttons;
 
 // LAYOUT HANDLING
 
         /// <summary>
         /// Assigns the gameplay data
         /// </summary>
-        public void AssignData(List<SimpleButtonData> buttons){
+        public void AssignData(List<InteractionData> buttons){
             _buttons = buttons;
         }
     }

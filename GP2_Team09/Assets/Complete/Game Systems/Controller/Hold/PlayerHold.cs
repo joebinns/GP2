@@ -66,7 +66,8 @@ namespace GameProject.Hold
             var shouldHold = toHold != null;
             var holding = shouldHold ? toHold : _holding;
             
-            holding.Rigidbody.useGravity = !shouldHold;
+            if (_settings.ToggleGravity)
+                holding.Rigidbody.useGravity = !shouldHold;
             holding.Oscillator.enabled = shouldHold;
             holding.TorsionalOscillator.enabled = shouldHold;
 

@@ -7,41 +7,25 @@ using System.Collections.Generic;
 namespace GameProject.Procedural
 {
     /// <summary>
-    /// 
+    /// Contains the interaction action info data
     /// </summary>
     [SS] public struct ActionData {
         public string Guid;
-        public System.Type Target;
+        public int Script;
         public InteractionType Action;
     }
 
     /// <summary>
-	/// Contains the simple button object data
+	/// Contains the interaction object data
 	/// </summary>
-	[SS] public struct SimpleButtonData {
+	[SS] public struct InteractionData {
         public GameObject Prefab;
 
-        public Vector3 Position;
-        public Quaternion Rotation;
-        public Vector3 Scale;
+        public Vector3[] Position;
+        public Quaternion[] Rotation;
+        public Vector3[] Scale;
 
         public string Guid;
-        public List<List<ActionData>> Actions;
-    }
-
-    /// <summary>
-	/// Contains the delayed button object data
-	/// </summary>
-	[SS] public struct DelayedButtonData {
-        public GameObject Prefab;
-
-        public Vector3 Position;
-        public Quaternion Rotation;
-        public Vector3 Scale;
-
-        public string Guid;
-        public float Threshold;
-        
-
+        public List<List<List<ActionData>>> Actions;
     }
 }

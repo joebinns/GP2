@@ -12,4 +12,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c248a02f5365ae04ba4e6d4b83cf6025, type: 3}
   m_Name: Gameplay Setup
   m_EditorClassIdentifier: 
-  _buttons: []
+  _buttons:
+  - Prefab: {fileID: 5120579688337702661, guid: c803ecd915cd3f74ba796a56ac50c915, type: 3}
+    Position:
+    - {x: 0, y: 1, z: -3.84}
+    - {x: 2.25, y: -0.5, z: 1.28}
+    - {x: 0, y: -0.5, z: 0}
+    - {x: -1.28, y: -0.5, z: 0}
+    Rotation:
+    - {x: 0, y: 0, z: 0, w: 1}
+    - {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+    - {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+    - {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+    Scale:
+    - {x: 1, y: 1, z: 1}
+    - {x: 1, y: 1, z: 1}
+    - {x: 1, y: 1, z: 1}
+    - {x: 1, y: 1, z: 1}
+    Guid: 191fca21-a2c2-41d7-96d6-965958e51281
+  - Prefab: {fileID: 2636482281535253051, guid: cd68f69a23c5ef941b76eb3a7e04d568, type: 3}
+    Position:
+    - {x: 0, y: 0.75, z: 3.8399997}
+    Rotation:
+    - {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+    Scale:
+    - {x: 1, y: 1, z: 1}
+    Guid: de8a4590-4703-4e93-a2ac-1c1e1f6e9056
+  - Prefab: {fileID: 2841287548238135497, guid: b642807ca062ed54390ffed3f5d1c525, type: 3}
+    Position:
+    - {x: 0, y: 0.75, z: 6.4000006}
+    Rotation:
+    - {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+    Scale:
+    - {x: 1, y: 1, z: 1}
+    Guid: 0cda8ffa-a2f9-4cb4-bab3-5d9d68cf953e
+  - Prefab: {fileID: 3905030369395040226, guid: 1066ec582b88e9141a5fa2b54b6eea60, type: 3}
+    Position:
+    - {x: 3.398168, y: 1.2674999, z: 1.268168}
+    - {x: -2, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    - {x: 5.25, y: 0, z: -0.000009536743}
+    Rotation:
+    - {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+    - {x: 0, y: 0, z: 0, w: 1}
+    - {x: 0, y: 0, z: 0, w: 1}
+    - {x: 0, y: 0, z: 0, w: 1}
+    Scale:
+    - {x: 1, y: 1, z: 1}
+    - {x: 1, y: 1, z: 1}
+    - {x: 1, y: 1, z: 1}
+    - {x: 1, y: 1, z: 1}
+    Guid: 041eb716-e7a8-4b89-8d1a-37b1bcdfaa43

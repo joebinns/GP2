@@ -16,7 +16,7 @@ namespace GameProject.Procedural
         private const string TAG_EFFECT = "Effect";
         private const string TAG_REFLECTION = "Reflection";
 
-// LAYOUT CREATION
+// STORING
 
         /// <summary>
         /// Stores the built room layout
@@ -50,14 +50,16 @@ namespace GameProject.Procedural
         /// <summary>
         /// Adds the environment object to the list of layout data
         /// </summary>
-		private void AddToLayout(List<ObjectData> list, Transform obj){
-			var data = new ObjectData(){
-				Prefab = GetPrefab(obj.gameObject),
+		private void AddToLayout(List<ObjectData> list, Transform parent){
+            GetTransform(parent, out var positions, out var rotations, out var scales);
+
+            var data = new ObjectData(){
+				Prefab = GetPrefab(parent.gameObject),
 				
-				Position = obj.localPosition, 
-				Rotation = obj.localRotation, 
-				Scale    = obj.localScale
-			};
+				Position = positions, 
+				Rotation = rotations, 
+				Scale    = scales
+            };
 
             list.Add(data);
 		}
@@ -120,6 +122,30 @@ namespace GameProject.Procedural
             list.Add(data);
 		}
 		
+
+        /// <summary>
+        /// Outputs the object parent and children transform
+        /// </summary>
+        private void GetTransform(Transform parent, out Vector3[] positions, out Quaternion[] rotations, out Vector3[] scales){
+            var children = parent.childCount;
+
+            positions = new Vector3[children + 1];
+            rotations = new Quaternion[children + 1];
+            scales    = new Vector3[children + 1];
+
+            positions[0] = parent.localPosition;
+            rotations[0] = parent.localRotation;
+            scales[0]    = parent.localScale;
+
+            for (int i = 1; i <= children; i++){
+                var child = parent.GetChild(i - 1);
+
+                positions[i] = child.localPosition;
+                rotations[i] = child.localRotation;
+                scales[i]    = child.localScale;
+            }
+        }
+
         /// <summary>
         /// Returns the prefab asset from game object instance
         /// </summary>
@@ -128,7 +154,7 @@ namespace GameProject.Procedural
             return (GameObject)AssetDatabase.LoadAssetAtPath(path, typeof(GameObject));
         }
 
-// LAYOUT BUILDING
+// REBUILDING
 
         /// <summary>
         /// Rebuilds the layout in the scene (edit mode only)
@@ -144,17 +170,25 @@ namespace GameProject.Procedural
         /// <summary>
         /// Rebuilds the environment
         /// </summary>
-        private void RebuildEnvironment(Transform parent){
+        private void RebuildEnvironment(Transform room){
             var layout = _layout.Layout;
             
             for (int i = 0; i < layout.Count; i++){
-                var data  = layout[i];
-                var child = SpawnPrefab(data.Prefab, parent);
+                var data   = layout[i];
+                var parent = SpawnPrefab(data.Prefab, room);
 
-                var tfm = child.transform;
-                tfm.localPosition = data.Position;
-                tfm.localRotation = data.Rotation;
-                tfm.localScale    = data.Scale;
+                var tfm = parent.transform;
+                tfm.localPosition = data.Position[0];
+                tfm.localRotation = data.Rotation[0];
+                tfm.localScale    = data.Scale[0];
+
+                for (int j = 0; j < tfm.childCount; j++){
+                    var child = tfm.GetChild(j);
+
+                    child.localPosition = data.Position[j + 1];
+                    child.localRotation = data.Rotation[j + 1];
+                    child.localScale    = data.Scale[j + 1];
+                }
             }
         }
 

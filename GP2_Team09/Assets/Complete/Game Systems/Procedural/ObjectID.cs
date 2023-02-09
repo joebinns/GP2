@@ -10,7 +10,7 @@ namespace GameProject.Interactions
 
         public string Guid {
             get { 
-                if (_guid == null)
+                if (string.IsNullOrEmpty(_guid))
                     _guid = GUID.NewGuid().ToString();
 
                 return _guid;

@@ -10,6 +10,7 @@ namespace GameProject.Levels
     [CreateAssetMenu(fileName = "Level Manager", menuName = "Managers/Levels")]
     public class LevelManager : ScriptableObject
     {
+        [SF] private LevelInfo _startup   = null;
         [SF] private LevelInfo _control   = null;
         [SF] private LevelInfo _spaceship = null;
         [Space]
@@ -23,6 +24,7 @@ namespace GameProject.Levels
 
 // PROPERTIES
 
+        public LevelInfo Startup => _startup;
         public LevelInfo ControlRoom => _control;
         public LevelInfo Spaceship => _spaceship;
         public LevelInfo Current => _current;

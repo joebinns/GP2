@@ -10,6 +10,7 @@ namespace GameProject.Interactions
         [SF] private int _threshold = 3;
         [Space]
         [Space, SF] private List<ActionInfo> _onSuccess   = null;
+        [Space, SF] private List<ActionInfo> _onFailure   = null;
         [Space, SF] private List<ActionInfo> _onIncrement = null;
         [Space, SF] private List<ActionInfo> _onDecrement = null;
         [Space, SF] private List<ActionInfo> _onReset     = null;
@@ -26,20 +27,24 @@ namespace GameProject.Interactions
         /// Increments the counter and invokes events based on count
         /// </summary>
         public override void Increment(){
-            if (++_count >= _threshold)
-                Interact(_onSuccess);
-
-            Interact(_onIncrement, _count);
+            Interact(_onIncrement, ++_count);
         }
 
         /// <summary>
         /// Decrements the counter and invokes events based on count
         /// </summary>
         public override void Decrement(){
-            if (--_count <= _threshold)
+            Interact(_onDecrement, --_count);
+        }
+
+        /// <summary>
+        /// Checks if the count matches the threshold
+        /// </summary>
+        public override void Finalise(){
+            if (_count == _threshold)
                 Interact(_onSuccess);
 
-            Interact(_onDecrement, _count);
+            else Interact(_onFailure);
         }
 
         /// <summary>
@@ -59,10 +64,22 @@ namespace GameProject.Interactions
         public override List<List<ActionInfo>> GetActions(){
             return new List<List<ActionInfo>>(){
                 _onSuccess,
+                _onFailure,
                 _onIncrement,
                 _onDecrement,
                 _onReset
             };
+        }
+
+        /// <summary>
+        /// Assigns the counter actions
+        /// </summary>
+        public override void SetActions(List<List<ActionInfo>> actions){
+            _onSuccess   = actions[0];
+            _onFailure   = actions[1];
+            _onIncrement = actions[2];
+            _onDecrement = actions[3];
+            _onReset     = actions[4];
         }
     }
 }

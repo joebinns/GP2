@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level Spaceship
   m_EditorClassIdentifier: 
   _name: Spaceship
-  _buildIndex: 2
+  _buildIndex: 3

@@ -1,6 +1,6 @@
 namespace GameProject.Interactions {
     public enum InteractionType {
-        Trigger, 
+        Trigger,
         
         Begin, End, 
 
@@ -11,5 +11,7 @@ namespace GameProject.Interactions {
         Open, Close, 
 
         Changed, Reset,
+        
+        Compare, Finalize,
     }
 }

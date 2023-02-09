@@ -38,7 +38,7 @@ namespace GameProject.Interactions
         public void Perform(){
             _pressed = !_pressed;
             _animator.SetBool(PRESSED_HASH, _pressed);
-
+            
             if (_pressed) Interact(_onPressed);
             else Interact(_onReleased);
         }
@@ -53,6 +53,14 @@ namespace GameProject.Interactions
                 _onPressed, 
                 _onReleased
             };
+        }
+
+        /// <summary>
+        /// Assigns the button actions
+        /// </summary>
+        public override void SetActions(List<List<ActionInfo>> actions){
+            _onPressed  = actions[0];
+            _onReleased = actions[1];
         }
     }
 }

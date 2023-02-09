@@ -19,6 +19,13 @@ namespace GameProject.Interactions
 // TIMER HANDLING
 
         /// <summary>
+        /// Sets the threshold
+        /// </summary>
+        protected virtual void SetThreshold(float threshold) {
+            _threshold = threshold;
+        }
+
+        /// <summary>
         /// Starts the timer
         /// </summary>
         public override void Begin(){
@@ -31,11 +38,17 @@ namespace GameProject.Interactions
         /// </summary>
         public override void End(){
             ToggleTimer(false);
-
-            if (_time > 0f) Interact(_onFailure);
+            
+            if (_time <= 0f) Interact(_onFailure);
             else Interact(_onSuccess);
         }
 
+        /// <summary>
+        /// Resets the time
+        /// </summary>
+        public override void Restore(){
+            _time = _threshold;
+        }
 
         /// <summary>
         /// Increments the timer on update callback
@@ -43,9 +56,10 @@ namespace GameProject.Interactions
         protected virtual void OnUpdateTimer(float deltaTime){
             _time -= deltaTime;
 
-            if (_time <= 0f)
-                ToggleTimer(false);
-
+            if (_time <= 0f) {
+                End();
+            }
+            
             Interact(_onChange, _time);
         }
 
@@ -68,6 +82,15 @@ namespace GameProject.Interactions
                 _onFailure,
                 _onChange,
             };
+        }
+
+        /// <summary>
+        /// Assigns the sequence actions
+        /// </summary>
+        public override void SetActions(List<List<ActionInfo>> actions){
+            _onSuccess = actions[0];
+            _onFailure = actions[1];
+            _onChange  = actions[2];
         }
     }
 }

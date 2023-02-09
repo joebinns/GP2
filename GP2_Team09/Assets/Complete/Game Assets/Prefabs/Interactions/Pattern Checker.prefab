@@ -65,9 +65,5 @@ MonoBehaviour:
     DesiredState: 0
   - Interactable: {fileID: 0}
     DesiredState: 1
-  _onSuccess:
-  - Target: {fileID: 0}
-    Action: 0
-  _onChange:
-  - Target: {fileID: 0}
-    Action: 0
+  _onSuccess: []
+  _onChange: []

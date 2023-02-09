@@ -9,9 +9,9 @@ namespace GameProject.Procedural
     [SS] public struct ObjectData {
         public GameObject Prefab;
 		
-        public Vector3 Position;
-        public Quaternion Rotation;
-        public Vector3 Scale;
+        public Vector3[] Position;
+        public Quaternion[] Rotation;
+        public Vector3[] Scale;
     }
 	
 	/// <summary>

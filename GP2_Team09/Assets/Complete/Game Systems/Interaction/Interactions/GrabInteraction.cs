@@ -1,18 +1,22 @@
 using SF = UnityEngine.SerializeField;
+using System.Collections.Generic;
 using GameProject.Oscillators;
 using GameProject.Grab;
 using UnityEngine;
+using GameProject.Updates;
 
 namespace GameProject.Interactions
 {
     [RequireComponent(typeof(Rigidbody), typeof(Collider), typeof(TorsionalOscillator))]
-    public class GrabInteraction : MonoBehaviour, IInteractable
+    public class GrabInteraction : BaseInteraction, IInteractable
     {
         [HideInInspector] public PlayerGrab PlayerGrab;
         
         [SF] private Sprite _hoverReticle = null;
         [SF] private Sprite _actionReticle = null;
-        
+        [SF] private UpdateManager _update = null;
+        [Space, SF] private List<ActionInfo> _onChange = null;
+
         private bool _pressed;
 
 // PROPERTIES
@@ -37,12 +41,14 @@ namespace GameProject.Interactions
         /// <summary>
         /// Toggles hold on player interaction
         /// </summary>
-        public void Perform() {
+        public void Perform(){
             _pressed = !_pressed;
 
             if (_pressed) Grab();
             
             else Release();
+
+            ToggleUpdate(_pressed);
         }
 
         /// <summary>
@@ -57,6 +63,22 @@ namespace GameProject.Interactions
         /// </summary>
         private void Release() {
             PlayerGrab.Release();
+        }
+
+
+        /// <summary>
+        /// Calls on change on update callback
+        /// </summary>
+        private void OnUpdate(float deltaTime){
+            Interact(_onChange);
+        }
+
+        /// <summary>
+        /// Toggles the update loop
+        /// </summary>
+        private void ToggleUpdate(bool enabled){
+            if (enabled) _update.Subscribe(OnUpdate, UpdateType.Update);
+            else _update.Unsubscribe(OnUpdate, UpdateType.Update);
         }
     }
 }

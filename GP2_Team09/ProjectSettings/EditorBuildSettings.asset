@@ -9,15 +9,12 @@ EditorBuildSettings:
     path: Assets/Complete/Scenes/Global.unity
     guid: d4e332b1540692d48ad18da383039f5f
   - enabled: 1
+    path: Assets/Complete/Scenes/Startup.unity
+    guid: 99e5e198a485bd745b615bce89b52d6c
+  - enabled: 1
     path: Assets/Complete/Scenes/EngineerRoom.unity
     guid: 1150ebf46bf28094faae748f750bcdd7
   - enabled: 1
     path: Assets/Complete/Scenes/Spaceship.unity
     guid: 836522bb9d9d6c14bb8c107d97cea818
-  - enabled: 1
-    path: Assets/Complete/Scenes/Room1.unity
-    guid: 96e6d772ced6c1f4998672ed6cfdd78b
-  - enabled: 1
-    path: Assets/Complete/Scenes/Room2.unity
-    guid: 25517a94365755841a00ffd103a8beaa
   m_configObjects: {}

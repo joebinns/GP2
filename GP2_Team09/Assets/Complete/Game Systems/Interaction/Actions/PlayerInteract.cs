@@ -23,7 +23,6 @@ namespace GameProject.Interactions
         private List<IInteractable> _actions = new();
         private List<IInteractable> _triggered = new();
 
-
 // INITIALISATION
 
         /// <summary>
@@ -50,19 +49,20 @@ namespace GameProject.Interactions
         private void OnActionInput(){
             if (_triggered.Count > 0)
                  ClearSelected();
+
             else {
                 GetSelected();
                 
                 if (_triggered != null && _triggered.Count > 0) 
                     _hudController.SwitchReticle(_triggered[0].ActionReticle);
-            } 
+            }
         }
 
         /// <summary>
         /// Stores interactables
         /// </summary>
         private void GetSelected() {
-            foreach (var action in _actions) {
+            foreach (var action in _actions){
                 action.Perform();
                 _triggered.Add(action);
             }
