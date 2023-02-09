@@ -12,6 +12,6 @@ namespace GameProject.Interactions {
 
         Changed, Reset,
         
-        Compare, Finalize,
+        Compare, CheckResult,
     }
 }

@@ -8,14 +8,14 @@ namespace GameProject.Interactions
     public class ValueInteraction : BaseInteraction
     {
         [SS] public struct ValueInfo {
-            public BaseInteraction Target;
+            public BaseInteraction Interactable;
             public int DesiredValue;
         }
 
         [SF] private int _minValue = 0;
         [SF] private int _maxValue = 10;
         [SF] private float _minRotation = -170;
-        [SF] private float _maxRotation = 170;
+        [SF] private float _maxRotation =  170;
 
         [Space, SF] private ValueInfo[] _pattern = null;
         [Space, SF] private List<ActionInfo> _onSuccess = null;
@@ -33,11 +33,12 @@ namespace GameProject.Interactions
             _states = new Dictionary<BaseInteraction, int>();
 
             foreach (var info in _pattern){
-                var value = GetValue(info.Target);
+                var value = GetValue(info.Interactable);
 
-                if (!_states.TryAdd(info.Target, value)){
-                    LogAlreadyAdded(info.Target);
-                }
+                if (_states.TryAdd(info.Interactable, value)){
+                    Interact(_onChange, info.Interactable, value);
+
+                } else LogAlreadyAdded(info.Interactable);
             }
         }
 
@@ -51,7 +52,7 @@ namespace GameProject.Interactions
                 value = GetValue(interactable);
                 
                 _states[interactable] = value;
-                Interact(_onChange, value);
+                Interact(_onChange, interactable, value);
 
             } else LogNotInPattern(interactable);
         }
@@ -59,7 +60,7 @@ namespace GameProject.Interactions
         /// <summary>
         /// Checks if the interactions matches the defined pattern
         /// </summary>
-        public override void Finalise(){
+        public override void CheckResult(){
             var match = true;
             var index = 0;
 

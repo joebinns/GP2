@@ -83,7 +83,7 @@ namespace GameProject.Interactions {
             ));
         }
         
-        public virtual void Finalise(){
+        public virtual void CheckResult(){
             Debug.LogError(new System.NotImplementedException(
                 $"{this.GetType().Name} does not implement Finalise action"
             ));
@@ -144,12 +144,12 @@ namespace GameProject.Interactions {
                         action.Target.Restore();
                         break;
 
-                    case InteractionType.Finalize:
-                        action.Target.Finalise();
-                        break;
-
                     case InteractionType.Compare:
                         action.Target.Compare(this);
+                        break;
+
+                    case InteractionType.CheckResult:
+                        action.Target.CheckResult();
                         break;
                 }
             }

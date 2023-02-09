@@ -40,7 +40,7 @@ namespace GameProject.Interactions
         /// <summary>
         /// Checks if the count matches the threshold
         /// </summary>
-        public override void Finalise(){
+        public override void CheckResult(){
             if (_count == _threshold)
                 Interact(_onSuccess);
 

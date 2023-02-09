@@ -52,7 +52,7 @@ namespace GameProject.Interactions
         /// <summary>
         /// Checks if the interactions matches the defined pattern
         /// </summary>
-        public override void Finalise(){
+        public override void CheckResult(){
             var match = true;
             var index = 0;
 
