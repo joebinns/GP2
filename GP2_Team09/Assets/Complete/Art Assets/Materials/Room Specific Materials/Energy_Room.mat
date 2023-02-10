@@ -134,7 +134,7 @@ Material:
     - _Red_Vertex_HUE: -2.8
     - _Red_Vertex_Use_Hue: 0
     - _Roughness: 0.5
-    - _Roughness_Metalllic: 0.17
+    - _Roughness_Metalllic: 0.61
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

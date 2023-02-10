@@ -6,6 +6,7 @@ using GameProject.Inputs;
 using GameProject.HUD;
 using GameProject.Updates;
 using GameProject.Levels;
+using GameProject.Interface;
 
 namespace GameProject.Game
 {
@@ -23,6 +24,7 @@ namespace GameProject.Game
         [SF] private HUDManager    _hud    = null;
         [SF] private UpdateManager _update = null;
         [SF] private LevelManager  _level  = null;
+        [SF] private MenuManager   _menu   = null;
 
 // PROPERTIES
         public GameObject Player { get; private set; } = null;
@@ -37,6 +39,8 @@ namespace GameProject.Game
 
             var target = Player.GetComponentInChildren<CameraTarget>();
             _camera.SetTarget(null, target.transform);
+
+            _menu.ShowMenu(false);
         }
 
         /// <summary>
@@ -70,12 +74,24 @@ namespace GameProject.Game
             );
         }
 
+// LEVEL HANDLING
+
         /// <summary>
         /// Returns the player to the main menu scene after delay
         /// </summary>
         private IEnumerator ReturnToMenu(float delay){
             yield return new WaitForSeconds(delay);
+
+            _level.SubscribeOnLoaded(OnMenuLoaded);
             _level.LoadLevel(_level.Startup);
+        }
+
+        /// <summary>
+        /// Shows menu on main menu scene loaded
+        /// </summary>
+        private void OnMenuLoaded(){
+            _level.UnsubscribeOnLoaded(OnMenuLoaded);
+            _menu.ShowMenu(true);
         }
 
 // UTILITY

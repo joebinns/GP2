@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3090327192364014092}
   - component: {fileID: 7057057729891060547}
+  - component: {fileID: 5858729975508380201}
+  - component: {fileID: 1405243284398150853}
+  - component: {fileID: 5187253076475638916}
+  - component: {fileID: 548297619116848589}
   m_Layer: 6
   m_Name: Button
   m_TagString: Untagged
@@ -46,6 +50,72 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.001879971, y: 0.0038183886, z: 0.003700469}
   m_Center: {x: -0.0009399879, y: 0.0017016366, z: -0.00006830023}
+--- !u!114 &5858729975508380201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010523820427269077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hoverReticle: {fileID: 0}
+  _actionReticle: {fileID: 0}
+  _onPressed:
+  - Target: {fileID: 0}
+    Action: 0
+  _onReleased:
+  - Target: {fileID: 0}
+    Action: 0
+--- !u!114 &1405243284398150853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010523820427269077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a3202e5d56f9b49bb48286e4b26c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _game: {fileID: 11400000, guid: 66e615f66c6327649b5d2b44251b4fa7, type: 2}
+--- !u!114 &5187253076475638916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010523820427269077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5681e01c5ea70ee4b9ce204b64db61f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 
+--- !u!95 &548297619116848589
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010523820427269077}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &3499478237809574461
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,8 +277,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6536602416624769470}
   - component: {fileID: 5908016753280107273}
-  - component: {fileID: 5908016753280107270}
-  - component: {fileID: 1816586361448362872}
   - component: {fileID: 5908016753280107271}
   - component: {fileID: 8294642037432359486}
   m_Layer: 6
@@ -255,39 +323,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &5908016753280107270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5908016753280107268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hoverReticle: {fileID: 0}
-  _actionReticle: {fileID: 0}
-  _onPressed:
-  - Target: {fileID: 0}
-    Action: 0
-  _onReleased:
-  - Target: {fileID: 0}
-    Action: 0
---- !u!114 &1816586361448362872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5908016753280107268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5a3202e5d56f9b49bb48286e4b26c0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _game: {fileID: 11400000, guid: 66e615f66c6327649b5d2b44251b4fa7, type: 2}
 --- !u!65 &5908016753280107271
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -10,6 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3190396393557091443}
   - component: {fileID: 7442805542611514684}
+  - component: {fileID: 6595255846117743502}
+  - component: {fileID: 5098969840451392907}
+  - component: {fileID: 1124783713243665477}
+  - component: {fileID: 3631164293160178213}
+  - component: {fileID: 8777597839972979577}
   m_Layer: 6
   m_Name: Button
   m_TagString: Untagged
@@ -46,6 +51,91 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.001879971, y: 0.0038183886, z: 0.003700469}
   m_Center: {x: -0.0009399879, y: 0.0017016366, z: -0.00006830023}
+--- !u!95 &6595255846117743502
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108613075924512170}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22fb692e6a62fa042bdc3f623955fe1d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &5098969840451392907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108613075924512170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5681e01c5ea70ee4b9ce204b64db61f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 
+--- !u!114 &1124783713243665477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108613075924512170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hoverReticle: {fileID: 0}
+  _actionReticle: {fileID: 0}
+  _onPressed:
+  - Target: {fileID: 3631164293160178213}
+    Action: 5
+  _onReleased: []
+--- !u!114 &3631164293160178213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108613075924512170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b053a4bf56f37d546a63a05b40cb6551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _start: 0
+  _threshold: 3
+  _onSuccess: []
+  _onFailure:
+  - Target: {fileID: 8777597839972979577}
+    Action: 12
+  _onIncrement: []
+  _onDecrement: []
+  _onReset: []
+--- !u!114 &8777597839972979577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108613075924512170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a3202e5d56f9b49bb48286e4b26c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _game: {fileID: 0}
 --- !u!1 &3906090108233169986
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,11 +296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6634701563159848897}
-  - component: {fileID: 6294028178544360822}
-  - component: {fileID: 6294028178544360825}
   - component: {fileID: 6294028178544360824}
-  - component: {fileID: 8435494661023371291}
-  - component: {fileID: -2197393896899379911}
   - component: {fileID: 1070636542416616692}
   m_Layer: 6
   m_Name: Counter_ButtonStation
@@ -236,44 +322,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &6294028178544360822
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6294028178544360827}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 22fb692e6a62fa042bdc3f623955fe1d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
---- !u!114 &6294028178544360825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6294028178544360827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hoverReticle: {fileID: 0}
-  _actionReticle: {fileID: 0}
-  _onPressed:
-  - Target: {fileID: 8435494661023371291}
-    Action: 5
-  _onReleased: []
 --- !u!65 &6294028178544360824
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -287,40 +335,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5346632, y: 2, z: 1.15}
   m_Center: {x: -0.13193846, y: 1.0397849, z: 0}
---- !u!114 &8435494661023371291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6294028178544360827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b053a4bf56f37d546a63a05b40cb6551, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _start: 0
-  _threshold: 3
-  _onSuccess: []
-  _onFailure:
-  - Target: {fileID: -2197393896899379911}
-    Action: 12
-  _onIncrement: []
-  _onDecrement: []
-  _onReset: []
---- !u!114 &-2197393896899379911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6294028178544360827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5a3202e5d56f9b49bb48286e4b26c0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _game: {fileID: 0}
 --- !u!114 &1070636542416616692
 MonoBehaviour:
   m_ObjectHideFlags: 0

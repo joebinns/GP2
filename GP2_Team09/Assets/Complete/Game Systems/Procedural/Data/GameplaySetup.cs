@@ -1,3 +1,4 @@
+using HIDE = UnityEngine.HideInInspector;
 using SF = UnityEngine.SerializeField;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace GameProject.Procedural
     [CreateAssetMenu(fileName = "Gameplay Setup", menuName = "Procedural/Gameplay Setup")]
     public class GameplaySetup : ScriptableObject
     {
-		[SF] private List<InteractionData> _buttons = null;
+		[SF, HIDE] private List<InteractionData> _buttons = null;
 
 // PROPERTIES
 

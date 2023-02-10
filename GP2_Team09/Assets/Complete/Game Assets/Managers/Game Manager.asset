@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664fe9cb39575274ba085253666e2ccf, type: 3}
   m_Name: Game Manager
   m_EditorClassIdentifier: 
+  _lostReturnDelay: 3
+  _wonReturnDelay: 5
   _engineerPrefab: {fileID: 6566537215078335635, guid: 6e48eebdeb5391645bdcff6254812f35, type: 3}
   _crewPrefab: {fileID: 6566537215078335635, guid: cd3bbc81c1e65614fa3349de1c772489, type: 3}
   _camera: {fileID: 11400000, guid: 3e70316765c4c3a4f93d0df25fe59bc4, type: 2}
@@ -19,3 +21,4 @@ MonoBehaviour:
   _hud: {fileID: 11400000, guid: 11ca518c0ac022249a362c89685593fa, type: 2}
   _update: {fileID: 11400000, guid: 9b090228707952e448427620a3dcfa31, type: 2}
   _level: {fileID: 11400000, guid: 218c6a5ab975ac0438a03c75c0640439, type: 2}
+  _menu: {fileID: 11400000, guid: b740b6b448bcab4419b74f202729663f, type: 2}
