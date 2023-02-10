@@ -535,6 +535,8 @@ GameObject:
   - component: {fileID: 4752077875439968007}
   - component: {fileID: 4752077875439968000}
   - component: {fileID: 4752077875439968001}
+  - component: {fileID: 8640955106451641736}
+  - component: {fileID: 6140871382536311998}
   m_Layer: 6
   m_Name: ProtocolFormulas
   m_TagString: Untagged
@@ -636,6 +638,37 @@ MonoBehaviour:
   PlayerHold: {fileID: 0}
   _hoverReticle: {fileID: 21300000, guid: 235ed8af8e8b5e34fbad687dd7db4eb7, type: 3}
   _actionReticle: {fileID: 21300000, guid: c6be87c337bc9ce4f9df7cd5fb9e92f1, type: 3}
+--- !u!114 &8640955106451641736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752077875439968015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &6140871382536311998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752077875439968015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5681e01c5ea70ee4b9ce204b64db61f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 
 --- !u!1 &5610219912562632687
 GameObject:
   m_ObjectHideFlags: 0

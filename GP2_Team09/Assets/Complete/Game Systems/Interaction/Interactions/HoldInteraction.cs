@@ -7,12 +7,14 @@ namespace GameProject.Interactions
 {
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     [RequireComponent(typeof(Oscillator), typeof(TorsionalOscillator))]
-    public class HoldInteraction : MonoBehaviour, IInteractable
+    public class HoldInteraction : BaseInteraction, IInteractable
     {
         [HideInInspector] public PlayerHold PlayerHold;
         
-        [SF] private Sprite _hoverReticle  = null;
+        [Header("Interactable")]
+        [SF] private Sprite _hoverReticle = null;
         [SF] private Sprite _actionReticle = null;
+        private Outline _outline;
         
         private bool _pressed = false;
 
@@ -20,6 +22,7 @@ namespace GameProject.Interactions
 
         public Sprite HoverReticle => _hoverReticle;
         public Sprite ActionReticle => _actionReticle;
+        public Outline Outline => _outline;
         public Rigidbody Rigidbody { get; private set; }
         public Oscillator Oscillator { get; private set; }
         public TorsionalOscillator TorsionalOscillator { get; private set; }
@@ -33,6 +36,7 @@ namespace GameProject.Interactions
             Rigidbody = GetComponent<Rigidbody>();
             Oscillator = GetComponent<Oscillator>();
             TorsionalOscillator = GetComponent<TorsionalOscillator>();
+            _outline = GetComponent<Outline>();
         }
         
 // HOLD HANDLING

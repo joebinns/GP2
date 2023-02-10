@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 3934198774031194218}
   - component: {fileID: 3934198774031194216}
   - component: {fileID: 3934198774031194222}
+  - component: {fileID: 3552610859078810841}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -265,6 +266,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 
+--- !u!114 &3552610859078810841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934198774031194220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &3934198774622536924
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +436,7 @@ GameObject:
   - component: {fileID: 3934198774737419478}
   - component: {fileID: 3934198774737419473}
   - component: {fileID: 3934198774737419472}
+  - component: {fileID: 3943380885702996183}
   m_Layer: 6
   m_Name: Alarm Clock
   m_TagString: Untagged
@@ -643,3 +663,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3943380885702996183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934198774737419497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

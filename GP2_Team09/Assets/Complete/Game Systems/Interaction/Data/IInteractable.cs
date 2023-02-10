@@ -7,6 +7,7 @@ namespace GameProject.Interactions
     {
         public Sprite HoverReticle { get; }
         public Sprite ActionReticle { get; }
+        public Outline Outline { get; }
         public void Perform(bool interacting);
     }
 }

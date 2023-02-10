@@ -23,6 +23,7 @@ namespace GameProject.Interactions
         private bool _pressed = false;
         private List<IInteractable> _actions = new();
         private List<IInteractable> _triggered = new();
+        private IInteractable _outlined = null;
 
 // INITIALISATION
 
@@ -50,11 +51,30 @@ namespace GameProject.Interactions
         public void Update() {
             if (_triggered.Count > 0) return;
             _actions = GetActions();
-            
-            if (_actions != null && _actions.Count > 0) 
+
+            if (_actions != null && _actions.Count > 0) {
                 _hudController.SwitchReticle(_actions[0].HoverReticle);
-            
-            else _hudController.SwitchReticle(null);
+                Outline(_actions[0]);
+            }
+
+            else {
+                _hudController.SwitchReticle(null);
+                Outline(null);
+            }
+        }
+
+        private void Outline(IInteractable interactable) {
+            if (interactable != null) {
+                // Enable outline
+                interactable.Outline.enabled = true;
+                _outlined = interactable;
+            }
+            else {
+                // Disable outline
+                if (_outlined == null) return;
+                _outlined.Outline.enabled = false;
+                _outlined = null;
+            }
         }
 
 
@@ -99,14 +119,11 @@ namespace GameProject.Interactions
         /// <summary>
         /// Switches the reticle on hover
         /// </summary>
-        private void SwitchReticle(){
-            if (_triggered == null ||
-                _triggered.Count == 0)
-                return;
+        private void SwitchReticle() {
+            if (_triggered == null || _triggered.Count == 0) return;
 
-            _hudController.SwitchReticle(
-                _triggered[0].ActionReticle
-            );
+            _hudController.SwitchReticle(_triggered[0].ActionReticle);
+            Outline(_actions[0]);
         }
 
         /// <summary>

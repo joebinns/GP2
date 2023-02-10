@@ -12,9 +12,13 @@ namespace GameProject.Interactions
     {
         [HideInInspector] public PlayerGrab PlayerGrab;
         
+        [Header("Interactable")]
         [SF] private Sprite _hoverReticle = null;
         [SF] private Sprite _actionReticle = null;
+        private Outline _outline;
+        [Header("Managers")]
         [SF] private UpdateManager _update = null;
+        [Header("Methods")]
         [Space, SF] private List<ActionInfo> _onChange = null;
 
         private bool _pressed;
@@ -23,6 +27,7 @@ namespace GameProject.Interactions
 
         public Sprite HoverReticle => _hoverReticle;
         public Sprite ActionReticle => _actionReticle;
+        public Outline Outline => _outline;
         public Rigidbody Rigidbody { get; private set; }
         public TorsionalOscillator TorsionalOscillator { get; private set; }
         
@@ -34,6 +39,7 @@ namespace GameProject.Interactions
         private void Awake() {
             Rigidbody = GetComponent<Rigidbody>();
             TorsionalOscillator = GetComponent<TorsionalOscillator>();
+            _outline = GetComponent<Outline>();
         }
         
 // HOLD HANDLING

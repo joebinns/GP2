@@ -7,8 +7,11 @@ namespace GameProject.Interactions
     [RequireComponent(typeof(Animator))]
     public class ButtonInteraction : BaseInteraction, IInteractable
     {
+        [Header("Interactable")]
         [SF] private Sprite _hoverReticle = null;
         [SF] private Sprite _actionReticle = null;
+        private Outline _outline;
+        [Header("Methods")]
         [Space, SF] private List<ActionInfo> _onPressed  = new();
         [Space, SF] private List<ActionInfo> _onReleased = new();
 
@@ -20,6 +23,7 @@ namespace GameProject.Interactions
 
         public Sprite HoverReticle => _hoverReticle;
         public Sprite ActionReticle => _actionReticle;
+        public Outline Outline => _outline;
 
 // INITIALISATION
 
@@ -28,6 +32,7 @@ namespace GameProject.Interactions
         /// </summary>
         private void Awake(){
             _animator = GetComponent<Animator>();
+            _outline = GetComponent<Outline>();
         }
 
 // BUTTON HANDLING
