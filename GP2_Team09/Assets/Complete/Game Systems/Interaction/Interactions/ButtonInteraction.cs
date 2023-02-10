@@ -35,8 +35,9 @@ namespace GameProject.Interactions
         /// <summary>
         /// Triggers button on player interaction
         /// </summary>
-        public void Perform(){
-            _pressed = !_pressed;
+        public void Perform(bool interacting){
+            _pressed = interacting;
+
             _animator.SetBool(PRESSED_HASH, _pressed);
             
             if (_pressed) Interact(_onPressed);

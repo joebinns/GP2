@@ -41,8 +41,8 @@ namespace GameProject.Interactions
         /// <summary>
         /// Toggles hold on player interaction
         /// </summary>
-        public void Perform(){
-            _pressed = !_pressed;
+        public void Perform(bool interacting){
+            _pressed = interacting;
 
             if (_pressed) Grab();
             

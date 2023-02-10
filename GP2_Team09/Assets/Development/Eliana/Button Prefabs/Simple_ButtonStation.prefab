@@ -208,7 +208,9 @@ GameObject:
   - component: {fileID: 6536602416624769470}
   - component: {fileID: 5908016753280107273}
   - component: {fileID: 5908016753280107270}
+  - component: {fileID: 1816586361448362872}
   - component: {fileID: 5908016753280107271}
+  - component: {fileID: 8294642037432359486}
   m_Layer: 6
   m_Name: Simple_ButtonStation
   m_TagString: Gameplay
@@ -265,13 +267,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reticle: {fileID: 0}
+  _hoverReticle: {fileID: 0}
+  _actionReticle: {fileID: 0}
   _onPressed:
   - Target: {fileID: 0}
     Action: 0
   _onReleased:
   - Target: {fileID: 0}
     Action: 0
+--- !u!114 &1816586361448362872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5908016753280107268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a3202e5d56f9b49bb48286e4b26c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _game: {fileID: 11400000, guid: 66e615f66c6327649b5d2b44251b4fa7, type: 2}
 --- !u!65 &5908016753280107271
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -285,6 +301,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5346632, y: 2, z: 1.15}
   m_Center: {x: -0.13193846, y: 1.0397849, z: 0}
+--- !u!114 &8294642037432359486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5908016753280107268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5681e01c5ea70ee4b9ce204b64db61f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 
 --- !u!1 &7720902073936149552
 GameObject:
   m_ObjectHideFlags: 0

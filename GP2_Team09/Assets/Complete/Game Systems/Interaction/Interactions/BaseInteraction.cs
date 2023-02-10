@@ -57,6 +57,28 @@ namespace GameProject.Interactions {
             ));
         }
 
+        public virtual void Show(){
+            Debug.LogError(new System.NotImplementedException(
+                $"{this.GetType().Name} does not implement Show action"
+            ));
+        }
+        public virtual void Hide(){
+            Debug.LogError(new System.NotImplementedException(
+                $"{this.GetType().Name} does not implement Hide action"
+            ));
+        }
+
+        public virtual void Win(){
+            Debug.LogError(new System.NotImplementedException(
+                $"{this.GetType().Name} does not implement Win action"
+            ));
+        }
+        public virtual void Lose(){
+            Debug.LogError(new System.NotImplementedException(
+                $"{this.GetType().Name} does not implement Lose action"
+            ));
+        }
+
         public virtual void Restore(){
             Debug.LogError(new System.NotImplementedException(
                 $"{this.GetType().Name} does not implement Restore action"
@@ -138,6 +160,22 @@ namespace GameProject.Interactions {
 
                     case InteractionType.Close:
                         action.Target.Close();
+                        break;
+
+                    case InteractionType.Show:
+                        action.Target.Show();
+                        break;
+
+                    case InteractionType.Hide:
+                        action.Target.Hide();
+                        break;
+
+                    case InteractionType.Win:
+                        action.Target.Win();
+                        break;
+
+                    case InteractionType.Lose:
+                        action.Target.Lose();
                         break;
 
                     case InteractionType.Reset:

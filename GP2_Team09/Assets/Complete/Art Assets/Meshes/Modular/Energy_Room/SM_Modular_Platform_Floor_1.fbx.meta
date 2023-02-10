@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Grate
+    second: {fileID: 2100000, guid: 40ba5a246a05ec1408e134d506ffe1f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: M_BaseMaterial
     second: {fileID: 2100000, guid: 37c02f01cd581344aa68d2eda06897a3, type: 2}
   materials:

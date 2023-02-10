@@ -11,10 +11,10 @@ namespace GameProject.Interactions
     {
         [HideInInspector] public PlayerHold PlayerHold;
         
-        [SF] private Sprite _hoverReticle = null;
+        [SF] private Sprite _hoverReticle  = null;
         [SF] private Sprite _actionReticle = null;
         
-        private bool _pressed;
+        private bool _pressed = false;
 
 // PROPERTIES
 
@@ -40,8 +40,8 @@ namespace GameProject.Interactions
         /// <summary>
         /// Toggles hold on player interaction
         /// </summary>
-        public void Perform() {
-            _pressed = !_pressed;
+        public void Perform(bool interacting){
+            _pressed = interacting;
 
             if (_pressed) Grab();
             

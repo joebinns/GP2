@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 6294028178544360825}
   - component: {fileID: 6294028178544360824}
   - component: {fileID: 8435494661023371291}
+  - component: {fileID: -2197393896899379911}
   - component: {fileID: 1070636542416616692}
   m_Layer: 6
   m_Name: Counter_ButtonStation
@@ -301,9 +302,25 @@ MonoBehaviour:
   _start: 0
   _threshold: 3
   _onSuccess: []
+  _onFailure:
+  - Target: {fileID: -2197393896899379911}
+    Action: 12
   _onIncrement: []
   _onDecrement: []
   _onReset: []
+--- !u!114 &-2197393896899379911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6294028178544360827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a3202e5d56f9b49bb48286e4b26c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _game: {fileID: 0}
 --- !u!114 &1070636542416616692
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3905030369395040239}
   - component: {fileID: 3905030369395040236}
   - component: {fileID: 3905030369395040237}
+  - component: {fileID: 6720078676892599018}
   m_Layer: 6
   m_Name: Valves Interaction
   m_TagString: Gameplay
@@ -78,16 +79,31 @@ MonoBehaviour:
   - Interactable: {fileID: 5606106008082380035}
     DesiredValue: 3
   _onSuccess: []
-  _onFailure: []
+  _onFailure:
+  - Target: {fileID: 6720078676892599018}
+    Action: 12
   _onChange:
   - Target: {fileID: 218896309741522550}
-    Action: 9
+    Action: 13
   - Target: {fileID: 6470312851337855449}
-    Action: 9
+    Action: 13
   - Target: {fileID: 2400674560469384536}
-    Action: 9
+    Action: 13
   - Target: {fileID: 4351010814956800136}
-    Action: 9
+    Action: 13
+--- !u!114 &6720078676892599018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3905030369395040226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a3202e5d56f9b49bb48286e4b26c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _game: {fileID: 11400000, guid: 66e615f66c6327649b5d2b44251b4fa7, type: 2}
 --- !u!1001 &3905030367926399532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101,7 +117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8527569769445773768, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: _onChange.Array.data[0].Action
-      value: 11
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8527569769445773768, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: _onChange.Array.data[0].Target
@@ -214,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8527569769445773768, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: _onChange.Array.data[0].Action
-      value: 11
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8527569769445773768, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: _onChange.Array.data[0].Target
@@ -307,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8527569769445773768, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: _onChange.Array.data[0].Action
-      value: 11
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8527569769445773768, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: _onChange.Array.data[0].Target
@@ -416,7 +432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8527569769445773768, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: _onChange.Array.data[0].Action
-      value: 11
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8527569769445773768, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: _onChange.Array.data[0].Target
@@ -895,7 +911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2636482281535253056, guid: cd68f69a23c5ef941b76eb3a7e04d568, type: 3}
       propertyPath: _onPressed.Array.data[0].Action
-      value: 12
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2636482281535253056, guid: cd68f69a23c5ef941b76eb3a7e04d568, type: 3}
       propertyPath: _onPressed.Array.data[0].Target

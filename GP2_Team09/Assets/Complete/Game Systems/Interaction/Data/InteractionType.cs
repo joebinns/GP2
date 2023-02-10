@@ -8,7 +8,11 @@ namespace GameProject.Interactions {
         
         Increment, Decrement,
 
-        Open, Close, 
+        Open, Close,
+
+        Show, Hide,
+
+        Win, Lose,
 
         Changed, Reset,
         
