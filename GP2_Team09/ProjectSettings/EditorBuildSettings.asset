@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Complete/Scenes/EngineerRoom.unity
     guid: 1150ebf46bf28094faae748f750bcdd7
   - enabled: 1
-    path: Assets/Complete/Scenes/Spaceship.unity
-    guid: 836522bb9d9d6c14bb8c107d97cea818
+    path: Assets/Development/Kevin/Level Layout.unity
+    guid: 2dc2aeb75a18d1949ada1a4e1789c84d
   m_configObjects: {}
