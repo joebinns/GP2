@@ -1,5 +1,4 @@
 using SF = UnityEngine.SerializeField;
-using System;
 using UnityEngine;
 using GameProject.Actions;
 using GameProject.Movement;
@@ -54,6 +53,7 @@ namespace GameProject.Interactions
 
             if (_actions != null && _actions.Count > 0) {
                 _hudController.SwitchReticle(_actions[0].HoverReticle);
+                Outline(null);
                 Outline(_actions[0]);
             }
 
@@ -123,7 +123,6 @@ namespace GameProject.Interactions
             if (_triggered == null || _triggered.Count == 0) return;
 
             _hudController.SwitchReticle(_triggered[0].ActionReticle);
-            Outline(_actions[0]);
         }
 
         /// <summary>
