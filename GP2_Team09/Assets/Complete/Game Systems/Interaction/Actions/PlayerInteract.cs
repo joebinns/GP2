@@ -13,7 +13,7 @@ namespace GameProject.Interactions
     public class PlayerInteract : BaseAction
     {
         [SF] private PlayerController _controller = null;
-        [SF] private HUDController _hudController = null;
+        [SF] private HUDManager _hudManager = null;
         [Space]
         [SF] private InteractionSettings _settings = null;
         [SF] private InputManager _input = null;
@@ -52,13 +52,13 @@ namespace GameProject.Interactions
             _actions = GetActions();
 
             if (_actions != null && _actions.Count > 0) {
-                _hudController.SwitchReticle(_actions[0].HoverReticle);
+                _hudManager.SwitchReticle(_actions[0].HoverReticle);
                 Outline(null);
                 Outline(_actions[0]);
             }
 
             else {
-                _hudController.SwitchReticle(null);
+                _hudManager.SwitchReticle(null);
                 Outline(null);
             }
         }
@@ -122,7 +122,7 @@ namespace GameProject.Interactions
         private void SwitchReticle() {
             if (_triggered == null || _triggered.Count == 0) return;
 
-            _hudController.SwitchReticle(_triggered[0].ActionReticle);
+            _hudManager.SwitchReticle(_triggered[0].ActionReticle);
         }
 
         /// <summary>

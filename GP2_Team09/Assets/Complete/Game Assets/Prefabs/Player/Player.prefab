@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 6785539469645937650}
+  _hudManager: {fileID: 11400000, guid: 11ca518c0ac022249a362c89685593fa, type: 2}
   _settings: {fileID: 0}
   _input: {fileID: 11400000, guid: 977019ccfc90d1049952bd8f77dc777c, type: 2}
   _camera: {fileID: 11400000, guid: 3e70316765c4c3a4f93d0df25fe59bc4, type: 2}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da28b48675d6b2f40b1233f02119c6cf, type: 3}
   m_Name: HUD Manager
   m_EditorClassIdentifier: 
-  _input: {fileID: 11400000, guid: 2c815377b3595ff4da70f69fa0d98561, type: 2}
+  _input: {fileID: 11400000, guid: 977019ccfc90d1049952bd8f77dc777c, type: 2}
   _menu: {fileID: 11400000, guid: b740b6b448bcab4419b74f202729663f, type: 2}

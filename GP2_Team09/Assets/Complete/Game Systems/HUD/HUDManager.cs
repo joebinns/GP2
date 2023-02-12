@@ -15,6 +15,9 @@ namespace GameProject.HUD
         private CrewHUDController _crew;
         private HUDController _current = null;
 
+        public EngineerHUDController Engineer => _engineer;
+        public CrewHUDController Crew => _crew;
+
 // INITIALISATION
 
         /// <summary>
@@ -64,6 +67,14 @@ namespace GameProject.HUD
         /// </summary>
         public void DisplayLost(bool display) {
             _crew.DisplayLost(display);
+        }
+
+        /// <summary>
+        /// Calls switch reticle on the appropriate HUD controller
+        /// </summary>
+        public void SwitchReticle(Sprite reticle) {
+            if (_crew) _crew.SwitchReticle(reticle);
+            else _engineer.SwitchReticle(reticle);
         }
     }
 }

@@ -31,6 +31,7 @@ namespace GameProject.Interface
         /// </summary>
         public void Initialise(Canvas mainmenu){
             _uiMainMenu = mainmenu;
+            if (_uiMainMenu == null) return;
             
             _input.SubscribeKey(
                 OnMenuToggleInput, 
@@ -67,6 +68,8 @@ namespace GameProject.Interface
         /// Shows or hides the main menu
         /// </summary>
         public void ShowMenu(bool show){
+            if (_uiMainMenu == null) return;
+            
             _uiMainMenu.enabled = show;
 
             if (!show){

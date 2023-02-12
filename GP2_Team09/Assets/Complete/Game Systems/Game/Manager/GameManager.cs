@@ -40,7 +40,7 @@ namespace GameProject.Game
             var target = Player.GetComponentInChildren<CameraTarget>();
             _camera.SetTarget(null, target.transform);
 
-            _menu.ShowMenu(false);
+            _menu?.ShowMenu(false);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace GameProject.Game
         /// </summary>
         private void OnMenuLoaded(){
             _level.UnsubscribeOnLoaded(OnMenuLoaded);
-            _menu.ShowMenu(true);
+            _menu?.ShowMenu(true);
         }
 
 // UTILITY
