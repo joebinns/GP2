@@ -47,7 +47,8 @@ namespace GameProject.HUD
         /// <summary>
         /// Toggle pause menu
         /// </summary>
-        public void OnPauseInput(){
+        public void OnPauseInput() {
+            if (_current == null) return;
             _current.gameObject.SetActive(
                 !_menu.Opened
             );
