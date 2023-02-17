@@ -39,8 +39,8 @@ namespace GameProject.Interactions
         public override void End(){
             ToggleTimer(false);
             
-            if (_time <= 0f) Interact(_onFailure);
-            else Interact(_onSuccess);
+            if (_time <= 0f) Interact(_onSuccess);
+            else Interact(_onFailure); 
         }
 
         /// <summary>
@@ -50,16 +50,14 @@ namespace GameProject.Interactions
             _time = _threshold;
         }
 
+
         /// <summary>
         /// Increments the timer on update callback
         /// </summary>
         protected virtual void OnUpdateTimer(float deltaTime){
             _time -= deltaTime;
 
-            if (_time <= 0f) {
-                End();
-            }
-            
+            if (_time <= 0f) End();
             Interact(_onChange, _time);
         }
 

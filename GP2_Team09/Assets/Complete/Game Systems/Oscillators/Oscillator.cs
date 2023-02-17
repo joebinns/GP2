@@ -9,7 +9,7 @@ namespace GameProject.Oscillators
     public class Oscillator : MonoBehaviour
     {
         [Tooltip("The local position about which oscillations are centered.")]
-        public Vector3 LocalEquilibriumPosition = Vector3.zero;
+        [SerializeField] private Vector3 _localEquilibriumPosition = Vector3.zero;
         [Tooltip("The axes over which the oscillator applies force. Within range [0, 1].")]
         [SerializeField] private Vector3 _forceScale = Vector3.one;
         [Tooltip("The greater the stiffness constant, the lesser the amplitude of oscillations.")]
@@ -18,6 +18,16 @@ namespace GameProject.Oscillators
         [SerializeField] private float _damper = 5f;
         [Tooltip("The greater the mass, the lesser the amplitude of oscillations. This value is ignored if a Rigidbody is present.")]
         [SerializeField] private float _mass = 1f; // TODO: Hide this variable if a Rigidybody component is present
+
+        [Header("Limits")]
+        [SerializeField] private bool _useLimits = false;
+        [SerializeField] private Vector3 _minLocalEquilibriumPosition = -Vector3.one;
+        [SerializeField] private Vector3 _maxLocalEquilibriumPosition = Vector3.one;
+
+        public Vector3 LocalEquilibriumPosition {
+            get => _localEquilibriumPosition;
+            set => _localEquilibriumPosition = _useLimits ? MathsUtilities.ClampVector3(value, _minLocalEquilibriumPosition, _maxLocalEquilibriumPosition) : value;
+        }
 
         private Rigidbody _rb;
         private Vector3 _previousDisplacement = Vector3.zero;
@@ -46,7 +56,7 @@ namespace GameProject.Oscillators
         private Vector3 CalculateRestoringForce() {
             var parent = transform.parent;
             var position = transform.localPosition;
-            var equilibrium = LocalEquilibriumPosition;
+            var equilibrium = _localEquilibriumPosition;
             if (parent != null) {
                 position = parent.TransformVector(position);
                 equilibrium = parent.TransformVector(equilibrium);
@@ -109,19 +119,31 @@ namespace GameProject.Oscillators
             
             Vector3 bob = transform.localPosition;
             Vector3 equilibrium = LocalEquilibriumPosition;
+            Vector3 minEquilibrium = _minLocalEquilibriumPosition;
+            Vector3 maxEquilibrium = _maxLocalEquilibriumPosition;
             var parent = transform.parent;
             if (parent != null)
             {
                 bob = parent.TransformVector(bob);
                 equilibrium = parent.TransformVector(equilibrium);
-                bob += transform.parent.position;
+                minEquilibrium = parent.TransformVector(minEquilibrium);
+                maxEquilibrium = parent.TransformVector(maxEquilibrium);
+                bob += parent.position;
                 equilibrium += parent.position;
+                minEquilibrium += parent.position;
+                maxEquilibrium += parent.position;
             }
 
             // Draw (wire) equilibrium position
             Color color = Color.green;
             Gizmos.color = color;
             Gizmos.DrawWireSphere(equilibrium, 0.3f);
+            if (_useLimits) {
+                color = Color.white;
+                Gizmos.color = color;
+                Gizmos.DrawWireSphere(minEquilibrium, 0.15f);
+                Gizmos.DrawWireSphere(maxEquilibrium, 0.15f);
+            }
 
             // Draw (solid) bob position
             // Color goes from green (0,1,0,0) to yellow (1,1,0,0) to red (1,0,0,0).

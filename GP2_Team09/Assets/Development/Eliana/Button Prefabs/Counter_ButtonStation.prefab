@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hoverReticle: {fileID: 0}
   _actionReticle: {fileID: 0}
+  _animator: {fileID: 0}
   _onPressed:
   - Target: {fileID: 3631164293160178213}
     Action: 5
@@ -296,7 +297,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6634701563159848897}
-  - component: {fileID: 6294028178544360824}
   - component: {fileID: 1070636542416616692}
   m_Layer: 6
   m_Name: Counter_ButtonStation
@@ -322,19 +322,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6294028178544360824
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6294028178544360827}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5346632, y: 2, z: 1.15}
-  m_Center: {x: -0.13193846, y: 1.0397849, z: 0}
 --- !u!114 &1070636542416616692
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,7 +12,8 @@ namespace GameProject.Movement
         [Space]
         [SF] private MovementSettings _settings = null;
         [SF] private InputManager _input = null;
-        
+
+        private bool _running = false;
         private Vector3 _direction = Vector3.zero;
         
 // INITIALISATION
@@ -23,6 +24,7 @@ namespace GameProject.Movement
         private void OnEnable(){
             _controller.AddAction(this, UpdateMode.Update);
             _input.SubscribeVec3(OnMoveInput, InputType.Move, Priority);
+            _input.SubscribeKey(OnRunInput, InputType.Run, Priority);
         }
 
         /// <summary>
@@ -31,6 +33,7 @@ namespace GameProject.Movement
         private void OnDisable(){
             _controller.RemoveAction(this, UpdateMode.Update);
             _input.UnsubscribeVec3(OnMoveInput, InputType.Move);
+            _input.UnsubscribeKey(OnRunInput, InputType.Run);
         }
         
 // INPUT
@@ -41,7 +44,14 @@ namespace GameProject.Movement
         private void OnMoveInput(Vector3 direction){
             _direction = direction;
         }
-        
+
+        /// <summary>
+        /// Toggles the run speed on input callback
+        /// </summary>
+        private void OnRunInput(){
+            _running = !_running;
+        }
+
 // MOVEMENT
 
         /// <summary>
@@ -55,7 +65,10 @@ namespace GameProject.Movement
         /// Moves character controller on controller update
         /// </summary>
         public override void OnUpdate(float deltaTime){
-            _characterController.Move(transform.TransformDirection(_direction * _settings.MoveSpeed * deltaTime));
+            var direction = transform.TransformDirection(_direction);
+            var speed = _running ? _settings.RunSpeed : _settings.MoveSpeed;
+
+            _characterController.Move(direction * speed * deltaTime);
         }
     }
 }

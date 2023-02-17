@@ -16,6 +16,7 @@ MonoBehaviour:
   _wonReturnDelay: 5
   _engineerPrefab: {fileID: 6566537215078335635, guid: 6e48eebdeb5391645bdcff6254812f35, type: 3}
   _crewPrefab: {fileID: 6566537215078335635, guid: cd3bbc81c1e65614fa3349de1c772489, type: 3}
+  _shipNames: {fileID: 11400000, guid: 78b9825d3f1b89b41b1bed48d35ea7d6, type: 2}
   _camera: {fileID: 11400000, guid: 3e70316765c4c3a4f93d0df25fe59bc4, type: 2}
   _input: {fileID: 11400000, guid: 977019ccfc90d1049952bd8f77dc777c, type: 2}
   _hud: {fileID: 11400000, guid: 11ca518c0ac022249a362c89685593fa, type: 2}

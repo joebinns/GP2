@@ -52,19 +52,23 @@ namespace GameProject.Interactions
             _actions = GetActions();
 
             if (_actions != null && _actions.Count > 0) {
-                _hudManager.SwitchReticle(_actions[0].HoverReticle);
+                _hudManager.SwitchInteractable(_actions[0].InteractableType, InteractableMode.Hover);
                 Outline(null);
                 Outline(_actions[0]);
             }
 
             else {
-                _hudManager.SwitchReticle(null);
+                _hudManager.SwitchInteractable(InteractableType.None, InteractableMode.None);
                 Outline(null);
             }
         }
 
+        /// <summary>
+        /// Enable outline on a relevant interactable or disable on a previously relevant interactable
+        /// </summary>
         private void Outline(IInteractable interactable) {
             if (interactable != null) {
+                if (interactable.Outline == null) return;
                 // Enable outline
                 interactable.Outline.enabled = true;
                 _outlined = interactable;
@@ -72,12 +76,12 @@ namespace GameProject.Interactions
             else {
                 // Disable outline
                 if (_outlined == null) return;
+                if (_outlined.Outline == null) return;
                 _outlined.Outline.enabled = false;
                 _outlined = null;
             }
         }
-
-
+        
         /// <summary>
         /// Triggers interactable on input callback
         /// </summary>
@@ -89,7 +93,7 @@ namespace GameProject.Interactions
 
             else if (_pressed){
                 GetSelected();
-                SwitchReticle();
+                SwitchInteractable();
             }
         }
 
@@ -115,14 +119,10 @@ namespace GameProject.Interactions
             _triggered.Clear();
         }
 
-
-        /// <summary>
-        /// Switches the reticle on hover
-        /// </summary>
-        private void SwitchReticle() {
+        private void SwitchInteractable() {
             if (_triggered == null || _triggered.Count == 0) return;
 
-            _hudManager.SwitchReticle(_triggered[0].ActionReticle);
+            _hudManager.SwitchInteractable(_triggered[0].InteractableType, InteractableMode.Action);
         }
 
         /// <summary>

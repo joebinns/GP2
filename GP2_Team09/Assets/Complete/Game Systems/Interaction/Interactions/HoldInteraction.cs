@@ -11,17 +11,14 @@ namespace GameProject.Interactions
     {
         [HideInInspector] public PlayerHold PlayerHold;
         
-        [Header("Interactable")]
-        [SF] private Sprite _hoverReticle = null;
-        [SF] private Sprite _actionReticle = null;
+        private InteractableType _interactableType;
         private Outline _outline;
         
         private bool _pressed = false;
 
 // PROPERTIES
 
-        public Sprite HoverReticle => _hoverReticle;
-        public Sprite ActionReticle => _actionReticle;
+        public InteractableType InteractableType => _interactableType;
         public Outline Outline => _outline;
         public Rigidbody Rigidbody { get; private set; }
         public Oscillator Oscillator { get; private set; }
@@ -33,6 +30,7 @@ namespace GameProject.Interactions
         /// Sets frequently used references
         /// </summary>
         private void Awake() {
+            _interactableType = InteractableType.Hold;
             Rigidbody = GetComponent<Rigidbody>();
             Oscillator = GetComponent<Oscillator>();
             TorsionalOscillator = GetComponent<TorsionalOscillator>();

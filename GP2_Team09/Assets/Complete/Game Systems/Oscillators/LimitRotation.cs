@@ -3,30 +3,31 @@ using UnityEngine;
 namespace GameProject.Oscillators
 {
     /// <summary>
-    /// Limits the range of rotation of this rigid body.
+    /// Limits the range of rotation of this rigid body
     /// </summary>
+    [RequireComponent(typeof(Rigidbody))]
     public class LimitRotation : MonoBehaviour
     {
-        // +- Range of rotations for each respective axis.
+        // +- Range of rotations for each respective axis
         [SerializeField] private Vector3 maxLocalRotation = Vector3.one * 360f;
 
-        private Rigidbody _rb;
+        private Transform _transform;
+        private Rigidbody _rigidbody;
 
         /// <summary>
-        /// Define the rigid body.
+        /// Define the rigid body
         /// </summary>
-        private void Start()
-        {
-            _rb = GetComponent<Rigidbody>();
+        private void Awake() {
+            _transform = transform;
+            _rigidbody = GetComponent<Rigidbody>();
         }
 
         /// <summary>
-        /// Clamp the rotation to be less than the desired maxLocalRotation.
+        /// Clamp the rotation to be less than the desired maxLocalRotation
         /// </summary>
-        private void FixedUpdate() // TODO: Don't do this on fixed update, would be more efficient AND perform better if it was just baked into torsional oscillator OR grab interaction whilst held
-        {
-            Quaternion clampedLocalRot = MathsUtilities.ClampRotation(transform.localRotation, maxLocalRotation);
-            _rb.MoveRotation(clampedLocalRot);
+        private void FixedUpdate() {
+            var clampedRotation = _transform.parent.rotation * MathsUtilities.ClampRotation(_transform.localRotation, maxLocalRotation);
+            _rigidbody.MoveRotation(clampedRotation);
         }
     }
 }

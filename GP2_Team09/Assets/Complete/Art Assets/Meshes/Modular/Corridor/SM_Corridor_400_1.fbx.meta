@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Base No rough
-    second: {fileID: 2100000, guid: c6a9d57c8acafdb48ae1b046ab0fa8ed, type: 2}
+    second: {fileID: 2100000, guid: f01570be4a324b940af60ae17945c677, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

@@ -1,44 +1,42 @@
 using SF = UnityEngine.SerializeField;
 using System.Collections.Generic;
-using GameProject.Oscillators;
 using GameProject.Grab;
 using UnityEngine;
 using GameProject.Updates;
 
 namespace GameProject.Interactions
 {
-    [RequireComponent(typeof(Rigidbody), typeof(Collider), typeof(TorsionalOscillator))]
-    public class GrabInteraction : BaseInteraction, IInteractable
+    [RequireComponent(typeof(Rigidbody), typeof(Collider))]
+    public abstract class GrabInteraction : BaseInteraction, IInteractable
     {
         [HideInInspector] public PlayerGrab PlayerGrab;
         
-        [Header("Interactable")]
-        [SF] private Sprite _hoverReticle = null;
-        [SF] private Sprite _actionReticle = null;
-        private Outline _outline;
         [Header("Managers")]
         [SF] private UpdateManager _update = null;
         [Header("Methods")]
         [Space, SF] private List<ActionInfo> _onChange = null;
+        [Header("Interaction")]
+        [SF] private Transform _interactionPlane;
 
+        protected InteractableType _interactableType;
+        
+        private Outline _outline;
         private bool _pressed;
 
 // PROPERTIES
 
-        public Sprite HoverReticle => _hoverReticle;
-        public Sprite ActionReticle => _actionReticle;
+        public InteractableType InteractableType => _interactableType;
         public Outline Outline => _outline;
+        public Transform InteractionPlane => _interactionPlane;
         public Rigidbody Rigidbody { get; private set; }
-        public TorsionalOscillator TorsionalOscillator { get; private set; }
-        
+
 // INITIALISATION
 
         /// <summary>
         /// Sets frequently used references
         /// </summary>
-        private void Awake() {
+        protected virtual void Awake() {
             Rigidbody = GetComponent<Rigidbody>();
-            TorsionalOscillator = GetComponent<TorsionalOscillator>();
             _outline = GetComponent<Outline>();
         }
         
@@ -70,7 +68,6 @@ namespace GameProject.Interactions
         private void Release() {
             PlayerGrab.Release();
         }
-
 
         /// <summary>
         /// Calls on change on update callback

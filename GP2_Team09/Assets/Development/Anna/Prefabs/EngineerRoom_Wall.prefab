@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2428032659813837185}
   - component: {fileID: 1593642339774965284}
   - component: {fileID: 3600968795035783918}
-  - component: {fileID: 710573013903374434}
+  - component: {fileID: 2238774028292478289}
   m_Layer: 0
   m_Name: EngineerRoom_Wall
   m_TagString: Untagged
@@ -26,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3096728845839004475}
-  m_LocalRotation: {x: -0.9076734, y: 0.24321029, z: 0.08852134, w: 0.33036605}
-  m_LocalPosition: {x: -2.049038, y: -0.42058766, z: -0.352915}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &1593642339774965284
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &710573013903374434
-MeshCollider:
+--- !u!65 &2238774028292478289
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6375708778553226300, guid: 320df5828a08be04a9c56d470d38560d, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.044999998, y: 0.0009448761, z: 0.025000006}
+  m_Center: {x: 0.022475213, y: -0.00015384138, z: 0.012469675}

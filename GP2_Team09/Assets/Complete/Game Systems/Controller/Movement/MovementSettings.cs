@@ -20,9 +20,12 @@ namespace GameProject.Movement
 
 
         [Header("Movement Settings")]
-        [SF, Tooltip("The player horizontal movement speed, in distance/s")]
-        private float _moveSpeed = 10f;
-        
+        [SF, Tooltip("The player horizontal movement speed, in units/s")]
+        private float _moveSpeed = 5f;
+
+        [SF, Tooltip("The player horizontal run speed, in units/s")]
+        private float _runSpeed = 8f;
+
         [Header("Crouch")]
         [SF, Tooltip("The transition applied to the height of the character controller and to the vertical position of the character controller when crouching, used as a multiplier to be applied to the default character controller height and as a distance respectively")]
         private AnimationCurve _crouchCurve;
@@ -59,6 +62,7 @@ namespace GameProject.Movement
         
         
         public float MoveSpeed => _moveSpeed;
+        public float RunSpeed  => _runSpeed;
         
         public AnimationCurve CrouchCurve => _crouchCurve;
         public AnimationCurve StandCurve => _standCurve;

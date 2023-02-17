@@ -17,5 +17,11 @@ namespace GameProject.Interactions {
         Changed, Reset,
         
         Compare, CheckResult,
+
+        Enable, Disable,
+
+        Lock, Unlock,
+
+        Play, Stop, Pause,
     }
 }

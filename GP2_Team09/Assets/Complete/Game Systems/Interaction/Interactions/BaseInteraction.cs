@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameProject.Interactions {
-    [RequireComponent(typeof(ObjectID))]
     public abstract class BaseInteraction : MonoBehaviour
     {
 // INTERACTION ACTIONS
@@ -10,6 +9,17 @@ namespace GameProject.Interactions {
         public virtual void Trigger(){
             Debug.LogError(new System.NotImplementedException(
                 $"{this.GetType().Name} does not implement Trigger action"
+            ));
+        }
+
+        public virtual void Enable(){
+            Debug.LogError(new System.NotImplementedException(
+                $"{this.GetType().Name} does not implement Enable action"
+            ));
+        }
+        public virtual void Disable(){
+            Debug.LogError(new System.NotImplementedException(
+                $"{this.GetType().Name} does not implement Disable action"
             ));
         }
 
@@ -56,6 +66,17 @@ namespace GameProject.Interactions {
                 $"{this.GetType().Name} does not implement Close action"
             ));
         }
+        
+        public virtual void Lock(){
+            Debug.LogError(new System.NotImplementedException(
+                $"{this.GetType().Name} does not implement Lock action"
+            ));
+        }
+        public virtual void Unlock(){
+            Debug.LogError(new System.NotImplementedException(
+                $"{this.GetType().Name} does not implement Unlock action"
+            ));
+        }
 
         public virtual void Show(){
             Debug.LogError(new System.NotImplementedException(
@@ -65,6 +86,22 @@ namespace GameProject.Interactions {
         public virtual void Hide(){
             Debug.LogError(new System.NotImplementedException(
                 $"{this.GetType().Name} does not implement Hide action"
+            ));
+        }
+
+        public virtual void Play(){
+            Debug.LogError(new System.NotImplementedException(
+                $"{this.GetType().Name} does not implement Play action"
+            ));
+        }
+        public virtual void Stop(){
+            Debug.LogError(new System.NotImplementedException(
+                $"{this.GetType().Name} does not implement Stop action"
+            ));
+        }
+        public virtual void Pause(){
+            Debug.LogError(new System.NotImplementedException(
+                $"{this.GetType().Name} does not implement Pause action"
             ));
         }
 
@@ -85,14 +122,19 @@ namespace GameProject.Interactions {
             ));
         }
         public virtual void Changed(bool value){
-            Debug.LogError(new System.NotImplementedException(
-                $"{this.GetType().Name} does not implement Changed Bool action"
-            ));
+            //Debug.LogError(new System.NotImplementedException(
+            //    $"{this.GetType().Name} does not implement Changed Bool action"
+            //));
         }
         public virtual void Changed(float value){
-            Debug.LogError(new System.NotImplementedException(
-                $"{this.GetType().Name} does not implement Changed Float action"
-            ));
+            //Debug.LogError(new System.NotImplementedException(
+            //    $"{this.GetType().Name} does not implement Changed Float action"
+            //));
+        }
+        public virtual void Changed(string value){
+            //Debug.LogError(new System.NotImplementedException(
+            //    $"{this.GetType().Name} does not implement Changed String action"
+            //));
         }
         public virtual void Changed(BaseInteraction sender, bool value){
             Debug.LogError(new System.NotImplementedException(
@@ -104,7 +146,12 @@ namespace GameProject.Interactions {
                 $"{this.GetType().Name} does not implement Changed Float action"
             ));
         }
-        
+        public virtual void Changed(BaseInteraction sender, Sprite value){
+            Debug.LogError(new System.NotImplementedException(
+                $"{this.GetType().Name} does not implement Changed Sprite action"
+            ));
+        }
+
         public virtual void CheckResult(){
             Debug.LogError(new System.NotImplementedException(
                 $"{this.GetType().Name} does not implement Finalise action"
@@ -128,6 +175,14 @@ namespace GameProject.Interactions {
                 switch (action.Action){
                     case InteractionType.Trigger:
                         action.Target.Trigger();
+                        break;
+
+                    case InteractionType.Enable:
+                        action.Target.Enable();
+                        break;
+
+                    case InteractionType.Disable:
+                        action.Target.Disable();
                         break;
 
                     case InteractionType.Begin:
@@ -162,12 +217,32 @@ namespace GameProject.Interactions {
                         action.Target.Close();
                         break;
 
+                    case InteractionType.Lock:
+                        action.Target.Lock();
+                        break;
+
+                    case InteractionType.Unlock:
+                        action.Target.Unlock();
+                        break;
+
                     case InteractionType.Show:
                         action.Target.Show();
                         break;
 
                     case InteractionType.Hide:
                         action.Target.Hide();
+                        break;
+
+                    case InteractionType.Play:
+                        action.Target.Play();
+                        break;
+
+                    case InteractionType.Stop:
+                        action.Target.Stop();
+                        break;
+
+                    case InteractionType.Pause:
+                        action.Target.Pause();
                         break;
 
                     case InteractionType.Win:
@@ -226,6 +301,21 @@ namespace GameProject.Interactions {
         /// <summary>
         /// Performs interactions from action list
         /// </summary>
+        protected void Interact(List<ActionInfo> list, string value){
+            for (int i = 0; i < list.Count; i++){
+                var action = list[i];
+
+                switch (action.Action){
+                    case InteractionType.Changed:
+                        action.Target.Changed(value);
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Performs interactions from action list
+        /// </summary>
         protected void Interact(List<ActionInfo> list, BaseInteraction sender, bool value){
             for (int i = 0; i < list.Count; i++){
                 var action = list[i];
@@ -242,6 +332,21 @@ namespace GameProject.Interactions {
         /// Performs interactions from action list
         /// </summary>
         protected void Interact(List<ActionInfo> list, BaseInteraction sender, float value){
+            for (int i = 0; i < list.Count; i++){
+                var action = list[i];
+
+                switch (action.Action){
+                    case InteractionType.Changed:
+                        action.Target.Changed(sender, value);
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Performs interactions from action list
+        /// </summary>
+        protected void Interact(List<ActionInfo> list, BaseInteraction sender, Sprite value){
             for (int i = 0; i < list.Count; i++){
                 var action = list[i];
 

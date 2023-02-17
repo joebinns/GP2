@@ -1,4 +1,3 @@
-using System;
 using SF = UnityEngine.SerializeField;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,8 +11,6 @@ namespace GameProject.HUD
         [Space]
         [SF] private Sprite _default;
         
-        // TODO: Call SetCursor whenever interactables are hovered, unhovered, pressed and released
-        
         public void SetReticle(Sprite sprite) {
             _reticle.sprite = sprite;
         }
@@ -21,13 +18,5 @@ namespace GameProject.HUD
         public void ResetReticle() {
             _reticle.sprite = _default;
         }
-    }
-    
-    public enum ReticleType
-    {
-        Default,
-        Pointer,
-        GrabOpen,
-        GrabClosed
     }
 }

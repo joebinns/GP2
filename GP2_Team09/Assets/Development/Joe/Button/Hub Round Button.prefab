@@ -29,9 +29,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8801554478911264892}
-  m_LocalRotation: {x: -0.6723381, y: -0.21900098, z: 0.21900105, w: 0.6723381}
-  m_LocalPosition: {x: -1.5363, y: 1.0382, z: -0.5368}
-  m_LocalScale: {x: 100, y: 100.00001, z: 100.00001}
+  m_LocalRotation: {x: -0.6723382, y: -0.21900089, z: 0.21900089, w: 0.6723382}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,7 +110,7 @@ Animator:
   m_GameObject: {fileID: 8801554478911264892}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2a2fe596276b55948ba60bf98125e2d5, type: 2}
+  m_Controller: {fileID: 9100000, guid: eb0569fa45efb204eba7aeb851d5a82f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -145,7 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9993d7f2d3f3c447aa93f49dbf1c7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hoverReticle: {fileID: 0}
-  _actionReticle: {fileID: 0}
-  _onPressed: []
+  _animator: {fileID: 8006908506133695461}
+  _onPressed:
+  - Target: {fileID: 0}
+    Action: 17
+  - Target: {fileID: 0}
+    Action: 17
   _onReleased: []

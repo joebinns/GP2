@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: _settings
       value: 
       objectReference: {fileID: 11400000, guid: a84519befde56774695cf23c5e6b6c7c, type: 2}
+    - target: {fileID: 4627725961192118205, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
+      propertyPath: _interactionSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: a84519befde56774695cf23c5e6b6c7c, type: 2}
     - target: {fileID: 5873773417839059984, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
       propertyPath: _settings
       value: 
@@ -74,6 +78,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6785539469645937663, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}
   m_PrefabInstance: {fileID: 363123593976217452}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3227104675346676470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6566537215078335635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2da3544c996f6846badbde3eab11d15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controller: {fileID: 6566537215078335646}
+  _characterController: {fileID: 8695755907918867516}
+  _settings: {fileID: 11400000, guid: 4d87708e956e6f640818f7d133e4cdef, type: 2}
+  _input: {fileID: 11400000, guid: 977019ccfc90d1049952bd8f77dc777c, type: 2}
 --- !u!114 &4590043678917638827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +124,7 @@ MonoBehaviour:
   _characterController: {fileID: 8695755907918867516}
   _settings: {fileID: 11400000, guid: 4d87708e956e6f640818f7d133e4cdef, type: 2}
   _input: {fileID: 11400000, guid: 977019ccfc90d1049952bd8f77dc777c, type: 2}
---- !u!114 &3227104675346676470
+--- !u!114 &1624423048247628971
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,13 +133,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6566537215078335635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2da3544c996f6846badbde3eab11d15, type: 3}
+  m_Script: {fileID: 11500000, guid: f9faa9d6cb18dfc488fcc38dace64d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controller: {fileID: 6566537215078335646}
-  _characterController: {fileID: 8695755907918867516}
-  _settings: {fileID: 11400000, guid: 4d87708e956e6f640818f7d133e4cdef, type: 2}
-  _input: {fileID: 11400000, guid: 977019ccfc90d1049952bd8f77dc777c, type: 2}
 --- !u!114 &6566537215078335646 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6785539469645937650, guid: 8ef967e70790b1640ac07e1d4711bb70, type: 3}

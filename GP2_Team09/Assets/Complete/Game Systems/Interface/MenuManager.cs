@@ -69,7 +69,7 @@ namespace GameProject.Interface
         /// </summary>
         public void ShowMenu(bool show){
             if (_uiMainMenu == null) return;
-            
+
             _uiMainMenu.enabled = show;
 
             if (!show){

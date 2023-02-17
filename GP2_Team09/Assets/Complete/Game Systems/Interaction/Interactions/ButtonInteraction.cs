@@ -4,25 +4,25 @@ using UnityEngine;
 
 namespace GameProject.Interactions
 {
-    [RequireComponent(typeof(Animator))]
     public class ButtonInteraction : BaseInteraction, IInteractable
     {
-        [Header("Interactable")]
-        [SF] private Sprite _hoverReticle = null;
-        [SF] private Sprite _actionReticle = null;
+        private InteractableType _interactableType;
         private Outline _outline;
+        
+        [Header("Interaction")]
+        [SF] private Animator _animator = null;
+        
         [Header("Methods")]
-        [Space, SF] private List<ActionInfo> _onPressed  = new();
-        [Space, SF] private List<ActionInfo> _onReleased = new();
-
-        private bool _pressed = false;
-        private Animator _animator = null;
+        [Space, SF] protected List<ActionInfo> _onPressed  = new();
+        [Space, SF] protected List<ActionInfo> _onReleased = new();
+        
+        protected bool _pressed = false;
+        
         private readonly int PRESSED_HASH = Animator.StringToHash("Pressed");
 
 // PROPERTIES
 
-        public Sprite HoverReticle => _hoverReticle;
-        public Sprite ActionReticle => _actionReticle;
+        public InteractableType InteractableType => _interactableType;
         public Outline Outline => _outline;
 
 // INITIALISATION
@@ -30,21 +30,32 @@ namespace GameProject.Interactions
         /// <summary>
         /// Initialises the button
         /// </summary>
-        private void Awake(){
-            _animator = GetComponent<Animator>();
+        protected virtual void Awake(){
+            _interactableType = InteractableType.Press;
+            _animator ??= GetComponent<Animator>();
             _outline = GetComponent<Outline>();
         }
 
+        /// <summary>
+        /// Dummy so the script can be disabled
+        /// </summary>
+        protected virtual void Start(){}
+
 // BUTTON HANDLING
+
+        public override void Enable()  => this.enabled = true;
+        public override void Disable() => this.enabled = false;
+
 
         /// <summary>
         /// Triggers button on player interaction
         /// </summary>
-        public void Perform(bool interacting){
-            _pressed = interacting;
+        public virtual void Perform(bool interacting){
+            if (!this.enabled) return;
 
+            _pressed = interacting;
             _animator.SetBool(PRESSED_HASH, _pressed);
-            
+
             if (_pressed) Interact(_onPressed);
             else Interact(_onReleased);
         }

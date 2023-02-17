@@ -1,4 +1,5 @@
 using SF = UnityEngine.SerializeField;
+using Random = System.Random;
 using System.Collections;
 using UnityEngine;
 using GameProject.Cameras;
@@ -18,6 +19,7 @@ namespace GameProject.Game
         [Space]
         [SF] private GameObject _engineerPrefab = null;
         [SF] private GameObject _crewPrefab     = null;
+        [SF] private ShipNames  _shipNames      = null;
         [Space]
         [SF] private CameraManager _camera = null;
         [SF] private InputManager  _input  = null;
@@ -26,7 +28,13 @@ namespace GameProject.Game
         [SF] private LevelManager  _level  = null;
         [SF] private MenuManager   _menu   = null;
 
+        private string _ship = string.Empty;
+        private Random _random = null;
+
 // PROPERTIES
+
+        public string ShipName => _ship;
+        public Random Random => _random;
         public GameObject Player { get; private set; } = null;
 
 // INITIALISATION
@@ -35,10 +43,8 @@ namespace GameProject.Game
         /// Initialises the game manager
         /// </summary>
         public void Initialise(GameObject player) {
-            Player = player;
-
-            var target = Player.GetComponentInChildren<CameraTarget>();
-            _camera.SetTarget(null, target.transform);
+            InitPlayer(player);
+            InitShipName();
 
             _menu?.ShowMenu(false);
         }
@@ -47,6 +53,59 @@ namespace GameProject.Game
         /// Deinitialise the game manager
         /// </summary>
         public void OnDestroy(){}
+
+
+        /// <summary>
+        /// Initialises the player and camera target
+        /// </summary>
+        private void InitPlayer(GameObject player){
+            Player = player;
+
+            var target = Player.GetComponentInChildren<CameraTarget>();
+            _camera.SetTarget(null, target.transform);
+        }
+
+        /// <summary>
+        /// Initialises the ship name
+        /// </summary>
+        private void InitShipName(){
+            if (_shipNames == null) return;
+
+            var random = new Random((int)Time.time);
+            var names  = _shipNames.Names;
+            var index  = random.Next(0, names.Length);
+
+            SetShipName(names[index]);
+        }
+
+// RANDOMISATION
+
+        /// <summary>
+        /// Assigns the ship name and initialises the randomisation
+        /// </summary>
+        public void SetShipName(string name){
+            if (InvalidShipName(name)) return;
+
+            _ship = name;
+            var chars = _ship.ToLower();
+            var key   = string.Empty;
+
+            for (int i = 0; i < chars.Length; i++)
+                key = string.Concat(key, (int)chars[i]);
+
+            if (int.TryParse(key, out var seed))
+                _random = new Random(seed);
+        }
+
+        /// <summary>
+        /// Returns if the ship name is valid or not
+        /// </summary>
+        private bool InvalidShipName(string name){
+            if (!string.IsNullOrEmpty(name)) return false;
+
+            Debug.LogError($"The name, {name}, is not a valid ship name");
+            return true;
+        }
 
 // STATE HANDLING
 

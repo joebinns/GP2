@@ -119,6 +119,15 @@ namespace GameProject
             var parameter = Vector3.Dot(plane.direction, plane.origin - line.origin) / Vector3.Dot(plane.direction, line.direction);
             return line.origin + line.direction * parameter;
         }
+
+        /// <summary>
+        /// Get the closest point on a line to a point
+        /// </summary>
+        public static Vector3 GetClosestPoint(Ray line, Vector3 point) {
+            var parameter = Vector3.Dot(line.direction, point - line.origin) / Vector3.Dot(line.direction, line.direction);
+            return line.origin + line.direction * parameter;
+        }
+        
         
     }
 }

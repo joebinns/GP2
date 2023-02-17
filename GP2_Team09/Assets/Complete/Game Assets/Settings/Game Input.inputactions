@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "name": "Look",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "70076c9a-d3c2-4884-a4e8-cd15332c17c2",
                     "expectedControlType": "Axis",
                     "processors": "",
@@ -16,7 +16,7 @@
                 },
                 {
                     "name": "Turn",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "f13d4a4e-e04d-4489-bfae-79ff39452f26",
                     "expectedControlType": "Axis",
                     "processors": "",
@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Run",
+                    "type": "Button",
+                    "id": "92def729-dc15-4a7c-bfe0-1dca2c12c6a3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -66,9 +75,9 @@
                 {
                     "name": "",
                     "id": "6d023110-e835-455b-b400-dd72b04ba8f3",
-                    "path": "<Gamepad>/leftStick/y",
+                    "path": "<Gamepad>/rightStick/y",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Scale(factor=4)",
                     "groups": "Console",
                     "action": "Look",
                     "isComposite": false,
@@ -132,7 +141,7 @@
                 {
                     "name": "",
                     "id": "4bf4f1a5-5e38-4015-9532-6bb4140e279e",
-                    "path": "<Gamepad>/rightStick",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "Console",
@@ -198,11 +207,33 @@
                 {
                     "name": "",
                     "id": "711e886c-47ec-45c1-9e86-d19ebaa4c01f",
-                    "path": "<Gamepad>/dpad/x",
+                    "path": "<Gamepad>/rightStick/x",
+                    "interactions": "",
+                    "processors": "Scale(factor=4)",
+                    "groups": "Console",
+                    "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b73dee37-1c83-40bf-8f2e-b4f5fa24e72a",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Desktop",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3bfceb55-a0fa-4fc8-a51c-057a9ab7db2d",
+                    "path": "<Gamepad>/leftStickPress",
                     "interactions": "",
                     "processors": "",
                     "groups": "Console",
-                    "action": "Turn",
+                    "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -244,7 +275,7 @@
                 {
                     "name": "",
                     "id": "ed850724-aa1b-4ecd-b46b-42ff4cb2012b",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Desktop",

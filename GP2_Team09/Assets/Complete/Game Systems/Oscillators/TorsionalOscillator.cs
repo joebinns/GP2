@@ -13,7 +13,7 @@ namespace GameProject.Oscillators
     public class TorsionalOscillator : MonoBehaviour
     {
         [Tooltip("The local rotation about which oscillations are centered.")]
-        public Vector3 LocalEquilibriumRotation = Vector3.zero;
+        private Vector3 _localEquilibriumRotation = Vector3.zero;
         [Tooltip("The center about which rotations should occur.")] 
         [SerializeField] private Vector3 _localPivotPosition = Vector3.zero;
         [Tooltip("The world axes over which the oscillator applies torque. Within range [0, 1].")] 
@@ -23,7 +23,10 @@ namespace GameProject.Oscillators
         [Tooltip("The greater the damper constant, the faster that oscillations will disappear.")] 
         [SerializeField] private float _damper = 50f;
 
-        public Vector3 TorqueScale => _torqueScale;
+        public Vector3 LocalEquilibriumRotation {
+            get => _localEquilibriumRotation;
+            set => _localEquilibriumRotation = value;
+        }
 
         private Rigidbody _rb;
         private float _angularDisplacementMagnitude;

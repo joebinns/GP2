@@ -147,5 +147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hoverReticle: {fileID: 21300000, guid: ef57afa8d32b6b046bd8d989d8cbc65d, type: 3}
   _actionReticle: {fileID: 21300000, guid: ef57afa8d32b6b046bd8d989d8cbc65d, type: 3}
+  _animator: {fileID: 305882605531992311}
   _onPressed: []
   _onReleased: []

@@ -1,6 +1,7 @@
 using SF = UnityEngine.SerializeField;
 using UnityEngine;
 using GameProject.Inputs;
+using GameProject.Interactions;
 using GameProject.Interface;
 
 namespace GameProject.HUD
@@ -14,7 +15,7 @@ namespace GameProject.HUD
         private EngineerHUDController _engineer;
         private CrewHUDController _crew;
         private HUDController _current = null;
-
+        
         public EngineerHUDController Engineer => _engineer;
         public CrewHUDController Crew => _crew;
 
@@ -71,11 +72,11 @@ namespace GameProject.HUD
         }
 
         /// <summary>
-        /// Calls switch reticle on the appropriate HUD controller
+        /// Calls switch prompt on the appropriate HUD controller
         /// </summary>
-        public void SwitchReticle(Sprite reticle) {
-            if (_crew) _crew.SwitchReticle(reticle);
-            else _engineer.SwitchReticle(reticle);
+        public void SwitchInteractable(InteractableType type, InteractableMode mode) {
+            if (_crew) _crew.SwitchInteractable(type, mode);
+            else _engineer.SwitchInteractable(type, mode);
         }
     }
 }

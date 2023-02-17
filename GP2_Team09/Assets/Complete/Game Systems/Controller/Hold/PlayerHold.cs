@@ -10,9 +10,10 @@ namespace GameProject.Hold
         [SF] private InteractionSettings _settings = null;
         [Space]
         [SF] private Transform _holdPivot;
-        public Transform HoldPivot => _holdPivot;
         
         private HoldInteraction _holding;
+        
+        public Transform HoldPivot => _holdPivot;
         private bool IsHolding => _holding != null;
 
 // INITIALISATION
@@ -46,8 +47,9 @@ namespace GameProject.Hold
         /// </summary>
         private void FixedUpdate() {
             if (!IsHolding) return;
-            _holding.Oscillator.LocalEquilibriumPosition = HoldPivot.position;
-            _holding.TorsionalOscillator.LocalEquilibriumRotation = HoldPivot.rotation.eulerAngles;
+            var holdingParent = _holding.transform.parent;
+            _holding.Oscillator.LocalEquilibriumPosition = holdingParent.InverseTransformPoint(HoldPivot.position);
+            _holding.TorsionalOscillator.LocalEquilibriumRotation = holdingParent.rotation * HoldPivot.rotation.eulerAngles;
         }
 
         /// <summary>
