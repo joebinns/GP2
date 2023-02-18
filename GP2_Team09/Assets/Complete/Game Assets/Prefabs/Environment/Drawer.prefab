@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1747610944685206182}
   - component: {fileID: 1747610944685206234}
   - component: {fileID: 1747610944685206181}
-  - component: {fileID: 1747610944685206232}
+  - component: {fileID: 7669424656868321589}
   m_Layer: 6
   m_Name: Interactable
   m_TagString: Untagged
@@ -150,10 +150,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerGrab: {fileID: 0}
-  _interactionPlane: {fileID: 1747610945349397905}
   _update: {fileID: 11400000, guid: 9b090228707952e448427620a3dcfa31, type: 2}
   _onChange: []
---- !u!114 &1747610944685206232
+  _interactionPlane: {fileID: 1747610945349397905}
+  _altInteractionPlane: {fileID: 0}
+--- !u!114 &7669424656868321589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,15 +163,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1747610944685206179}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Script: {fileID: 11500000, guid: 006be2298765f9946887d76fe31e1aa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 3
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 6
+  outlineWidth: 12
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+  _range: 6
+  _rate: 4
 --- !u!1 &1747610945349397906
 GameObject:
   m_ObjectHideFlags: 0
