@@ -58,8 +58,8 @@ public class Outline : MonoBehaviour {
   [SerializeField]
   private Color outlineColor = Color.white;
 
-  [SerializeField, Range(0f, 10f)]
-  private float outlineWidth = 6f;
+  [SerializeField, Range(0f, 20f)]
+  protected float outlineWidth = 9f;
 
   [Header("Optional")]
 
@@ -79,7 +79,7 @@ public class Outline : MonoBehaviour {
 
   private bool needsUpdate;
 
-  void Awake() {
+  protected virtual void Awake() {
 
     // Cache renderers
     renderers = GetComponentsInChildren<Renderer>();
@@ -128,7 +128,7 @@ public class Outline : MonoBehaviour {
     }
   }
 
-  void Update() {
+  protected virtual void Update() {
     if (needsUpdate) {
       needsUpdate = false;
 

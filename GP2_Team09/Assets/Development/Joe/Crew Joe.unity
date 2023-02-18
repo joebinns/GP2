@@ -320,7 +320,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Valve (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5906880475027489462, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
 --- !u!4 &250843769 stripped
 Transform:
@@ -407,6 +408,31 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6566537215078335647, guid: cd3bbc81c1e65614fa3349de1c772489, type: 3}
   m_PrefabInstance: {fileID: 401986137}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &486204312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8527569769445773814, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
+  m_PrefabInstance: {fileID: 250843768}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &486204321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486204312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 006be2298765f9946887d76fe31e1aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 9
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+  _range: 4
+  _rate: 3
 --- !u!4 &524735851 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6566537215291207099, guid: cd3bbc81c1e65614fa3349de1c772489, type: 3}
@@ -448,6 +474,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6566537215078335635, guid: cd3bbc81c1e65614fa3349de1c772489, type: 3}
   m_PrefabInstance: {fileID: 401986137}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &784454838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8464084955079775497, guid: 1917872d124a9264baa76a13c44ab482, type: 3}
+  m_PrefabInstance: {fileID: 1771147076}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &796492953
 PrefabInstance:
@@ -578,6 +609,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8464084955079775492, guid: 1917872d124a9264baa76a13c44ab482, type: 3}
   m_PrefabInstance: {fileID: 1771147076}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1064055977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784454838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 006be2298765f9946887d76fe31e1aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 12
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+  _range: 6
+  _rate: 3
 --- !u!114 &1231779350 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6091618986710932348, guid: cd3bbc81c1e65614fa3349de1c772489, type: 3}
@@ -985,7 +1036,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Holdable Cube
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 745461920925169308, guid: 1917872d124a9264baa76a13c44ab482, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1917872d124a9264baa76a13c44ab482, type: 3}
 --- !u!1 &1784275661
 GameObject:
