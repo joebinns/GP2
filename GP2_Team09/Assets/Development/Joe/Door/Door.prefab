@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3200072479378874948}
   - component: {fileID: 3200072479378874951}
   - component: {fileID: 2250895559335403985}
+  - component: {fileID: 6356628695831740234}
   m_Layer: 6
   m_Name: Interactable
   m_TagString: Untagged
@@ -129,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1386ff400d48040832677588e508e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LocalEquilibriumRotation: {x: 0, y: 0, z: 0}
   _localPivotPosition: {x: -0.5, y: 0, z: 0}
   _torqueScale: {x: 0, y: 1, z: 0}
   _stiffness: 400
@@ -163,7 +163,29 @@ MonoBehaviour:
   _update: {fileID: 11400000, guid: 9b090228707952e448427620a3dcfa31, type: 2}
   _onChange: []
   _interactionPlane: {fileID: 349844808016207646}
-  _interactionSphere: {fileID: 9185066913657350985}
+  _useLimits: 0
+  _minAngle: -180
+  _maxAngle: 180
+--- !u!114 &6356628695831740234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3200072479378874958}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 006be2298765f9946887d76fe31e1aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 12
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+  _range: 6
+  _rate: 3
 --- !u!1 &3200072480470313231
 GameObject:
   m_ObjectHideFlags: 0

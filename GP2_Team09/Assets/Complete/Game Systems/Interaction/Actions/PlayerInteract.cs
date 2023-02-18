@@ -111,12 +111,15 @@ namespace GameProject.Interactions
         private void OnUseInput(){
             _pressed = !_pressed;
 
-            if (!_pressed || _triggered.Count > 0)
-                 ClearSelected();
-
+            if (!_pressed || _triggered.Count > 0) {
+                if (_triggered != null && _triggered.Count > 0)
+                    _hudManager.SwitchInteractable(_triggered[0].InteractableType, InteractableMode.Hover);
+                ClearSelected();
+            }
             else if (_pressed){
                 GetSelected();
-                SwitchInteractable();
+                if (_triggered != null && _triggered.Count > 0)
+                    _hudManager.SwitchInteractable(_triggered[0].InteractableType, InteractableMode.Action);
             }
         }
 
@@ -144,7 +147,6 @@ namespace GameProject.Interactions
 
         private void SwitchInteractable() {
             if (_triggered == null || _triggered.Count == 0) return;
-
             _hudManager.SwitchInteractable(_triggered[0].InteractableType, InteractableMode.Action);
         }
 
