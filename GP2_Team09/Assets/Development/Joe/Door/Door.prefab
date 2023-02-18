@@ -185,7 +185,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   _range: 6
-  _rate: 3
+  _rate: 4
 --- !u!1 &3200072480470313231
 GameObject:
   m_ObjectHideFlags: 0

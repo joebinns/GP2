@@ -6,7 +6,7 @@ namespace GameProject.Outlines
     public class OscillatingOutline : Outline {
         [Header("Width Oscillations")]
         [SF] private float _range = 4f;
-        [SF] private float _rate = 3f;
+        [SF] private float _rate = 4f;
 
         private float _initialWidth;
 
