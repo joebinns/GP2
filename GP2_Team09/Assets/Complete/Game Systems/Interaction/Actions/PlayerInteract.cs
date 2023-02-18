@@ -49,19 +49,42 @@ namespace GameProject.Interactions
         /// </summary>
         public void Update() {
             if (_triggered.Count > 0) return;
-            _actions = GetActions();
+            var actions = GetActions();
+            UpdateInteractable(actions);
+            _actions = actions;
+        }
 
-            if (_actions != null && _actions.Count > 0) {
-                _hudManager.SwitchInteractable(_actions[0].InteractableType, InteractableMode.Hover);
-                Outline(null);
-                Outline(_actions[0]);
+        private void UpdateInteractable(List<IInteractable> actions) {
+            // Get current and previous action
+            IInteractable action = null;
+            if (actions != null && actions.Count > 0) {
+                action = actions[0];
             }
-
-            else {
-                _hudManager.SwitchInteractable(InteractableType.None, InteractableMode.None);
-                Outline(null);
+            IInteractable prevAction = null;
+            if (_actions != null && _actions.Count > 0) {
+                prevAction = _actions[0];
+            }
+            
+            // When action changes...
+            if (action != prevAction) {
+                // Remove outline of previous action
+                if (prevAction != null) {
+                    Outline(null);
+                }
+                
+                // If a new action has been hovered, switch HUD to hover mode and outline the new action
+                if (action != null) {
+                    _hudManager.SwitchInteractable(action.InteractableType, InteractableMode.Hover);
+                    Outline(action);
+                }
+                // If there is no new action hovered, switch HUD to default mode and remove any outline
+                else {
+                    _hudManager.SwitchInteractable(InteractableType.None, InteractableMode.None);
+                    Outline(null);
+                }
             }
         }
+
 
         /// <summary>
         /// Enable outline on a relevant interactable or disable on a previously relevant interactable
