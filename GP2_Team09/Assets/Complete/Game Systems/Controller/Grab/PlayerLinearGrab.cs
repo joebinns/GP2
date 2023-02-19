@@ -54,6 +54,7 @@ namespace GameProject.Grab
         /// </summary>
         private (float, bool) GetGrabValue() {
             var grabbing = (LinearGrabInteraction)_grabbing;
+            
             var plane = grabbing.InteractionPlane;
             var altPlane = grabbing.AltInteractionPlane;
 
@@ -63,10 +64,10 @@ namespace GameProject.Grab
             var dotSecondary = Mathf.Abs(Vector3.Dot(_cameraTarget.forward, altPlane.forward));
 
             var primaryGrabPos = ProjectedGrabPosition(plane);
-            if (primaryGrabPos.Item2 < 0f) dotPrimary = 0f;
+            if (primaryGrabPos.Item2) dotPrimary = 0f;
             
             var secondaryGrabPos = ProjectedGrabPosition(altPlane);
-            if (secondaryGrabPos.Item2 < 0f) dotSecondary = 0f;
+            if (secondaryGrabPos.Item2) dotSecondary = 0f;
             
             _primaryGrabPos = primaryGrabPos.Item1;
             _secondaryGrabPos = secondaryGrabPos.Item1;
@@ -83,7 +84,7 @@ namespace GameProject.Grab
             return (projectedGrabPosition.z, isDivisionByZero);
         }
 
-        private (Vector3, float) ProjectedGrabPosition(Transform plane) => MathsUtilities.GetIntersection(new Ray(_cameraTarget.position, _cameraTarget.forward),
+        private (Vector3, bool) ProjectedGrabPosition(Transform plane) => MathsUtilities.GetIntersection(new Ray(_cameraTarget.position, _cameraTarget.forward),
             new Ray(plane.TransformPoint(Vector3.zero), plane.forward)); 
         
         /// <summary>
