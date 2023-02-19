@@ -54,11 +54,7 @@ namespace GameProject.Grab
 
             float deltaAngle = angle - _angle;
 
-            //Debug.Log("_angle " + _angle);
-            //Debug.Log("angle " + angle);
-            //Debug.Log(deltaAngle);
-
-            if (Mathf.Abs(deltaAngle) > 180f)
+            if (Mathf.Abs(deltaAngle) > 180f) // Undo the angle's clamp
                 deltaAngle = Mathf.Sign(deltaAngle) * (360f - Mathf.Abs(deltaAngle));
 
             TorsionalGrabInteraction.AdjustEquilibrium(- _grabbing.transform.InverseTransformDirection(TorsionalGrabInteraction.RotationAxis.forward) * deltaAngle);
