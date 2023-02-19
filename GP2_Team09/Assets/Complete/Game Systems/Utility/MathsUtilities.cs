@@ -115,10 +115,10 @@ namespace GameProject
         /// <summary>
         /// Get the intersection between a line and a plane (only works if the line and plane are not parallel)
         /// </summary>
-        /// <returns>The intersection point and whether or not the intersection is forward</returns>
-        public static (Vector3, bool) GetIntersection(Ray line, Ray plane) {
+        /// <returns>The intersection point</returns>
+        public static Vector3 GetIntersection(Ray line, Ray plane) {
             var parameter = Vector3.Dot(plane.direction, plane.origin - line.origin) / Vector3.Dot(plane.direction, line.direction);
-            return (line.origin + line.direction * parameter, parameter >= 0f);
+            return line.origin + line.direction * parameter;
         }
 
         /// <summary>

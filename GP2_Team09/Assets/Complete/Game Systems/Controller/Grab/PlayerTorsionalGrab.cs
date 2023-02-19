@@ -95,18 +95,18 @@ namespace GameProject.Grab
         /// Intersects the line of sight into the plane represented by the normal of the grabbed objects parent, from which the angle from to the pivot is determined
         /// </summary>
         private float GetAngle() {
-            var plane = ((TorsionalGrabInteraction)_grabbing).RotationAxis;
+            var axis = ((TorsionalGrabInteraction)_grabbing).RotationAxis;
             var ray = new Ray(_cameraTarget.position, _cameraTarget.forward);
-            var perpendicularPlane = new Ray(plane.position, - _cameraTarget.forward);
+            var perpendicularPlane = new Ray(axis.position, - _cameraTarget.forward);
             var grabPosition = Vector3.zero;
             var angle = 0f;
             
-            if (Physics.Raycast(ray, out var hitInfo, (ray.origin - plane.position).magnitude, LayerMask.GetMask("Interaction")))
+            if (Physics.Raycast(ray, out var hitInfo, (ray.origin - axis.position).magnitude, LayerMask.GetMask("Interaction")))
                 grabPosition = hitInfo.point;
             else
-                grabPosition = MathsUtilities.GetIntersection(ray, perpendicularPlane).Item1; //MathsUtilities.GetClosestPoint(ray, plane.position);
+                grabPosition = MathsUtilities.GetIntersection(ray, perpendicularPlane); //MathsUtilities.GetClosestPoint(ray, plane.position);
             
-            grabPosition = plane.InverseTransformPoint(grabPosition);
+            grabPosition = axis.InverseTransformPoint(grabPosition);
             angle = Mathf.Atan2(grabPosition.x, grabPosition.y) * Mathf.Rad2Deg;
             return angle;
         }

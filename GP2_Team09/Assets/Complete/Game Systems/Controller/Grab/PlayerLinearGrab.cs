@@ -8,12 +8,11 @@ namespace GameProject.Grab
     {
         
         private float _initialValue;
-        private Vector3 _primaryGrabPos;
-        private Vector3 _secondaryGrabPos;
         
 // PROPERTIES
 
-        private bool IsGrabbingLinear => _grabbing as LinearGrabInteraction != null;
+        private LinearGrabInteraction LinearGrabInteraction => _grabbing as LinearGrabInteraction;
+        private bool IsGrabbingLinear => LinearGrabInteraction != null;
 
 
 // INITIALISATION
@@ -35,7 +34,7 @@ namespace GameProject.Grab
         public override void Grab(GrabInteraction toGrab) {
             base.Grab(toGrab);
             if (!IsGrabbingLinear) return;
-            _initialValue = GetGrabValue().Item1 - ((LinearGrabInteraction)_grabbing).Oscillator.LocalEquilibriumPosition.z;
+            _initialValue = GetGrabValue() - LinearGrabInteraction.Oscillator.LocalEquilibriumPosition.z;
         }
         
         /// <summary>
@@ -44,48 +43,29 @@ namespace GameProject.Grab
         private void Update() {
             if (!IsGrabbing) return;
             if (!IsGrabbingLinear) return;
-            var grabValue = GetGrabValue();
-            if (grabValue.Item2 == false)
-                ((LinearGrabInteraction)_grabbing).Oscillator.LocalEquilibriumPosition = Vector3.forward * (grabValue.Item1 - _initialValue);
+            LinearGrabInteraction.Oscillator.LocalEquilibriumPosition = Vector3.forward * (GetGrabValue() - _initialValue);
+        }
+
+        /// <summary>
+        /// Intersects the line of sight into a perpendicular plane positioned at the movement axis
+        /// </summary>
+        /// <param name="axis">The axis of movement, represented by the forward vector</param>
+        /// <returns>The grab position in world space</returns>
+        private Vector3 GetGrabPosition(Transform axis) {
+            var ray = new Ray(_cameraTarget.position, _cameraTarget.forward);
+            var perpendicularPlane = new Ray(axis.position, - _cameraTarget.forward);
+            return MathsUtilities.GetIntersection(ray, perpendicularPlane);
         }
         
         /// <summary>
-        /// Intersects the line of sight into the plane represented by the normal of the grabbed objects parent
+        /// Gets the local grab position along the forward axis
         /// </summary>
-        private (float, bool) GetGrabValue() {
-            var grabbing = (LinearGrabInteraction)_grabbing;
-            
-            var plane = grabbing.InteractionPlane;
-            var altPlane = grabbing.AltInteractionPlane;
-
-            Vector3 projectedGrabPosition = Vector3.zero;
-
-            var dotPrimary = Mathf.Abs(Vector3.Dot(_cameraTarget.forward, plane.forward));
-            var dotSecondary = Mathf.Abs(Vector3.Dot(_cameraTarget.forward, altPlane.forward));
-
-            var primaryGrabPos = ProjectedGrabPosition(plane);
-            if (primaryGrabPos.Item2) dotPrimary = 0f;
-            
-            var secondaryGrabPos = ProjectedGrabPosition(altPlane);
-            if (secondaryGrabPos.Item2) dotSecondary = 0f;
-            
-            _primaryGrabPos = primaryGrabPos.Item1;
-            _secondaryGrabPos = secondaryGrabPos.Item1;
-
-            var isDivisionByZero = dotPrimary == 0f && dotSecondary == 0f;
-            
-            if (!isDivisionByZero) {
-                projectedGrabPosition = (_primaryGrabPos * dotPrimary + _secondaryGrabPos * dotSecondary)
-                                        / (dotPrimary + dotSecondary);
-            
-                projectedGrabPosition = _grabbing.transform.parent.InverseTransformPoint(projectedGrabPosition);
-            }
-
-            return (projectedGrabPosition.z, isDivisionByZero);
+        private float GetGrabValue() {
+            var axis = LinearGrabInteraction.MovementAxis;
+            var grabPosition = GetGrabPosition(axis);
+            grabPosition = axis.InverseTransformPoint(grabPosition);
+            return (grabPosition.z);
         }
-
-        private (Vector3, bool) ProjectedGrabPosition(Transform plane) => MathsUtilities.GetIntersection(new Ray(_cameraTarget.position, _cameraTarget.forward),
-            new Ray(plane.TransformPoint(Vector3.zero), plane.forward)); 
         
         /// <summary>
         /// Release any held object
@@ -97,11 +77,10 @@ namespace GameProject.Grab
         /// <summary>
         /// Draw a line indicating the grab positions projection on the plane
         /// </summary>
-        protected virtual void OnDrawGizmos() {
+        private void OnDrawGizmos() {
             if (!IsGrabbing) return;
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(_primaryGrabPos, 0.2f);
-            Gizmos.DrawWireSphere(_secondaryGrabPos, 0.15f);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(GetGrabPosition(LinearGrabInteraction.MovementAxis), 0.1f);
         }
     }
 }

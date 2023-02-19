@@ -7,15 +7,13 @@ namespace GameProject.Interactions
     [RequireComponent(typeof(Oscillator))]
     public class LinearGrabInteraction : GrabInteraction
     {
-        [Header("Interaction")]
-        [SF] private Transform _interactionPlane;
-        [SF] private Transform _altInteractionPlane;
+        [Header("Movement")]
+        [SF] private Transform _movementAxis;
 
 // PROPERTIES
 
         public Oscillator Oscillator { get; private set; }
-        public Transform InteractionPlane => _interactionPlane;
-        public Transform AltInteractionPlane => _altInteractionPlane;
+        public Transform MovementAxis => _movementAxis;
 
 // INITIALISATION
 

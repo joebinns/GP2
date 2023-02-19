@@ -7,7 +7,7 @@ namespace GameProject.Interactions
     [RequireComponent(typeof(TorsionalOscillator))]
     public class TorsionalGrabInteraction : GrabInteraction
     {
-        [Header("Interaction")]
+        [Header("Rotation")]
         [SF] private Transform _rotationAxis;
         
         [Header("Limits")]
