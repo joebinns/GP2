@@ -44,28 +44,28 @@ namespace GameProject.Grab
         private void Update() {
             if (!IsGrabbing) return;
             if (!IsGrabbingTorsional) return;
+            var deltaAngle = UpdateAngle();
+            TorsionalGrabInteraction.AdjustEquilibrium(- _grabbing.transform.InverseTransformDirection(TorsionalGrabInteraction.RotationAxis.forward) * deltaAngle);
+        }
 
-            var angle = ClockfaceRepresentation(GetAngle());
-
-            if (_angle < 0f)
-                angle = -Mathf.Abs(angle);
-            else
-                angle = Mathf.Abs(angle);
-
-            float deltaAngle = angle - _angle;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Delta angle, without clamping</returns>
+        private float UpdateAngle() {
+            var angle = AngleRepresentation(GetAngle());
+            angle = _angle < 0f ? -Mathf.Abs(angle) : Mathf.Abs(angle);
+            var deltaAngle = angle - _angle;
             if (Mathf.Abs(deltaAngle) > 180f) // Undo the angle's clamp
                 deltaAngle = Mathf.Sign(deltaAngle) * (360f - Mathf.Abs(deltaAngle));
-
-            TorsionalGrabInteraction.AdjustEquilibrium(- _grabbing.transform.InverseTransformDirection(TorsionalGrabInteraction.RotationAxis.forward) * deltaAngle);
-            
             _angle = angle;
+            return deltaAngle;
         }
         
         /// <summary>
         /// Returns the proper rotation
         /// </summary>
-        private float ClockfaceRepresentation(float unityRepresentation) => unityRepresentation < 0f ? 360f + unityRepresentation : unityRepresentation;
+        private float AngleRepresentation(float unityRepresentation) => unityRepresentation < 0f ? 360f + unityRepresentation : unityRepresentation;
 
         /// <summary>
         /// Intersects the line of sight into the plane represented by the normal of the grabbed objects parent, from which the angle from to the pivot is determined

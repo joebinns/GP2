@@ -17,7 +17,20 @@ namespace GameProject
             if (Quaternion.Dot(a, b) < 0) {
                 return a * Quaternion.Inverse(Multiply(b, -1));
             }
-            else return a * Quaternion.Inverse(b);
+            return a * Quaternion.Inverse(b);
+        }
+        
+        /// <summary>
+        /// Calculates the longest rotation between two Quaternions.
+        /// </summary>
+        /// <param name="a">The first Quaternion, from which the rotation is to be calculated.</param>
+        /// <param name="b">The second Quaternion, for which the rotation is the goal.</param>
+        /// <returns>The longest rotation from a to b.</returns>
+        public static Quaternion LongestRotation(Quaternion a, Quaternion b) {
+            if (Quaternion.Dot(a, b) > 0) {
+                return a * Quaternion.Inverse(Multiply(b, -1));
+            }
+            return a * Quaternion.Inverse(b);
         }
 
         /// <summary>

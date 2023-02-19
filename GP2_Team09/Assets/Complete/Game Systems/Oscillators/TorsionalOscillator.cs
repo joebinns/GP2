@@ -59,15 +59,18 @@ namespace GameProject.Oscillators
         private Vector3 CalculateRestoringTorque() {
             var parent = transform.parent;
             var equilibriumRotation = Quaternion.Euler(LocalEquilibriumRotation);
-            if (parent != null) {
-                equilibriumRotation = parent.rotation * equilibriumRotation ;
-            }
-            // TODO: Select deltaRotation based on whether or not the shortest or longest rotation matches the angular velocity (?)
-            Quaternion deltaRotation = 
-                MathsUtilities.ShortestRotation(transform.rotation, equilibriumRotation);
+            if (parent != null)
+                equilibriumRotation = parent.rotation * equilibriumRotation;
+            // TODO: Check transform.rotation is being read correctly (> 360f) ==> it ain't
+            //Debug.Log("equi:" + equilibriumRotation.eulerAngles);
+            //Debug.Log("curr:" + transform.rotation.eulerAngles);
+            // TODO: Store current rotation as an unclamped Vector3
+            // TODO: Let angularDisplacement = equilibriumRotation - currentRotation
+
+            var deltaRotation = transform.rotation * Quaternion.Inverse(equilibriumRotation); //MathsUtilities.ShortestRotation(transform.rotation, equilibriumRotation);
             deltaRotation.ToAngleAxis(out _angularDisplacementMagnitude, out _rotAxis);
-            Vector3 angularDisplacement = _angularDisplacementMagnitude * Mathf.Deg2Rad * _rotAxis.normalized;
-            Vector3 torque = AngularHookesLaw(angularDisplacement, _rb.angularVelocity);
+            var angularDisplacement = _angularDisplacementMagnitude * Mathf.Deg2Rad * _rotAxis.normalized;
+            var torque = AngularHookesLaw(angularDisplacement, _rb.angularVelocity);
             return (torque);
         }
 

@@ -47,7 +47,7 @@ namespace GameProject.Interactions
             _rotation += deltaAngle;
             TorsionalOscillator.LocalEquilibriumRotation = _rotation;
 
-            Debug.Log(_rotation);
+            //Debug.Log(_rotation);
         }
     }
 }
