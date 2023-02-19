@@ -132,7 +132,7 @@ MonoBehaviour:
   _localPivotPosition: {x: -0.5, y: 0, z: 0}
   _torqueScale: {x: 0, y: 1, z: 0}
   _stiffness: 2000
-  _damper: 100
+  _damper: 125
   _rotationMethod: 0
 --- !u!114 &2250895559335403985
 MonoBehaviour:

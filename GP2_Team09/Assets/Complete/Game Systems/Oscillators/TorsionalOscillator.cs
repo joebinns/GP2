@@ -89,7 +89,7 @@ namespace GameProject.Oscillators
                     break;
             }
 
-            if (parent != null) // Convert local angular displacement from to world space
+            if (parent != null) // Convert local angular displacement to world space
                 angularDisplacement = parent.rotation * angularDisplacement;
             var torque = AngularHookesLaw(angularDisplacement, _rb.angularVelocity);
             return (torque);
@@ -116,6 +116,7 @@ namespace GameProject.Oscillators
             _rb.AddTorque(Vector3.Scale(torque, _torqueScale));
         }
 
+        // TODO: Update Gizmos to support euler angles method
         /// <summary>
         /// Draws the pivot of rotation (wire sphere), the oscillator bob (sphere) and the equilibirum (wire sphere).
         /// </summary>
