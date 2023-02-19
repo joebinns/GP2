@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SocialPlatforms;
 
 namespace GameProject.Oscillators
 {
@@ -40,26 +41,24 @@ namespace GameProject.Oscillators
         private Rigidbody _rb;
         private float _angularDisplacementMagnitude;
         private Vector3 _rotAxis;
-
-        /// <summary>
-        /// Get the rigidbody component.
-        /// </summary>
-        private void Start() {
-            _rb = GetComponent<Rigidbody>();
-            _rb.centerOfMass = _localPivotPosition;
-        }
-
         private Vector3 _angle;
         private Vector3 _rotation;
         
+        /// <summary>
+        /// Get the rigidbody component.
+        /// </summary>
+        private void Awake() {
+            _rb = GetComponent<Rigidbody>();
+            _rb.centerOfMass = _localPivotPosition;
+            _angle = transform.rotation.eulerAngles;
+        }
+
         /// <summary>
         /// Set the center of rotation.
         /// Update the rotation of the oscillator, by calculating and applying the restorative torque.
         /// </summary>
         private void FixedUpdate() {
-            var restoringTorque = CalculateRestoringTorque();
-            ApplyTorque(restoringTorque);
-
+            ApplyTorque(CalculateRestoringTorque());
             _rb.centerOfMass = _localPivotPosition;
         }
 
@@ -72,30 +71,26 @@ namespace GameProject.Oscillators
             var parent = transform.parent;
             var angularDisplacement = Vector3.zero;
 
-            switch (_rotationMethod)
-            {
+            switch (_rotationMethod) {
                 case RotationMethod.Quaternions:
-                {
                     var equilibriumRotation = Quaternion.Euler(LocalEquilibriumRotation);
-                    if (parent != null)
-                        equilibriumRotation = parent.rotation * equilibriumRotation;
-                    var deltaRotation = MathsUtilities.ShortestRotation(transform.rotation, equilibriumRotation);
+                    var deltaRotation = MathsUtilities.ShortestRotation(transform.localRotation, equilibriumRotation);
                     deltaRotation.ToAngleAxis(out _angularDisplacementMagnitude, out _rotAxis);
                     angularDisplacement = _angularDisplacementMagnitude * Mathf.Deg2Rad * _rotAxis.normalized;
                     break;
-                }
                 case RotationMethod.EulerAngles:
-                    // TODO: Add support for rotated parent (transform to world space, analogous to line ((81))
                     var angle = transform.localEulerAngles;
                     var deltaAngle = new Vector3(MathsUtilities.GetDeltaAngle(ref angle.x, _angle.x),
                         MathsUtilities.GetDeltaAngle(ref angle.y, _angle.y),
                         MathsUtilities.GetDeltaAngle(ref angle.z, _angle.z));
                     _angle = angle;
                     _rotation += deltaAngle;
-                    angularDisplacement = (_rotation - _localEquilibriumRotation) * Mathf.Deg2Rad;
+                    angularDisplacement = (_rotation - LocalEquilibriumRotation) * Mathf.Deg2Rad;
                     break;
             }
-            
+
+            if (parent != null) // Convert local angular displacement from to world space
+                angularDisplacement = parent.rotation * angularDisplacement;
             var torque = AngularHookesLaw(angularDisplacement, _rb.angularVelocity);
             return (torque);
         }
