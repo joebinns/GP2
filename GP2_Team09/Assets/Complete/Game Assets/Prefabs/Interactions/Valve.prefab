@@ -138,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 932301741853727550}
   m_Layer: 0
-  m_Name: Interaction Plane
+  m_Name: Interaction Axis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,6 @@ GameObject:
   - component: {fileID: 8527569769445773773}
   - component: {fileID: 9135494086017592470}
   - component: {fileID: 8527569769445773770}
-  - component: {fileID: 8527569769445773767}
   - component: {fileID: 3301767393935134338}
   - component: {fileID: 1502347417320994255}
   - component: {fileID: 8619436930709718693}
@@ -243,19 +242,6 @@ MonoBehaviour:
   _torqueScale: {x: 1, y: 1, z: 1}
   _stiffness: 400
   _damper: 100
---- !u!114 &8527569769445773767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8527569769445773814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03899cf21e7ac5f46957cc33413bf903, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxLocalRotation: {x: 0, y: 0, z: 170}
 --- !u!114 &3301767393935134338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,10 +257,10 @@ MonoBehaviour:
   PlayerGrab: {fileID: 0}
   _update: {fileID: 11400000, guid: 9b090228707952e448427620a3dcfa31, type: 2}
   _onChange: []
-  _interactionPlane: {fileID: 932301741853727550}
-  _useLimits: 0
-  _minAngle: -180
-  _maxAngle: 180
+  _rotationAxis: {fileID: 932301741853727550}
+  _useLimits: 1
+  _minAngle: -90
+  _maxAngle: 90
 --- !u!65 &1502347417320994255
 BoxCollider:
   m_ObjectHideFlags: 0

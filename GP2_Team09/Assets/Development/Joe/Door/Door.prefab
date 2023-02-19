@@ -162,7 +162,7 @@ MonoBehaviour:
   PlayerGrab: {fileID: 0}
   _update: {fileID: 11400000, guid: 9b090228707952e448427620a3dcfa31, type: 2}
   _onChange: []
-  _interactionPlane: {fileID: 349844808016207646}
+  _rotationAxis: {fileID: 349844808016207646}
   _useLimits: 0
   _minAngle: -180
   _maxAngle: 180
