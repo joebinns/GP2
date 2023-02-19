@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3200072479378874944}
   - component: {fileID: 3200072479378874949}
   - component: {fileID: 3200072479378874948}
-  - component: {fileID: 3200072479378874951}
   - component: {fileID: 2250895559335403985}
   - component: {fileID: 6356628695831740234}
   m_Layer: 6
@@ -112,7 +111,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -132,21 +131,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _localPivotPosition: {x: -0.5, y: 0, z: 0}
   _torqueScale: {x: 0, y: 1, z: 0}
-  _stiffness: 400
-  _damper: 50
---- !u!114 &3200072479378874951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3200072479378874958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03899cf21e7ac5f46957cc33413bf903, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxLocalRotation: {x: 90, y: 90, z: 90}
+  _stiffness: 2000
+  _damper: 100
+  _rotationMethod: 0
 --- !u!114 &2250895559335403985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,9 +150,9 @@ MonoBehaviour:
   _update: {fileID: 11400000, guid: 9b090228707952e448427620a3dcfa31, type: 2}
   _onChange: []
   _rotationAxis: {fileID: 349844808016207646}
-  _useLimits: 0
-  _minAngle: -180
-  _maxAngle: 180
+  _useLimits: 1
+  _minAngle: -90
+  _maxAngle: 90
 --- !u!114 &6356628695831740234
 MonoBehaviour:
   m_ObjectHideFlags: 0

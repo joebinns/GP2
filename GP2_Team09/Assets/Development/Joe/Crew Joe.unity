@@ -334,18 +334,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8527569769445773770, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
-      propertyPath: _damper
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 8527569769445773770, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
-      propertyPath: _stiffness
-      value: 1200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8527569769445773770, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
-      propertyPath: _rotationMethod
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8527569769776703280, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -364,15 +352,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8527569769776703280, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.6859232
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527569769776703280, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.17178302
       objectReference: {fileID: 0}
     - target: {fileID: 8527569769776703280, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: -0.6859232
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527569769776703280, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.17178302
       objectReference: {fileID: 0}
     - target: {fileID: 8527569769776703280, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 28.12
       objectReference: {fileID: 0}
     - target: {fileID: 8527569769776703280, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -967,7 +963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3200072480470313231, guid: eebb60d00f89cd74994704b7c9fa22c5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eebb60d00f89cd74994704b7c9fa22c5, type: 3}

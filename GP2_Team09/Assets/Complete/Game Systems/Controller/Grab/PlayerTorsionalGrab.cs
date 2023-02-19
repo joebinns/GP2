@@ -6,7 +6,6 @@ namespace GameProject.Grab
 {
     public class PlayerTorsionalGrab : PlayerGrab
     {
-        
         private float _angle = 0f;
         
 // PROPERTIES
