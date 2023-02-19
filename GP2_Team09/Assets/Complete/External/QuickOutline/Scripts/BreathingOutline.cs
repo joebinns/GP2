@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameProject.Outlines
 {
-    public class OscillatingOutline : Outline {
+    public class BreathingOutline : Outline {
         [Header("Width Oscillations")]
         [SF] private float _range = 4f;
         [SF] private float _rate = 4f;

@@ -62,6 +62,7 @@ namespace GameProject.Oscillators
             if (parent != null) {
                 equilibriumRotation = parent.rotation * equilibriumRotation ;
             }
+            // TODO: Select deltaRotation based on whether or not the shortest or longest rotation matches the angular velocity (?)
             Quaternion deltaRotation = 
                 MathsUtilities.ShortestRotation(transform.rotation, equilibriumRotation);
             deltaRotation.ToAngleAxis(out _angularDisplacementMagnitude, out _rotAxis);

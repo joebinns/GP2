@@ -17,7 +17,6 @@ namespace GameProject
             if (Quaternion.Dot(a, b) < 0) {
                 return a * Quaternion.Inverse(Multiply(b, -1));
             }
-
             else return a * Quaternion.Inverse(b);
         }
 
