@@ -46,8 +46,6 @@ namespace GameProject.Interactions
         public void AdjustEquilibrium(Vector3 deltaAngle) {
             _rotation += deltaAngle;
             TorsionalOscillator.LocalEquilibriumRotation = _rotation;
-
-            //Debug.Log(_rotation);
         }
     }
 }

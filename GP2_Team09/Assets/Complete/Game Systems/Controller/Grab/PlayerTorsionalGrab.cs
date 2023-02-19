@@ -7,7 +7,7 @@ namespace GameProject.Grab
     public class PlayerTorsionalGrab : PlayerGrab
     {
         
-        private float _initialAngle;
+        private float _angle = 0f;
         
 // PROPERTIES
 
@@ -33,10 +33,8 @@ namespace GameProject.Grab
         public override void Grab(GrabInteraction toGrab) {
             base.Grab(toGrab);
             if (!IsGrabbingTorsional) return;
-            _initialAngle = GetAngle() + TorsionalGrabInteraction.RotationAxis.InverseTransformDirection(_grabbing.transform.TransformDirection(TorsionalGrabInteraction.TorsionalOscillator.LocalEquilibriumRotation)).z;
+            _angle = MathsUtilities.AngleRepresentation(GetAngle());
         }
-        
-        private float _angle = 0f;
 
         /// <summary>
         /// Update the oscillator and torsional oscillator equilibrium's, such as to copy the HoldPivot
@@ -53,19 +51,11 @@ namespace GameProject.Grab
         /// </summary>
         /// <returns>Delta angle, without clamping</returns>
         private float UpdateAngle() {
-            var angle = AngleRepresentation(GetAngle());
-            angle = _angle < 0f ? -Mathf.Abs(angle) : Mathf.Abs(angle);
-            var deltaAngle = angle - _angle;
-            if (Mathf.Abs(deltaAngle) > 180f) // Undo the angle's clamp
-                deltaAngle = Mathf.Sign(deltaAngle) * (360f - Mathf.Abs(deltaAngle));
+            var angle = GetAngle();
+            var deltaAngle = MathsUtilities.GetDeltaAngle(ref angle, _angle);
             _angle = angle;
             return deltaAngle;
         }
-        
-        /// <summary>
-        /// Returns the proper rotation
-        /// </summary>
-        private float AngleRepresentation(float unityRepresentation) => unityRepresentation < 0f ? 360f + unityRepresentation : unityRepresentation;
 
         /// <summary>
         /// Intersects the line of sight into the plane represented by the normal of the grabbed objects parent, from which the angle from to the pivot is determined

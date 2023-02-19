@@ -141,6 +141,22 @@ namespace GameProject
             return line.origin + line.direction * parameter;
         }
         
+        /// <summary>
+        /// Calculates the unclamped difference between Unity angles
+        /// </summary>
+        /// <returns>Delta angle, without clamping</returns>
+        public static float GetDeltaAngle(ref float currentAngle, float previousAngle) {
+            currentAngle = AngleRepresentation(currentAngle);
+            currentAngle = previousAngle < 0f ? -Mathf.Abs(currentAngle) : Mathf.Abs(currentAngle);
+            var deltaAngle = currentAngle - previousAngle;
+            if (Mathf.Abs(deltaAngle) > 180f) // Undo the angle's clamp
+                deltaAngle = Mathf.Sign(deltaAngle) * (360f - Mathf.Abs(deltaAngle));
+            return deltaAngle;
+        }
         
+        /// <summary>
+        /// Returns the proper rotation
+        /// </summary>
+        public static float AngleRepresentation(float unityRepresentation) => unityRepresentation < 0f ? 360f + unityRepresentation : unityRepresentation;
     }
 }
