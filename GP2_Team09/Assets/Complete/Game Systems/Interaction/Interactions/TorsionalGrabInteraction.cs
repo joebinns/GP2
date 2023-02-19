@@ -7,6 +7,9 @@ namespace GameProject.Interactions
     [RequireComponent(typeof(TorsionalOscillator))]
     public class TorsionalGrabInteraction : GrabInteraction
     {
+        [Header("Interaction")]
+        [SF] private Transform _rotationAxis;
+        
         [Header("Limits")]
         [SF] private bool _useLimits = false;
         [SF] private float _minAngle = -180f;
@@ -16,6 +19,7 @@ namespace GameProject.Interactions
         private Vector3 _initialRotation = Vector3.zero;
         private Vector3 _rotation = Vector3.zero;
 
+        public Transform RotationAxis => _rotationAxis;
         public bool UseLimits => _useLimits;
         public float MinAngle => _minAngle;
         public float MaxAngle => _maxAngle;

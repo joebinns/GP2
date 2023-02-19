@@ -6,13 +6,16 @@ namespace GameProject.Grab
 {
     public class PlayerLinearGrab : PlayerGrab
     {
-        private bool IsGrabbingLinear => _grabbing as LinearGrabInteraction != null;
-
+        
         private float _initialValue;
-
         private Vector3 _primaryGrabPos;
         private Vector3 _secondaryGrabPos;
         
+// PROPERTIES
+
+        private bool IsGrabbingLinear => _grabbing as LinearGrabInteraction != null;
+
+
 // INITIALISATION
         
         /// <summary>
@@ -32,7 +35,7 @@ namespace GameProject.Grab
         public override void Grab(GrabInteraction toGrab) {
             base.Grab(toGrab);
             if (!IsGrabbingLinear) return;
-            _initialValue = GetGrabValue() - ((LinearGrabInteraction)_grabbing).Oscillator.LocalEquilibriumPosition.z;
+            _initialValue = GetGrabValue().Item1 - ((LinearGrabInteraction)_grabbing).Oscillator.LocalEquilibriumPosition.z;
         }
         
         /// <summary>
@@ -41,49 +44,46 @@ namespace GameProject.Grab
         private void Update() {
             if (!IsGrabbing) return;
             if (!IsGrabbingLinear) return;
-            ((LinearGrabInteraction)_grabbing).Oscillator.LocalEquilibriumPosition = Vector3.forward * (GetGrabValue() - _initialValue);
+            var grabValue = GetGrabValue();
+            if (grabValue.Item2 == false)
+                ((LinearGrabInteraction)_grabbing).Oscillator.LocalEquilibriumPosition = Vector3.forward * (grabValue.Item1 - _initialValue);
         }
         
         /// <summary>
         /// Intersects the line of sight into the plane represented by the normal of the grabbed objects parent
         /// </summary>
-        private float GetGrabValue() {
-            // TODO: Check which plane has the correct dot product to line of sight
-            var plane = _grabbing.InteractionPlane;
-            var altPlane = ((LinearGrabInteraction)_grabbing).AltInteractionPlane;
+        private (float, bool) GetGrabValue() {
+            var grabbing = (LinearGrabInteraction)_grabbing;
+            var plane = grabbing.InteractionPlane;
+            var altPlane = grabbing.AltInteractionPlane;
 
-            Vector3 projectedGrabPosition;
-            
-            /*
-            if (Mathf.Abs(Vector3.Dot(_cameraTarget.forward, plane.forward)) > Mathf.Abs(Vector3.Dot(_cameraTarget.forward, altPlane.forward)))
-                projectedGrabPosition = ProjectedGrabPosition(plane);
-            else 
-                projectedGrabPosition = ProjectedGrabPosition(altPlane);
-            */
+            Vector3 projectedGrabPosition = Vector3.zero;
 
             var dotPrimary = Mathf.Abs(Vector3.Dot(_cameraTarget.forward, plane.forward));
             var dotSecondary = Mathf.Abs(Vector3.Dot(_cameraTarget.forward, altPlane.forward));
 
-            _primaryGrabPos = ProjectedGrabPosition(plane);
-            _secondaryGrabPos = ProjectedGrabPosition(altPlane);
+            var primaryGrabPos = ProjectedGrabPosition(plane);
+            if (primaryGrabPos.Item2 < 0f) dotPrimary = 0f;
             
-            //projectedGrabPosition = ProjectedGrabPosition(plane) * Mathf.Abs(Vector3.Dot(_cameraTarget.forward, plane.forward)) 
-            //                        + ProjectedGrabPosition(altPlane) * Mathf.Abs(Vector3.Dot(_cameraTarget.forward, altPlane.forward));
+            var secondaryGrabPos = ProjectedGrabPosition(altPlane);
+            if (secondaryGrabPos.Item2 < 0f) dotSecondary = 0f;
+            
+            _primaryGrabPos = primaryGrabPos.Item1;
+            _secondaryGrabPos = secondaryGrabPos.Item1;
 
-            Debug.Log("pri " + dotPrimary);
-            Debug.Log("sec " + dotSecondary);
+            var isDivisionByZero = dotPrimary == 0f && dotSecondary == 0f;
             
-            // TODO: PREVENT GRAB POSITIONS WHICH ARE 'BACKWARDS'
+            if (!isDivisionByZero) {
+                projectedGrabPosition = (_primaryGrabPos * dotPrimary + _secondaryGrabPos * dotSecondary)
+                                        / (dotPrimary + dotSecondary);
+            
+                projectedGrabPosition = _grabbing.transform.parent.InverseTransformPoint(projectedGrabPosition);
+            }
 
-            projectedGrabPosition = (_primaryGrabPos * dotPrimary + _secondaryGrabPos * dotSecondary)
-                                    / (dotPrimary + dotSecondary);
-            
-            projectedGrabPosition = _grabbing.transform.parent.InverseTransformPoint(projectedGrabPosition);
-            
-            return projectedGrabPosition.z;
+            return (projectedGrabPosition.z, isDivisionByZero);
         }
 
-        private Vector3 ProjectedGrabPosition(Transform plane) => MathsUtilities.GetIntersection(new Ray(_cameraTarget.position, _cameraTarget.forward),
+        private (Vector3, float) ProjectedGrabPosition(Transform plane) => MathsUtilities.GetIntersection(new Ray(_cameraTarget.position, _cameraTarget.forward),
             new Ray(plane.TransformPoint(Vector3.zero), plane.forward)); 
         
         /// <summary>

@@ -15,8 +15,6 @@ namespace GameProject.Interactions
         [SF] private UpdateManager _update = null;
         [Header("Methods")]
         [Space, SF] private List<ActionInfo> _onChange = null;
-        [Header("Interaction")]
-        [SF] private Transform _interactionPlane;
 
         protected InteractableType _interactableType;
         
@@ -27,7 +25,7 @@ namespace GameProject.Interactions
 
         public InteractableType InteractableType => _interactableType;
         public Outline Outline => _outline;
-        public Transform InteractionPlane => _interactionPlane;
+
         public Rigidbody Rigidbody { get; private set; }
 
 // INITIALISATION

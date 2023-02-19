@@ -29,7 +29,7 @@ namespace GameProject.Grab
         public override void Grab(GrabInteraction toGrab) {
             base.Grab(toGrab);
             if (!IsGrabbingTorsional) return;
-            _initialAngle = GetAngle() + _grabbing.InteractionPlane.InverseTransformDirection(_grabbing.transform.TransformDirection(((TorsionalGrabInteraction)_grabbing).TorsionalOscillator.LocalEquilibriumRotation)).z;
+            _initialAngle = GetAngle() + ((TorsionalGrabInteraction)_grabbing).RotationAxis.InverseTransformDirection(_grabbing.transform.TransformDirection(((TorsionalGrabInteraction)_grabbing).TorsionalOscillator.LocalEquilibriumRotation)).z;
         }
         
         /*
@@ -88,14 +88,14 @@ namespace GameProject.Grab
         private void Update() {
             if (!IsGrabbing) return;
             if (!IsGrabbingTorsional) return;
-            ((TorsionalGrabInteraction)_grabbing).TorsionalOscillator.LocalEquilibriumRotation = - _grabbing.transform.InverseTransformDirection(_grabbing.InteractionPlane.forward) * (GetAngle() - _initialAngle);
+            ((TorsionalGrabInteraction)_grabbing).TorsionalOscillator.LocalEquilibriumRotation = - _grabbing.transform.InverseTransformDirection(((TorsionalGrabInteraction)_grabbing).RotationAxis.forward) * (GetAngle() - _initialAngle);
         }
          
         /// <summary>
         /// Intersects the line of sight into the plane represented by the normal of the grabbed objects parent, from which the angle from to the pivot is determined
         /// </summary>
         private float GetAngle() {
-            var plane = _grabbing.InteractionPlane;
+            var plane = ((TorsionalGrabInteraction)_grabbing).RotationAxis;
             var ray = new Ray(_cameraTarget.position, _cameraTarget.forward);
             var perpendicularPlane = new Ray(plane.position, - _cameraTarget.forward);
             var grabPosition = Vector3.zero;
@@ -104,7 +104,7 @@ namespace GameProject.Grab
             if (Physics.Raycast(ray, out var hitInfo, (ray.origin - plane.position).magnitude, LayerMask.GetMask("Interaction")))
                 grabPosition = hitInfo.point;
             else
-                grabPosition = MathsUtilities.GetIntersection(ray, perpendicularPlane); //MathsUtilities.GetClosestPoint(ray, plane.position);
+                grabPosition = MathsUtilities.GetIntersection(ray, perpendicularPlane).Item1; //MathsUtilities.GetClosestPoint(ray, plane.position);
             
             grabPosition = plane.InverseTransformPoint(grabPosition);
             angle = Mathf.Atan2(grabPosition.x, grabPosition.y) * Mathf.Rad2Deg;
@@ -170,10 +170,10 @@ namespace GameProject.Grab
         protected virtual void OnDrawGizmos() {
             if (!IsGrabbing) return;
             var closestPoint = MathsUtilities.GetClosestPoint(new Ray(_cameraTarget.position, _cameraTarget.forward),
-                _grabbing.InteractionPlane.position);
-            Gizmos.DrawWireSphere(_grabbing.InteractionPlane.position, 0.1f);
+                ((TorsionalGrabInteraction)_grabbing).RotationAxis.position);
+            Gizmos.DrawWireSphere(((TorsionalGrabInteraction)_grabbing).RotationAxis.position, 0.1f);
             Gizmos.DrawRay(_cameraTarget.position, _cameraTarget.forward * 100f);
-            Gizmos.DrawLine(closestPoint, _grabbing.InteractionPlane.position);
+            Gizmos.DrawLine(closestPoint, ((TorsionalGrabInteraction)_grabbing).RotationAxis.position);
             Gizmos.DrawSphere(closestPoint, 0.1f);
         }
     }
