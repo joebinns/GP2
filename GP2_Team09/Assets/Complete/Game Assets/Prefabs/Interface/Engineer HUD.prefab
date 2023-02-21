@@ -151,6 +151,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6365525123243647808, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 6365525123243647810, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -243,10 +247,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6365525123836002498, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123836002498, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365525123836002499, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: _default
+      value: 
+      objectReference: {fileID: 21300000, guid: 7c85a1b7f96dd6f4f8eae0fd5f7febff, type: 3}
     - target: {fileID: 6365525123836002499, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
       propertyPath: _reticle
       value: 
       objectReference: {fileID: 8852704797057165214}
+    - target: {fileID: 6365525123836002500, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7c85a1b7f96dd6f4f8eae0fd5f7febff, type: 3}
     - target: {fileID: 7468075078271950768, guid: 6589ab2f3f67d614091fdb31ee8482eb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
