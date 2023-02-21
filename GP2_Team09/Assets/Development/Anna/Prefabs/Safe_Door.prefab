@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 6267757361961336442}
   - component: {fileID: 7013326768262377951}
   - component: {fileID: 5093747927031252245}
-  - component: {fileID: 1951788725574152841}
   - component: {fileID: 6720581999862564152}
   - component: {fileID: 9184942690065744667}
   - component: {fileID: 138734266164199123}
-  m_Layer: 0
+  - component: {fileID: 605694677983469029}
+  m_Layer: 6
   m_Name: Safe_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,26 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &1951788725574152841
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6750997753498379456}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8096e87c7b724f141a594e2271c34792, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!65 &6720581999862564152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -119,8 +99,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.14265387, y: 0.37657148, z: 0.04375601}
-  m_Center: {x: -0.07969513, y: 0.38863984, z: 0.9947678}
+  m_Size: {x: 0.04083301, y: 0.3511503, z: 0.09635624}
+  m_Center: {x: 0.9887642, y: 0.3894595, z: 0.10460476}
 --- !u!65 &9184942690065744667
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -132,8 +112,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.07136535, y: 0.7203633, z: 1.1319675}
-  m_Center: {x: -0.026090536, y: 0.3256189, z: 0.5659838}
+  m_Size: {x: 1.1371006, y: 0.7203633, z: 0.04700382}
+  m_Center: {x: 0.5622159, y: 0.3256189, z: 0.02350289}
 --- !u!114 &138734266164199123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,11 +128,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _locked: 1
   _opened: 0
-  _animator: {fileID: 1951788725574152841}
+  _animator: {fileID: 0}
   _onLocking: []
   _onUnlocking: []
   _onOpening: []
   _onClosing: []
+--- !u!114 &605694677983469029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6750997753498379456}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a90ca98b9e9ad4ebb24807cd911e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 9
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+  _range: 4
+  _rate: 4
 --- !u!1001 &7652475156734462764
 PrefabInstance:
   m_ObjectHideFlags: 0

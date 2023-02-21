@@ -22,6 +22,7 @@ namespace GameProject.Interactions
 
 // PROPERTIES
 
+        public bool IsActive => enabled;
         public InteractableType InteractableType => _interactableType;
         public Outline Outline => _outline;
 

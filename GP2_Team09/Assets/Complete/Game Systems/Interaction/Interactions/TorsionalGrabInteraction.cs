@@ -1,3 +1,4 @@
+using System;
 using SF = UnityEngine.SerializeField;
 using GameProject.Oscillators;
 using UnityEngine;
@@ -38,8 +39,14 @@ namespace GameProject.Interactions
             TorsionalOscillator = GetComponent<TorsionalOscillator>();
             _localTargetRotation = TorsionalOscillator.LocalEquilibriumRotation;
         }
-        
-// ROTATIONS
+
+        /// <summary>
+        /// Dummy Start method to allow enabling and disabling component from inspector
+        /// </summary>
+        private void Start() {
+        }
+
+        // ROTATIONS
 
         public void AdjustEquilibrium(float deltaAngle) {
             _localTargetRotation += deltaAngle * LocalRotationAxis;

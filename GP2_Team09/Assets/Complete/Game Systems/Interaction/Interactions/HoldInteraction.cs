@@ -15,9 +15,11 @@ namespace GameProject.Interactions
         private Outline _outline;
         
         private bool _pressed = false;
-
+        private IInteractable _interactableImplementation; 
+        
 // PROPERTIES
 
+        public bool IsActive => enabled;
         public InteractableType InteractableType => _interactableType;
         public Outline Outline => _outline;
         public Rigidbody Rigidbody { get; private set; }

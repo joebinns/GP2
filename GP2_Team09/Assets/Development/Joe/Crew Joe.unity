@@ -492,7 +492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3301767393935134338, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: _maxAngle
-      value: 180
+      value: 720
       objectReference: {fileID: 0}
     - target: {fileID: 3301767393935134338, guid: f49d86a01f78e134fa5a8c0062ef243e, type: 3}
       propertyPath: _minAngle

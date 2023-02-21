@@ -173,6 +173,10 @@ namespace GameProject.Interactions
             
             if (Physics.SphereCast(ray, radius, out var hit, distance, mask)){
                 actions = hit.collider.GetComponents<IInteractable>().ToList();
+                for (var i = actions.Count-1; i >= 0; i--) {
+                    if (!actions[i].IsActive)
+                        actions.RemoveAt(i);
+                }
             }
 
             return actions;
