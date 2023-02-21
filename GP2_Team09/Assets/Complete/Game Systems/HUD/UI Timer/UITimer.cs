@@ -1,8 +1,7 @@
 using SF = UnityEngine.SerializeField;
-using System;
 using GameProject.Interactions;
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 namespace GameProject.HUD
 {
@@ -10,21 +9,20 @@ namespace GameProject.HUD
     {
         [SF] private TMP_Text _text;
 
-        private void Start() {
-            Begin(); // TODO: Run this when players are ready
-        }
+// TIMER HANDLING
 
         public void OverrideThreshold(float threshold) {
             SetThreshold(threshold);
         }
 
-        protected override void OnUpdateTimer(float deltaTime)
-        {
+        protected override void OnUpdateTimer(float deltaTime){
             base.OnUpdateTimer(deltaTime);
+
             var formattedTime = FormatTime(_time);
             _text.text = formattedTime;
         }
 
-        private string FormatTime(float time) => TimeSpan.FromSeconds(time).ToString(@"mm\:ss");
+        private string FormatTime(float time) => 
+            System.TimeSpan.FromSeconds(time).ToString(@"mm\:ss");
     }
 }

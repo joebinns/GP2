@@ -16,7 +16,7 @@ MonoBehaviour:
   _distance: 2
   _mask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 65
   _autoOrientOnGrab: 0
   _toggleGravity: 1
   _axes: {x: 0, y: 1}

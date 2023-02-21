@@ -1075,7 +1075,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -0.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2675512931524310612}
   m_Father: {fileID: 6404631545285043235}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1517,7 +1518,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: There will always be 2 buttons in every room
+  m_text: There will always be 2 buttons in the engine room
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 877e7c65bf8ef50429caff7995dcdb1d, type: 2}
   m_sharedMaterial: {fileID: -5838220265409928148, guid: 877e7c65bf8ef50429caff7995dcdb1d, type: 2}
@@ -1601,6 +1602,7 @@ GameObject:
   - component: {fileID: 4752077875439968000}
   - component: {fileID: 4752077875439968001}
   - component: {fileID: 6140871382536311998}
+  - component: {fileID: 6145197935386257263}
   m_Layer: 6
   m_Name: ProtocolButtons
   m_TagString: Untagged
@@ -1689,6 +1691,7 @@ MonoBehaviour:
   _torqueScale: {x: 1, y: 1, z: 1}
   _stiffness: 100
   _damper: 10
+  _rotationMethod: 0
 --- !u!114 &4752077875439968001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1715,6 +1718,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 
+--- !u!114 &6145197935386257263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752077875439968015}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a90ca98b9e9ad4ebb24807cd911e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 12
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+  _range: 6
+  _rate: 4
 --- !u!1 &4914427434919590920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,7 +2078,6 @@ RectTransform:
   - {fileID: 2851440968764384378}
   - {fileID: 4926018200304464764}
   - {fileID: 4001170698729165186}
-  - {fileID: 2675512931524310612}
   - {fileID: 6257307308015376141}
   - {fileID: 1310689074055176188}
   - {fileID: 7436042793486439353}
@@ -2194,26 +2216,26 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'There will always be 2 buttons in every room
+  m_text: '
 
 
 
 
-    If there is no  
-    or  buttons, AND the spaceship name has a number 1:
 
-    Press both buttons,
-    once
+    If there is no   or  buttons, AND the spaceship name has a number
+    1:
 
-    Otherwise, if there is a . button and the spaceship name ends on an
-    even number:
+    Press both buttons, once
+
+    Otherwise, if there is a . button and the
+    spaceship name ends on an even number:
 
     Press the   button twice
 
     Otherwise,
 
-    Press and hold
-    a    button for 5 seconds'
+    Press
+    and hold a    button for 5 seconds'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 877e7c65bf8ef50429caff7995dcdb1d, type: 2}
   m_sharedMaterial: {fileID: -5838220265409928148, guid: 877e7c65bf8ef50429caff7995dcdb1d, type: 2}
@@ -2389,7 +2411,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6404631545285043235}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2559,7 +2581,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: There will always be 2 buttons in every room
+  m_text: There will always be 2 buttons in the engine room
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 877e7c65bf8ef50429caff7995dcdb1d, type: 2}
   m_sharedMaterial: {fileID: -5838220265409928148, guid: 877e7c65bf8ef50429caff7995dcdb1d, type: 2}
@@ -2659,7 +2681,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6404631545285043235}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2775,7 +2797,7 @@ GameObject:
   - component: {fileID: 2572052663895856503}
   - component: {fileID: 1203703261426513705}
   m_Layer: 5
-  m_Name: Title (1)
+  m_Name: Title 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2788,17 +2810,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8032149919249753120}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.52}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6404631545285043235}
-  m_RootOrder: 22
+  m_Father: {fileID: 57671959326109793}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.102}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 0.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2572052663895856503
@@ -3351,7 +3373,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6404631545285043235}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

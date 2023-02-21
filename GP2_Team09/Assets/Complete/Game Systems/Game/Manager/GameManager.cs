@@ -1,6 +1,7 @@
 using SF = UnityEngine.SerializeField;
 using Random = System.Random;
 using System.Collections;
+using UnityEngine.UI;
 using UnityEngine;
 using GameProject.Cameras;
 using GameProject.Inputs;
@@ -14,13 +15,17 @@ namespace GameProject.Game
     [CreateAssetMenu(fileName = "Game Manager", menuName = "Managers/Game")]
     public sealed partial class GameManager : ScriptableObject
     {
+        [Header("Player")]
+        [SF] private int _lives = 3;
         [SF] private float _lostReturnDelay = 3;
         [SF] private float _wonReturnDelay  = 5;
-        [Space]
+
+        [Header("References")]
         [SF] private GameObject _engineerPrefab = null;
         [SF] private GameObject _crewPrefab     = null;
         [SF] private ShipNames  _shipNames      = null;
-        [Space]
+
+        [Header("Managers")]
         [SF] private CameraManager _camera = null;
         [SF] private InputManager  _input  = null;
         [SF] private HUDManager    _hud    = null;
@@ -28,6 +33,7 @@ namespace GameProject.Game
         [SF] private LevelManager  _level  = null;
         [SF] private MenuManager   _menu   = null;
 
+        private int _health = 3;
         private string _ship = string.Empty;
         private Random _random = null;
 
@@ -46,6 +52,8 @@ namespace GameProject.Game
             InitPlayer(player);
             InitShipName();
 
+            _health = _lives;
+            _hud?.UpdateHealth(_health);
             _menu?.ShowMenu(false);
         }
 
@@ -125,6 +133,9 @@ namespace GameProject.Game
         /// Triggers the lose state
         /// </summary>
         public void PlayerLose(){
+            _hud.UpdateHealth(--_health);
+            if (_health > 0) return;
+
             _hud.DisplayLost(true);
             SetPlayerInput(false);
 

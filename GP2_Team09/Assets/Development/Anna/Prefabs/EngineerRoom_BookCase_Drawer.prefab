@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7532378615551371975}
   - component: {fileID: 3399169844396083254}
   - component: {fileID: 7620831516429928462}
+  - component: {fileID: 3089230501417057650}
   m_Layer: 6
   m_Name: EngineerRoom_BookCase_Drawer
   m_TagString: Untagged
@@ -187,7 +188,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -207,4 +208,24 @@ MonoBehaviour:
   PlayerGrab: {fileID: 0}
   _update: {fileID: 11400000, guid: 9b090228707952e448427620a3dcfa31, type: 2}
   _onChange: []
-  _interactionPlane: {fileID: 0}
+  _movementAxis: {fileID: 0}
+--- !u!114 &3089230501417057650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2494735409549072742}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a90ca98b9e9ad4ebb24807cd911e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 9
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+  _range: 4
+  _rate: 4

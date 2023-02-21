@@ -1,12 +1,40 @@
-using UnityEngine;
 using SF = UnityEngine.SerializeField;
+using UnityEngine;
+using TMPro;
 
 namespace GameProject.HUD
 {
     public class CrewHUDController : HUDController
     {
-        [SF] private GameObject _uiLost;
-        [SF] private GameObject _uiWon;
+        [Header("Crew Settings")]
+        [SF] private TMP_Text   _health = null;
+        [SF] private UITimer    _timer  = null;
+        [SF] private GameObject _uiLost = null;
+        [SF] private GameObject _uiWon  = null;
+
+        /// <summary>
+        /// Starts the timer
+        /// </summary>
+        public void StartTimer(){
+            if (!_timer) return;
+            _timer.Begin();
+        }
+
+        /// <summary>
+        /// Starts the timer
+        /// </summary>
+        public void StopTimer(){
+            if (!_timer) return;
+            _timer.End();
+        }
+
+        /// <summary>
+        /// Changes the health text
+        /// </summary>
+        public void UpdateHealth(int health){
+            if (!_health) return;
+            _health.text = $"Lives: {health}";
+        }
 
         /// <summary>
         /// Display win HUD based on parameter

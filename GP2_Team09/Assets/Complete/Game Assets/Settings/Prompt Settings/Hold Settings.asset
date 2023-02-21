@@ -15,10 +15,10 @@ MonoBehaviour:
   _hoverReticle: {fileID: 21300000, guid: 235ed8af8e8b5e34fbad687dd7db4eb7, type: 3}
   _actionReticle: {fileID: 21300000, guid: c6be87c337bc9ce4f9df7cd5fb9e92f1, type: 3}
   _hoverPromptInfo:
-    DesktopIcon: {fileID: 3286163911610860551, guid: 9a78de4915102f342ba77d2427fd12c2, type: 3}
-    ConsoleIcon: {fileID: 3286163911610860551, guid: a0620a76ee2145f40a4a1bec87c9d3ad, type: 3}
+    DesktopIcon: {fileID: 21300000, guid: e5991e5d1208a0a44b6c6e0a8c025f81, type: 3}
+    ConsoleIcon: {fileID: 21300000, guid: 6be2c074f3875f84fb5b0c328a97344f, type: 3}
     Verb: Pick Up
   _actionPromptInfo:
-    DesktopIcon: {fileID: 3286163911610860551, guid: 0857cf218cd7d084cb5f6c0437b0b303, type: 3}
-    ConsoleIcon: {fileID: 3286163911610860551, guid: 13d9900af367de847bf58662c37dfdf9, type: 3}
+    DesktopIcon: {fileID: 21300000, guid: a01713f33a13ad94cb2dff7130797bb6, type: 3}
+    ConsoleIcon: {fileID: 21300000, guid: 548daddb357d3eb4da3eb220e4610be5, type: 3}
     Verb: Rotate

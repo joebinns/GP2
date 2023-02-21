@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1729663945703257722}
   - component: {fileID: 1471235090735562671}
   - component: {fileID: 7070483897867504191}
+  - component: {fileID: 8886749857428942093}
   m_Layer: 6
   m_Name: Numpad_Button
   m_TagString: Untagged
@@ -99,7 +100,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.025119836, y: 0.06301528, z: 0.0630154}
+  m_Size: {x: 0.025119841, y: 0.051931553, z: 0.05436315}
   m_Center: {x: 0.010435197, y: -0.000000059604645, z: -0.000000029802322}
 --- !u!95 &1471235090735562671
 Animator:
@@ -139,6 +140,26 @@ MonoBehaviour:
   - Target: {fileID: 0}
     Action: 13
   key: 1
+--- !u!114 &8886749857428942093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202320633975254145}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a90ca98b9e9ad4ebb24807cd911e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 9
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+  _range: 4
+  _rate: 4
 --- !u!1 &2026097314046362983
 GameObject:
   m_ObjectHideFlags: 0

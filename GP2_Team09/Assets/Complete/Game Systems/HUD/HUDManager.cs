@@ -28,6 +28,7 @@ namespace GameProject.HUD
             _input.SubscribeKey(OnPauseInput, InputType.Pause);
             _engineer = engineer;
         }
+
         /// <summary> 
         /// Initialises the crew HUD manager
         /// </summary>
@@ -55,7 +56,14 @@ namespace GameProject.HUD
             );
         }
 
-// HUD Handling
+// HUD HANDLING
+
+        /// <summary>
+        /// Changes the health displayed on the HUD
+        /// </summary>
+        public void UpdateHealth(int health){
+            if (_crew) _crew.UpdateHealth(health);
+        }
 
         /// <summary>
         /// Display win HUD based on parameter

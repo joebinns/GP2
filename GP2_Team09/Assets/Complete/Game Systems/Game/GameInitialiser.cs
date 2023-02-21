@@ -1,4 +1,5 @@
 using SF = UnityEngine.SerializeField;
+using UnityEngine.UI;
 using UnityEngine;
 
 namespace GameProject.Game
@@ -8,7 +9,6 @@ namespace GameProject.Game
     public sealed class GameInitialiser : MonoBehaviour
     {
         [SF] private GameManager _manager = null;
-        [Space]
         [SF] private GameObject _player = null;
 
         private static GameInitialiser s_active = null;

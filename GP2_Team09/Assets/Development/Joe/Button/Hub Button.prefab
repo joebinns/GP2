@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 7972364685573931692}
   - component: {fileID: 845430102005964352}
   - component: {fileID: 2572253473923581329}
+  - component: {fileID: 1426526262843649817}
   m_Layer: 6
   m_Name: Hub Button
   m_TagString: Untagged
@@ -182,8 +183,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.000884489, y: 0.0008796619, z: 0.00030913635}
-  m_Center: {x: -0.000005195528, y: 0.0000043731125, z: 0.00000064602483}
+  m_Size: {x: 0.093203105, y: 0.09165704, z: 0.019643169}
+  m_Center: {x: 0.00036634438, y: 0.00081264257, z: -0.00019340216}
 --- !u!95 &845430102005964352
 Animator:
   serializedVersion: 5
@@ -220,3 +221,23 @@ MonoBehaviour:
   _onPressed: []
   _onReleased: []
   key: 1
+--- !u!114 &1426526262843649817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7463869658734779785}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a90ca98b9e9ad4ebb24807cd911e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 9
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+  _range: 4
+  _rate: 4

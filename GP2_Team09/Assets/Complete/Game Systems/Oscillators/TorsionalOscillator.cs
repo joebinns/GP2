@@ -1,7 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.SocialPlatforms;
 
 namespace GameProject.Oscillators
 {
@@ -16,7 +13,7 @@ namespace GameProject.Oscillators
     public class TorsionalOscillator : MonoBehaviour
     {
         [Tooltip("The local rotation about which oscillations are centered.")]
-        private Vector3 _localEquilibriumRotation = Vector3.zero;
+        [SerializeField] private Vector3 _localEquilibriumRotation = Vector3.zero;
         [Tooltip("The center about which rotations should occur.")] 
         [SerializeField] private Vector3 _localPivotPosition = Vector3.zero;
         [Tooltip("The world axes over which the oscillator applies torque. Within range [0, 1].")] 
@@ -131,10 +128,10 @@ namespace GameProject.Oscillators
             Gizmos.color = Color.white;
             Vector3 pivotPosition =
                 transform.TransformPoint(Vector3.Scale(_localPivotPosition, MathsUtilities.Invert(transform.localScale)));
-            Gizmos.DrawWireSphere(pivotPosition, 0.3f);
+            Gizmos.DrawWireSphere(pivotPosition, 0.1f);
             // Draw a cross at the pivot position;
-            Vector3 cross1 = new Vector3(1, 0, 1) * 0.3f;
-            Vector3 cross2 = new Vector3(1, 0, -1) * 0.3f;
+            Vector3 cross1 = new Vector3(1, 0, 1) * 0.1f;
+            Vector3 cross2 = new Vector3(1, 0, -1) * 0.1f;
             Gizmos.DrawLine(pivotPosition - cross1, pivotPosition + cross1);
             Gizmos.DrawLine(pivotPosition - cross2, pivotPosition + cross2);
 
@@ -150,11 +147,11 @@ namespace GameProject.Oscillators
 
 
             // Draw (solid) bob position
-            Gizmos.DrawSphere(bob, 0.3f);
+            Gizmos.DrawSphere(bob, 0.1f);
 
             // Draw (wire) equilibrium position
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(equilibrium, 0.3f);
+            Gizmos.DrawWireSphere(equilibrium, 0.1f);
         }
     }
 }

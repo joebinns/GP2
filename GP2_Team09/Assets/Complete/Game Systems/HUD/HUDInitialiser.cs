@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GameProject.HUD
 {
     [AddComponentMenu("Managers/HUD Initialiser"),
-     DefaultExecutionOrder(-1), DisallowMultipleComponent]
+     DefaultExecutionOrder(-2), DisallowMultipleComponent]
     public sealed class HUDInitialiser : MonoBehaviour
     {
         [SF] private HUDManager _manager = null;

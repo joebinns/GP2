@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 3934198774737419478}
   - component: {fileID: 3934198774737419473}
   - component: {fileID: 3934198774737419472}
+  - component: {fileID: 6198631185991272152}
   m_Layer: 6
   m_Name: Alarm Clock
   m_TagString: Untagged
@@ -482,11 +483,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389f37ac68ceb374287b55ff05be0177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LocalEquilibriumPosition: {x: 0, y: 0, z: 0}
+  _localEquilibriumPosition: {x: 0, y: 0, z: 0}
   _forceScale: {x: 1, y: 1, z: 1}
   _stiffness: 200
   _damper: 20
   _mass: 1
+  _useLimits: 0
+  _minLocalEquilibriumPosition: {x: -1, y: -1, z: -1}
+  _maxLocalEquilibriumPosition: {x: 1, y: 1, z: 1}
 --- !u!114 &3934198774737419498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,11 +503,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1386ff400d48040832677588e508e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LocalEquilibriumRotation: {x: 0, y: 0, z: 0}
   _localPivotPosition: {x: 0, y: 0, z: 0}
   _torqueScale: {x: 1, y: 1, z: 1}
   _stiffness: 100
   _damper: 10
+  _rotationMethod: 0
 --- !u!114 &3934198774737419499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,8 +521,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHold: {fileID: 0}
-  _hoverReticle: {fileID: 21300000, guid: 235ed8af8e8b5e34fbad687dd7db4eb7, type: 3}
-  _actionReticle: {fileID: 21300000, guid: c6be87c337bc9ce4f9df7cd5fb9e92f1, type: 3}
 --- !u!114 &3934198774737419478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,3 +645,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6198631185991272152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934198774737419497}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a90ca98b9e9ad4ebb24807cd911e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 9
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+  _range: 4
+  _rate: 4

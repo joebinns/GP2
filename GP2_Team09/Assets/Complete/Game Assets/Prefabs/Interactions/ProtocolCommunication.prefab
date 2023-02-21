@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 4752077875439968007}
   - component: {fileID: 4752077875439968000}
   - component: {fileID: 4752077875439968001}
+  - component: {fileID: 4598883721943658665}
   m_Layer: 6
   m_Name: ProtocolCommunication
   m_TagString: Untagged
@@ -460,6 +461,7 @@ MonoBehaviour:
   _torqueScale: {x: 1, y: 1, z: 1}
   _stiffness: 100
   _damper: 10
+  _rotationMethod: 0
 --- !u!114 &4752077875439968001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,6 +475,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHold: {fileID: 0}
+--- !u!114 &4598883721943658665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752077875439968015}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a90ca98b9e9ad4ebb24807cd911e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 12
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+  _range: 6
+  _rate: 4
 --- !u!1 &4761874441192648984
 GameObject:
   m_ObjectHideFlags: 0

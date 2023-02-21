@@ -42,18 +42,23 @@ namespace GameProject.Interactions
             _input.UnsubscribeKey(OnUseInput, InputType.Use);
         }
 
-// INTERACTION
+// OUTLINE
 
         /// <summary>
         /// Check the available actions
         /// </summary>
         public void Update() {
             if (_triggered.Count > 0) return;
+
             var actions = GetActions();
             UpdateInteractable(actions);
+
             _actions = actions;
         }
 
+        /// <summary>
+        /// Updates the interaction outline
+        /// </summary>
         private void UpdateInteractable(List<IInteractable> actions) {
             // Get current and previous action
             IInteractable action = null;
@@ -85,41 +90,50 @@ namespace GameProject.Interactions
             }
         }
 
-
         /// <summary>
         /// Enable outline on a relevant interactable or disable on a previously relevant interactable
         /// </summary>
         private void Outline(IInteractable interactable) {
-            if (interactable != null) {
+            if (interactable != null){
                 if (interactable.Outline == null) return;
                 // Enable outline
                 interactable.Outline.enabled = true;
                 _outlined = interactable;
             }
-            else {
-                // Disable outline
+            else { // Disable outline
                 if (_outlined == null) return;
                 if (_outlined.Outline == null) return;
                 _outlined.Outline.enabled = false;
                 _outlined = null;
             }
         }
-        
+
+// INTERACTION    
+
         /// <summary>
         /// Triggers interactable on input callback
         /// </summary>
         private void OnUseInput(){
             _pressed = !_pressed;
 
-            if (!_pressed || _triggered.Count > 0) {
-                if (_triggered != null && _triggered.Count > 0)
-                    _hudManager.SwitchInteractable(_triggered[0].InteractableType, InteractableMode.Hover);
+            if (!_pressed || _triggered.Count > 0){
+                if (_triggered != null && _triggered.Count > 0){ 
+                    _hudManager.SwitchInteractable(
+                        _triggered[0].InteractableType, 
+                        InteractableMode.Hover
+                    );
+                }
                 ClearSelected();
-            }
-            else if (_pressed){
+
+            } else if (_pressed){
                 GetSelected();
-                if (_triggered != null && _triggered.Count > 0)
-                    _hudManager.SwitchInteractable(_triggered[0].InteractableType, InteractableMode.Action);
+
+                if (_triggered != null && _triggered.Count > 0){ 
+                    _hudManager.SwitchInteractable(
+                        _triggered[0].InteractableType, 
+                        InteractableMode.Action
+                    );
+                }
             }
         }
 
@@ -145,19 +159,14 @@ namespace GameProject.Interactions
             _triggered.Clear();
         }
 
-        private void SwitchInteractable() {
-            if (_triggered == null || _triggered.Count == 0) return;
-            _hudManager.SwitchInteractable(_triggered[0].InteractableType, InteractableMode.Action);
-        }
-
         /// <summary>
         /// Get all intercepted actions
         /// </summary>
         private List<IInteractable> GetActions() {
-            var camera = _camera.Transform;
-            var radius = _settings.Radius;
+            var camera   = _camera.Transform;
+            var radius   = _settings.Radius;
             var distance = _settings.Distance;
-            var mask = _settings.Mask;
+            var mask     = _settings.Mask;
 
             var ray = new Ray(camera.position, camera.forward);
             var actions = new List<IInteractable>();
@@ -167,6 +176,22 @@ namespace GameProject.Interactions
             }
 
             return actions;
+        }
+
+// INTERFACE
+
+        /// <summary>
+        /// Switches the interaction reticle
+        /// </summary>
+        private void SwitchInteractable() {
+            if (_triggered == null || 
+                _triggered.Count == 0) 
+                return;
+
+            _hudManager.SwitchInteractable(
+                _triggered[0].InteractableType, 
+                InteractableMode.Action
+            );
         }
     }
 }

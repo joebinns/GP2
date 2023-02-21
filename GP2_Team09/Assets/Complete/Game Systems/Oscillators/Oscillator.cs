@@ -137,7 +137,7 @@ namespace GameProject.Oscillators
             // Draw (wire) equilibrium position
             Color color = Color.green;
             Gizmos.color = color;
-            Gizmos.DrawWireSphere(equilibrium, 0.3f);
+            Gizmos.DrawWireSphere(equilibrium, 0.1f);
             if (_useLimits) {
                 color = Color.white;
                 Gizmos.color = color;
@@ -151,7 +151,7 @@ namespace GameProject.Oscillators
             color.r = 2f * Mathf.Clamp(Vector3.Magnitude(bob - equilibrium) * upperAmplitude, 0f, 0.5f);
             color.g = 2f * (1f - Mathf.Clamp(Vector3.Magnitude(bob - equilibrium) * upperAmplitude, 0.5f, 1f));
             Gizmos.color = color;
-            Gizmos.DrawSphere(bob, 0.35f);
+            Gizmos.DrawSphere(bob, 0.125f);
             Gizmos.DrawLine(bob, equilibrium);
         }
     }

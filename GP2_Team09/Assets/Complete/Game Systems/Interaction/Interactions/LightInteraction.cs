@@ -16,6 +16,9 @@ namespace GameProject.Interactions
         private float _time     = 0;
         private float _duration = 0;
 
+        private float   _defValue  = 0;
+        private float[] _defValues = null;
+
 // INITIALISATION
 
         /// <summary>
@@ -23,12 +26,20 @@ namespace GameProject.Interactions
         /// </summary>
         private void Awake(){
             var length = _animation.keys.Length - 1;
-
             var start = _animation[_startOff ? 0 : length];
-            if (_light) _light.intensity = start.value;
+
+            if (_light){
+                _defValue = _light.intensity;
+                _light.intensity = _defValue * start.value;
+            }
+
+            _defValues = new float[_lights.Length];
 
             for (int i = 0; i < _lights.Length; i++){
-                _lights[i].intensity = start.value;
+                var light = _lights[i];
+
+                _defValues[i]   = light.intensity;
+                light.intensity = light.intensity * start.value;
             }
 
             _duration = _animation[length].time;
@@ -54,15 +65,13 @@ namespace GameProject.Interactions
         private void ShowLight(float deltaTime){
             _time += deltaTime;
 
-            var strength = _animation.Evaluate(_time);
-            if (_light) _light.intensity = strength;
-
-            for (int i = 0; i < _lights.Length; i++){
-                _lights[i].intensity = strength;
-            }
-
+            SetIntensity(_time);
             if (_time < _duration) return;
-            _update.Unsubscribe(ShowLight, UpdateType.Update);
+
+            _update.Unsubscribe(
+                ShowLight, 
+                UpdateType.Update
+            );
         }
 
 
@@ -83,16 +92,26 @@ namespace GameProject.Interactions
         /// </summary>
         private void HideLight(float deltaTime){
             _time -= deltaTime;
-            
-            var strength = _animation.Evaluate(_time);
-            if (_light) _light.intensity = strength;
+
+            SetIntensity(_time);
+            if (_time > 0f) return;
+
+            _update.Unsubscribe(
+                HideLight, UpdateType.Update
+            );
+        }
+
+
+        /// <summary>
+        /// Changes the light intensity
+        /// </summary>
+        private void SetIntensity(float time){
+            var strength = _animation.Evaluate(time);
+            if (_light) _light.intensity = _defValue * strength;
 
             for (int i = 0; i < _lights.Length; i++){
-                _lights[i].intensity = strength;
+                _lights[i].intensity = _defValues[i] * strength;
             }
-
-            if (_time > 0f) return;
-            _update.Unsubscribe(HideLight, UpdateType.Update);
         }
     }
 }

@@ -14,8 +14,6 @@ namespace GameProject.Interactions
 
         [SF] private int _minValue = 0;
         [SF] private int _maxValue = 10;
-        [SF] private float _minRotation = -170;
-        [SF] private float _maxRotation =  170;
 
         [Space, SF] private ValueInfo[] _pattern = null;
         [Space, SF] private List<ActionInfo> _onSuccess = null;
@@ -79,21 +77,11 @@ namespace GameProject.Interactions
         /// <summary>
         /// Returns the rotation between min/max value
         /// </summary>
-        private int GetValue(BaseInteraction interactable){
-            var rotation = GetObjectRotation(interactable);
-            
-            var lerp = Mathf.InverseLerp(_minRotation, _maxRotation, rotation);
-            return (int)Mathf.Lerp(_maxValue, _minValue, lerp);
-        }
-
-        /// <summary>
-        /// Returns the proper rotation
-        /// </summary>
-        float GetObjectRotation(BaseInteraction interactable){
-            if (interactable.transform.eulerAngles.z > 180)
-                 return interactable.transform.eulerAngles.z - 360;
-
-            else return interactable.transform.eulerAngles.z;
+        private int GetValue(BaseInteraction interactable) {
+            var grabInteractable = interactable as TorsionalGrabInteraction;
+            var lerp = Mathf.InverseLerp(grabInteractable.MinAngle, grabInteractable.MaxAngle, grabInteractable.Angle);
+            var value = Mathf.Lerp(_maxValue, _minValue, lerp);
+            return Mathf.RoundToInt(value);
         }
 
 // ERRORS
