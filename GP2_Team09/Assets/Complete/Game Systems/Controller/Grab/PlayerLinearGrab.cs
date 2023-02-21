@@ -37,6 +37,20 @@ namespace GameProject.Grab
             _initialValue = GetGrabValue() - LinearGrabInteraction.Oscillator.LocalEquilibriumPosition.z;
         }
         
+        // TODO: Enable / disable LinearGrabInteraction.Oscillator on SetGrab()
+        /// <summary>
+        /// Sets the appropriate components controlling a game objects hold behaviour on or off as appropriate
+        /// </summary>
+        protected override void SetGrab(GrabInteraction toGrab) {
+            var shouldGrab = toGrab != null;
+            var grabbing = (shouldGrab ? toGrab : _grabbing) as LinearGrabInteraction;
+            if (grabbing == null) return;
+            
+            grabbing.Oscillator.enabled = shouldGrab;
+
+            _grabbing = toGrab;
+        }
+        
         /// <summary>
         /// Update the oscillator and torsional oscillator equilibrium's, such as to copy the HoldPivot
         /// </summary>

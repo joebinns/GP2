@@ -9,7 +9,6 @@ namespace GameProject.Grab
         [SF] protected Transform _cameraTarget;
         
         protected GrabInteraction _grabbing;
-        
         protected bool IsGrabbing => _grabbing != null;
         
 // INITIALISATION
@@ -39,8 +38,6 @@ namespace GameProject.Grab
         /// <summary>
         /// Sets the appropriate components controlling a game objects hold behaviour on or off as appropriate
         /// </summary>
-        private void SetGrab(GrabInteraction toGrab) {
-            _grabbing = toGrab;
-        }
+        protected abstract void SetGrab(GrabInteraction toGrab);
     }
 }

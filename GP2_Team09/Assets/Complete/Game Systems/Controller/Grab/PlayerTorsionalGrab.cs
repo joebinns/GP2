@@ -6,6 +6,7 @@ namespace GameProject.Grab
 {
     public class PlayerTorsionalGrab : PlayerGrab
     {
+        
         private float _angle = 0f;
         
 // PROPERTIES
@@ -34,6 +35,19 @@ namespace GameProject.Grab
             if (!IsGrabbingTorsional) return;
             _angle = MathsUtilities.AngleRepresentation(GetAngle());
         }
+        
+        /// <summary>
+        /// Sets the appropriate components controlling a game objects hold behaviour on or off as appropriate
+        /// </summary>
+        protected override void SetGrab(GrabInteraction toGrab) {
+            var shouldGrab = toGrab != null;
+            var grabbing = (shouldGrab ? toGrab : _grabbing) as TorsionalGrabInteraction;
+            if (grabbing == null) return;
+            
+            grabbing.TorsionalOscillator.enabled = shouldGrab;
+
+            _grabbing = toGrab;
+        }
 
         /// <summary>
         /// Update the oscillator and torsional oscillator equilibrium's, such as to copy the HoldPivot
@@ -42,11 +56,10 @@ namespace GameProject.Grab
             if (!IsGrabbing) return;
             if (!IsGrabbingTorsional) return;
             var deltaAngle = UpdateAngle();
-            TorsionalGrabInteraction.AdjustEquilibrium(- _grabbing.transform.InverseTransformDirection(TorsionalGrabInteraction.RotationAxis.forward) * deltaAngle);
+            TorsionalGrabInteraction.AdjustTargetRotation(-deltaAngle);
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <returns>Delta angle, without clamping</returns>
         private float UpdateAngle() {

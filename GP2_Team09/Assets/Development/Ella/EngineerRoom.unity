@@ -326,6 +326,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book Case
       objectReference: {fileID: 0}
+    - target: {fileID: 613975578739048705, guid: f4bc250019bf0a846a8852994f4a832f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193229409851622023, guid: f4bc250019bf0a846a8852994f4a832f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807019600483872118, guid: f4bc250019bf0a846a8852994f4a832f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4bc250019bf0a846a8852994f4a832f, type: 3}
 --- !u!1 &180906511

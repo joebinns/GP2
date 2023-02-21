@@ -1,6 +1,7 @@
 using SF = UnityEngine.SerializeField;
 using System.Collections.Generic;
 using GameProject.Grab;
+using GameProject.Oscillators;
 using UnityEngine;
 using GameProject.Updates;
 
@@ -25,7 +26,6 @@ namespace GameProject.Interactions
 
         public InteractableType InteractableType => _interactableType;
         public Outline Outline => _outline;
-
         public Rigidbody Rigidbody { get; private set; }
 
 // INITIALISATION
