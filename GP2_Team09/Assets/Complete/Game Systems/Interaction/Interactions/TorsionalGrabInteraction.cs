@@ -21,7 +21,7 @@ namespace GameProject.Interactions
 
         public TorsionalOscillator TorsionalOscillator { get; private set; }
         public Transform RotationAxis => _rotationAxis;
-        public float Angle => Vector3.Dot(_rotation.normalized, _rotation.magnitude * Vector3.one);
+        public float Angle => Vector3.Dot(_rotation, _rotationAxis.forward);
         public float MinAngle => _minAngle;
         public float MaxAngle => _maxAngle;
         
@@ -41,8 +41,10 @@ namespace GameProject.Interactions
 
         public void AdjustEquilibrium(Vector3 deltaAngle) {
             _rotation += deltaAngle;
-            _rotation = _useLimits ? Mathf.Abs(Mathf.Clamp(Angle, _minAngle, _maxAngle)) * _rotation.normalized : _rotation;
+            _rotation = _useLimits ? Mathf.Clamp(Angle, _minAngle, _maxAngle) * _rotationAxis.forward : _rotation;
             TorsionalOscillator.LocalEquilibriumRotation = _rotation;
+            
+            // TODO: Disable oscillator / torsional oscillator on release??? LIKE HOW THE HOLD SYSTEM WORKS TO MAINTAIN MOMENTUM!!!
         }
     }
 }

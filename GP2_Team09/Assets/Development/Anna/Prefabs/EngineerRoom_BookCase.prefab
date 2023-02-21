@@ -352,8 +352,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2996511530036108566}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.7767, y: 0.3, z: 0.2251}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -384,7 +384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3692927500199852781}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.244, y: 0, z: 0.675}
+  m_LocalPosition: {x: 0.015, y: 0.027, z: -0.112}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -452,7 +452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5846488440458501512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7767, y: 0.3, z: 0.2251}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -705,15 +705,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1963083569960140081, guid: 2187d80c04d76534d97ed4eea3cb32ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.77900016
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1963083569960140081, guid: 2187d80c04d76534d97ed4eea3cb32ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.024
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1963083569960140081, guid: 2187d80c04d76534d97ed4eea3cb32ba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.22600013
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1963083569960140081, guid: 2187d80c04d76534d97ed4eea3cb32ba, type: 3}
       propertyPath: m_LocalRotation.w
@@ -764,8 +764,8 @@ Rigidbody:
   m_GameObject: {fileID: 4258294784260513754}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 0.5
+  m_AngularDrag: 1
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -784,10 +784,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _localEquilibriumRotation: {x: 0, y: 90, z: 0}
-  _localPivotPosition: {x: 0, y: 0.275, z: 0}
+  _localPivotPosition: {x: 0, y: 0.2825, z: 0}
   _torqueScale: {x: 1, y: 1, z: 1}
-  _stiffness: 2000
-  _damper: 125
+  _stiffness: 1000
+  _damper: 62.5
   _rotationMethod: 0
 --- !u!114 &3271485317456242156
 MonoBehaviour:
@@ -825,6 +825,6 @@ MonoBehaviour:
   _update: {fileID: 11400000, guid: 9b090228707952e448427620a3dcfa31, type: 2}
   _onChange: []
   _rotationAxis: {fileID: 1985521145827511548}
-  _useLimits: 0
-  _minAngle: -90
-  _maxAngle: 0
+  _useLimits: 1
+  _minAngle: -45
+  _maxAngle: 90
