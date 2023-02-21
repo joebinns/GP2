@@ -47,7 +47,8 @@ namespace GameProject.Oscillators
         private void Awake() {
             _rb = GetComponent<Rigidbody>();
             _rb.centerOfMass = _localPivotPosition;
-            _angle = transform.rotation.eulerAngles;
+            _angle = transform.localEulerAngles;
+            _rotation = transform.localEulerAngles;
         }
 
         /// <summary>

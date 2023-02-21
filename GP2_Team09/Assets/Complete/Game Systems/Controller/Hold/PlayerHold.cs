@@ -57,7 +57,6 @@ namespace GameProject.Hold
         /// </summary>
         public void Release() {
             SetHold(null);
-            _holding = null;
             OnRelease?.Invoke();
         }
 

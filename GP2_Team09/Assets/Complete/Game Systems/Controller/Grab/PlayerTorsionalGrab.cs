@@ -6,6 +6,7 @@ namespace GameProject.Grab
 {
     public class PlayerTorsionalGrab : PlayerGrab
     {
+        
         private float _angle = 0f;
         
 // PROPERTIES
@@ -42,7 +43,7 @@ namespace GameProject.Grab
             if (!IsGrabbing) return;
             if (!IsGrabbingTorsional) return;
             var deltaAngle = UpdateAngle();
-            TorsionalGrabInteraction.AdjustEquilibrium(- _grabbing.transform.InverseTransformDirection(TorsionalGrabInteraction.RotationAxis.forward) * deltaAngle);
+            TorsionalGrabInteraction.AdjustEquilibrium(-deltaAngle);
         }
 
         /// <summary>
