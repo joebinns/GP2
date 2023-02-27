@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65755a69c2fe2504f88f95d51bc66677, type: 3}
   m_Name: Press Settings
   m_EditorClassIdentifier: 
-  _hoverReticle: {fileID: 21300000, guid: 251897ea09ffe1a4297e31290c6e1ef7, type: 3}
-  _actionReticle: {fileID: 21300000, guid: 63bcaaeb7461b60459e48e16063a5bbe, type: 3}
+  _hoverReticle: {fileID: 21300000, guid: db76fc8dbda2eff4a822407e1348d7a3, type: 3}
+  _actionReticle: {fileID: 21300000, guid: 2ee26fbea79c2c04683e81077aaa22f8, type: 3}
   _hoverPromptInfo:
-    DesktopIcon: {fileID: 21300000, guid: e5991e5d1208a0a44b6c6e0a8c025f81, type: 3}
-    ConsoleIcon: {fileID: 21300000, guid: a01713f33a13ad94cb2dff7130797bb6, type: 3}
+    DesktopIcon: {fileID: 21300000, guid: e951434ba3866f041ab88a52e66b5f24, type: 3}
+    ConsoleIcon: {fileID: 21300000, guid: e963f018ef9273e4d9a3cfda49b1edd3, type: 3}
     Verb: Press
   _actionPromptInfo:
-    DesktopIcon: {fileID: 0}
-    ConsoleIcon: {fileID: 0}
-    Verb: 
+    DesktopIcon: {fileID: 21300000, guid: e951434ba3866f041ab88a52e66b5f24, type: 3}
+    ConsoleIcon: {fileID: 21300000, guid: e963f018ef9273e4d9a3cfda49b1edd3, type: 3}
+    Verb: Press

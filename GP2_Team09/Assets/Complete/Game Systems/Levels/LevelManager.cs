@@ -11,8 +11,10 @@ namespace GameProject.Levels
     public class LevelManager : ScriptableObject
     {
         [SF] private LevelInfo _startup   = null;
+        [SF] private LevelInfo _credits   = null;
         [SF] private LevelInfo _control   = null;
         [SF] private LevelInfo _spaceship = null;
+        [SF] private LevelInfo _lose      = null;
         [Space]
         [SF] private ScenesManager _scene = null;
         [SF] private MenuManager _menu    = null;
@@ -24,10 +26,12 @@ namespace GameProject.Levels
 
 // PROPERTIES
 
-        public LevelInfo Startup => _startup;
+        public LevelInfo Startup     => _startup;
+        public LevelInfo Credits     => _credits;
         public LevelInfo ControlRoom => _control;
-        public LevelInfo Spaceship => _spaceship;
-        public LevelInfo Current => _current;
+        public LevelInfo Spaceship   => _spaceship;
+        public LevelInfo Lose        => _lose;
+        public LevelInfo Current     => _current;
 
 // INITIALISATION
 

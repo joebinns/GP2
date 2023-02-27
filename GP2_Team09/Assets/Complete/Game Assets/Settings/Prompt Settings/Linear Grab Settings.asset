@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65755a69c2fe2504f88f95d51bc66677, type: 3}
   m_Name: Linear Grab Settings
   m_EditorClassIdentifier: 
-  _hoverReticle: {fileID: 21300000, guid: ecc2172ee69f2d4499010f81c604cabe, type: 3}
-  _actionReticle: {fileID: 21300000, guid: 63bcaaeb7461b60459e48e16063a5bbe, type: 3}
+  _hoverReticle: {fileID: 21300000, guid: acd08ca7c832eee46b18d1acc0f40d80, type: 3}
+  _actionReticle: {fileID: 21300000, guid: 2ee26fbea79c2c04683e81077aaa22f8, type: 3}
   _hoverPromptInfo:
-    DesktopIcon: {fileID: 21300000, guid: e5991e5d1208a0a44b6c6e0a8c025f81, type: 3}
-    ConsoleIcon: {fileID: 21300000, guid: 6be2c074f3875f84fb5b0c328a97344f, type: 3}
+    DesktopIcon: {fileID: 21300000, guid: e951434ba3866f041ab88a52e66b5f24, type: 3}
+    ConsoleIcon: {fileID: 21300000, guid: e963f018ef9273e4d9a3cfda49b1edd3, type: 3}
     Verb: Grab
   _actionPromptInfo:
-    DesktopIcon: {fileID: 21300000, guid: c6df09a36f722bc40af9ee60d6f13087, type: 3}
-    ConsoleIcon: {fileID: 21300000, guid: 76e074e134563424dbf00b901a5e02b9, type: 3}
+    DesktopIcon: {fileID: 21300000, guid: 00d5932977a12a64f9be85819f63a16e, type: 3}
+    ConsoleIcon: {fileID: 21300000, guid: 08659f87e301ccb48ad4e148cc6098a2, type: 3}
     Verb: Move

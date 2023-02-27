@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 5093747927031252245}
   - component: {fileID: 6720581999862564152}
   - component: {fileID: 9184942690065744667}
-  - component: {fileID: 138734266164199123}
-  - component: {fileID: 605694677983469029}
-  m_Layer: 6
+  - component: {fileID: 6265735823727014037}
+  m_Layer: 0
   m_Name: Safe_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2dee1a8207b0a224d8ef9b1079f5ce29, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,8 +98,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.04083301, y: 0.3511503, z: 0.09635624}
-  m_Center: {x: 0.9887642, y: 0.3894595, z: 0.10460476}
+  m_Size: {x: 0.14265387, y: 0.37657148, z: 0.04375601}
+  m_Center: {x: -0.07969513, y: 0.38863984, z: 0.9947678}
 --- !u!65 &9184942690065744667
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -112,28 +111,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1371006, y: 0.7203633, z: 0.04700382}
-  m_Center: {x: 0.5622159, y: 0.3256189, z: 0.02350289}
---- !u!114 &138734266164199123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6750997753498379456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de631a802cf2a6f4f80666444475941f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _locked: 1
-  _opened: 0
-  _animator: {fileID: 0}
-  _onLocking: []
-  _onUnlocking: []
-  _onOpening: []
-  _onClosing: []
---- !u!114 &605694677983469029
+  m_Size: {x: 0.07136535, y: 0.7203633, z: 1.1319675}
+  m_Center: {x: -0.026090536, y: 0.3256189, z: 0.5659838}
+--- !u!114 &6265735823727014037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,7 +151,7 @@ PrefabInstance:
     - target: {fileID: 2520384794215377037, guid: ff0d3d67b5492864daf0a20d93b43897, type: 3}
       propertyPath: _onSuccess.Array.data[0].Target
       value: 
-      objectReference: {fileID: 138734266164199123}
+      objectReference: {fileID: 0}
     - target: {fileID: 2520384794215377037, guid: ff0d3d67b5492864daf0a20d93b43897, type: 3}
       propertyPath: _onSuccess.Array.data[1].Action
       value: 7
@@ -179,7 +159,7 @@ PrefabInstance:
     - target: {fileID: 2520384794215377037, guid: ff0d3d67b5492864daf0a20d93b43897, type: 3}
       propertyPath: _onSuccess.Array.data[1].Target
       value: 
-      objectReference: {fileID: 138734266164199123}
+      objectReference: {fileID: 0}
     - target: {fileID: 8165124860017935499, guid: ff0d3d67b5492864daf0a20d93b43897, type: 3}
       propertyPath: m_RootOrder
       value: 0

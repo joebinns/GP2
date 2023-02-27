@@ -15,6 +15,7 @@ namespace GameProject.Cameras
 
 // PROPERTIES
 
+        public float FieldOfView   => _camera.fieldOfView;
         public Camera    Camera    => _camera;
         public Transform Transform => _transform;
 
@@ -41,6 +42,13 @@ namespace GameProject.Cameras
         public void OnDestroy(){}
 
 // CAMERA MANAGEMENT
+
+        /// <summary>
+        /// Changes the camera's field of view
+        /// </summary>
+        public void SetFOV(float fov){
+            _cinemachine.m_Lens.FieldOfView = fov;
+        }
 
         /// <summary>
         /// Changes the camera's look and follow target

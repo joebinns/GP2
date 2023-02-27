@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8800754776179227247
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.044
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.95447457
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.761
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.3005681
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.59747285
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5837713
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.46032178
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -143.436
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 33.395996
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.33299255
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_Name
+      value: Potted Plant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451118302482216456, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3451118302482216456, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+--- !u!1 &8566943833012635454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d2a40615bfdb56d4f8577f2723759a16, type: 3}
+  m_PrefabInstance: {fileID: 8800754776179227247}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1412708619
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8566943833012635454}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0.01
+  m_AngularDrag: 0.1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1412708618
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8566943833012635454}
+  m_Material: {fileID: 13400000, guid: 049f6d897d8a7ad4ba47fb5aba5d8fbd, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2099404, y: 0.4868044, z: 0.2099404}
+  m_Center: {x: -0.00016838362, y: -0.000027659606, z: 0.0024340195}
+--- !u!114 &1412708622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8566943833012635454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f336b0b078023f4dbb302d24c7c8e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerHold: {fileID: 0}
+--- !u!114 &1412708623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8566943833012635454}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1386ff400d48040832677588e508e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localEquilibriumRotation: {x: 0, y: 0, z: 0}
+  _localPivotPosition: {x: 0, y: 0, z: 0}
+  _torqueScale: {x: 1, y: 1, z: 1}
+  _stiffness: 100
+  _damper: 10
+  _rotationMethod: 0
+--- !u!114 &1412708624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8566943833012635454}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f37ac68ceb374287b55ff05be0177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localEquilibriumPosition: {x: 0, y: 0, z: 0}
+  _forceScale: {x: 1, y: 1, z: 1}
+  _stiffness: 50
+  _damper: 20
+  _mass: 1
+  _useLimits: 0
+  _minLocalEquilibriumPosition: {x: -1, y: -1, z: -1}
+  _maxLocalEquilibriumPosition: {x: 1, y: 1, z: 1}
+--- !u!114 &1412708625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8566943833012635454}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a90ca98b9e9ad4ebb24807cd911e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 9
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+  _range: 4
+  _rate: 4

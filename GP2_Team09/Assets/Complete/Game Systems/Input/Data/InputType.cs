@@ -13,7 +13,7 @@ namespace GameProject.Inputs {
         Primary,
         Secondary,
         Switch,
-        Reach,
+        Zoom,
 
         // Interfaces
         Character = 30,

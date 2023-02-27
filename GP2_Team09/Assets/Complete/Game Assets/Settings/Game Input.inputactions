@@ -77,7 +77,7 @@
                     "id": "6d023110-e835-455b-b400-dd72b04ba8f3",
                     "path": "<Gamepad>/rightStick/y",
                     "interactions": "",
-                    "processors": "Scale(factor=4)",
+                    "processors": "Scale(factor=10)",
                     "groups": "Console",
                     "action": "Look",
                     "isComposite": false,
@@ -209,7 +209,7 @@
                     "id": "711e886c-47ec-45c1-9e86-d19ebaa4c01f",
                     "path": "<Gamepad>/rightStick/x",
                     "interactions": "",
-                    "processors": "Scale(factor=4)",
+                    "processors": "Scale(factor=10)",
                     "groups": "Console",
                     "action": "Turn",
                     "isComposite": false,
@@ -253,10 +253,19 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Reach",
+                    "name": "Zoom",
                     "type": "PassThrough",
                     "id": "acd35a47-2d20-4903-8cba-3d433b1f4ec8",
                     "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Zoom Toggle",
+                    "type": "Button",
+                    "id": "f082de78-3492-4daf-b939-0dd5cb9e0e0f",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -323,7 +332,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Desktop",
-                    "action": "Reach",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -334,7 +343,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Reach",
+                    "action": "Zoom",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -345,7 +354,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Console",
-                    "action": "Reach",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -356,7 +365,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Console",
-                    "action": "Reach",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -379,6 +388,17 @@
                     "processors": "",
                     "groups": "Console",
                     "action": "Secondary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6f0c5be-69b3-4488-a281-8fc5a9efc224",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Desktop",
+                    "action": "Zoom Toggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

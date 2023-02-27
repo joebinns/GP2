@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Cercet
-    second: {fileID: 2100000, guid: 34255c81d7282c144b9f23f35b4ae95f, type: 2}
+    second: {fileID: 2100000, guid: 8fae65c57bc8abf418833af75db9b79e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

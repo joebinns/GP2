@@ -23,6 +23,7 @@ namespace GameProject.Interactions {
         
         [Header("Material Settings")]
         [SF] private bool _global = false;
+        [SF] private int _materialIndex = 0;
         [SF] private MeshRenderer _renderer = null;
 
         private Color _defAlbedoColour     = Color.white;
@@ -35,9 +36,9 @@ namespace GameProject.Interactions {
         /// Initialises the default material properties
         /// </summary>
         private void Awake(){
-            var material = _global ? 
-                _renderer.sharedMaterial :
-                _renderer.material; 
+            var material = _global ?
+                _renderer.sharedMaterials[_materialIndex] :
+                _renderer.materials[_materialIndex]; 
 
             if (_setAlbedo){
                 _defAlbedoColour = material.GetColor(
@@ -89,8 +90,8 @@ namespace GameProject.Interactions {
         /// </summary>
         private void UpdateMaterial(bool change){
             var material = _global ? 
-                _renderer.sharedMaterial :
-                _renderer.material;
+                _renderer.sharedMaterials[_materialIndex] :
+                _renderer.materials[_materialIndex];
 
             SetAlbedo(material, change);
             SetEmission(material, change);

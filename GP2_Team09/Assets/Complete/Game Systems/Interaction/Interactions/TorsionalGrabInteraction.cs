@@ -1,4 +1,3 @@
-using System;
 using SF = UnityEngine.SerializeField;
 using GameProject.Oscillators;
 using UnityEngine;
@@ -22,7 +21,7 @@ namespace GameProject.Interactions
 
         public TorsionalOscillator TorsionalOscillator { get; private set; }
         public Transform RotationAxis => _rotationAxis;
-        public float Angle => Vector3.Dot(_localTargetRotation, LocalRotationAxis);
+        public float TargetAngle => Vector3.Dot(_localTargetRotation, LocalRotationAxis);
         public float MinAngle => _minAngle;
         public float MaxAngle => _maxAngle;
         private Vector3 LocalRotationAxis => TorsionalOscillator.transform.InverseTransformDirection(_rotationAxis.forward);
@@ -50,7 +49,7 @@ namespace GameProject.Interactions
 
         public void AdjustEquilibrium(float deltaAngle) {
             _localTargetRotation += deltaAngle * LocalRotationAxis;
-            _localTargetRotation = _useLimits ? Mathf.Clamp(Angle, _minAngle, _maxAngle) * LocalRotationAxis : _localTargetRotation;
+            _localTargetRotation = _useLimits ? Mathf.Clamp(TargetAngle, _minAngle, _maxAngle) * LocalRotationAxis : _localTargetRotation;
             TorsionalOscillator.LocalEquilibriumRotation = _localTargetRotation;
         }
     }

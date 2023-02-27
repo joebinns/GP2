@@ -8,6 +8,7 @@ using ActionKey   = System.Action;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using Unity.VisualScripting;
 
 namespace GameProject.Inputs {
     public sealed partial class InputManager : ScriptableObject
@@ -32,7 +33,7 @@ namespace GameProject.Inputs {
         private InputInfo _switch = null;
         
         [SF, Tooltip("Output: Direction")]
-        private InputInfo _reach = null;
+        private InputInfo _zoom = null;
 
         private Subscription<ActionPlane> _onCursor    = null;
         private Subscription<ActionPlane> _onPointer   = null;
@@ -40,7 +41,7 @@ namespace GameProject.Inputs {
         private Subscription<ActionKey>   _onPrimary   = null;
         private Subscription<ActionKey>   _onSecondary = null;
         private Subscription<ActionIndex> _onSwitch    = null;
-        private Subscription<ActionValue> _onReach     = null;
+        private Subscription<ActionValue> _onZoom      = null;
 
 // INITIALISATION AND DEINITIALISATION
 
@@ -50,11 +51,13 @@ namespace GameProject.Inputs {
         private void InitActions(){
             InitialiseInput<ActionPlane>(ref _onCursor, _cursor, OnCursorInput);
             InitialiseInput<ActionPlane>(ref _onPointer, _pointer, OnPointerInput);
+
             InitialiseInput<ActionKey>(ref _onUse, _use, OnUseInput);
             InitialiseInput<ActionKey>(ref _onPrimary, _primary, OnPrimaryInput);
             InitialiseInput<ActionKey>(ref _onSecondary, _secondary, OnSecondaryInput);
+
             InitialiseInput<ActionIndex>(ref _onSwitch, _switch, OnSwitchInput);
-            InitialiseInput<ActionValue>(ref _onReach, _reach, OnReachInput);
+            InitialiseInput<ActionValue>(ref _onZoom, _zoom, OnZoomInput);
         }
 
         /// <summary>
@@ -63,17 +66,21 @@ namespace GameProject.Inputs {
         private void DeinitActions(){
             DeinitialiseInput<ActionPlane>(ref _onCursor, _cursor, OnCursorInput);
             DeinitialiseInput<ActionPlane>(ref _onPointer, _pointer, OnPointerInput);
+
             DeinitialiseInput<ActionKey>(ref _onUse, _use, OnUseInput);
             DeinitialiseInput<ActionKey>(ref _onPrimary, _primary, OnPrimaryInput);
             DeinitialiseInput<ActionKey>(ref _onSecondary, _secondary, OnSecondaryInput);
+
+            InitialiseInput<ActionValue>(ref _onZoom, _zoom, OnZoomInput);
             DeinitialiseInput<ActionIndex>(ref _onSwitch, _switch, OnSwitchInput);
-            DeinitialiseInput<ActionValue>(ref _onReach, _reach, OnReachInput);
+            DeinitialiseInput<ActionValue>(ref _onZoom, _zoom, OnZoomInput);
         }
 
 // ACTION INPUTS
 
         /// <summary>
         /// On cursor input action callback
+        /// <br>Outputs 2D Position or Direction</br>
         /// </summary>
         private void OnCursorInput(InputAction.CallbackContext context){
             var position = context.ReadValue<Vector2>();
@@ -82,6 +89,7 @@ namespace GameProject.Inputs {
 
         /// <summary>
         /// On pointer input action callback
+        /// <br>Outputs 2D Position or Direction</br>
         /// </summary>
         private void OnPointerInput(InputAction.CallbackContext context){
             var direction = context.ReadValue<Vector2>();
@@ -127,11 +135,22 @@ namespace GameProject.Inputs {
         }
 
         /// <summary>
-        /// On reach input action callback
+        /// On zoom input action callback
+        /// <br>Outputs direction</br>
         /// </summary>
-        private void OnReachInput(InputAction.CallbackContext context) {
+        private void OnZoomInput(InputAction.CallbackContext context) {
             var direction = context.ReadValue<float>();
-            _onReach.NotifySubscribers(direction);
+
+            switch (context.action.type){
+                case InputActionType.Value:
+                case InputActionType.PassThrough:
+                    _onZoom.NotifySubscribers(direction);
+                    break;
+
+                case InputActionType.Button:
+                    _onZoom.NotifySubscribers(direction > 0 ? 1 : -1);
+                    break;
+            }
         }
     }
 }

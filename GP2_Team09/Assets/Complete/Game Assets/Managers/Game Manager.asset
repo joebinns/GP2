@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664fe9cb39575274ba085253666e2ccf, type: 3}
   m_Name: Game Manager
   m_EditorClassIdentifier: 
-  _lostReturnDelay: 3
-  _wonReturnDelay: 5
+  _lives: 3
+  _lostReturnDelay: 1
+  _wonReturnDelay: 1.5
   _engineerPrefab: {fileID: 6566537215078335635, guid: 6e48eebdeb5391645bdcff6254812f35, type: 3}
   _crewPrefab: {fileID: 6566537215078335635, guid: cd3bbc81c1e65614fa3349de1c772489, type: 3}
   _shipNames: {fileID: 11400000, guid: 78b9825d3f1b89b41b1bed48d35ea7d6, type: 2}

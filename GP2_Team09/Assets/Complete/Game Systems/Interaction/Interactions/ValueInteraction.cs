@@ -79,7 +79,7 @@ namespace GameProject.Interactions
         /// </summary>
         private int GetValue(BaseInteraction interactable) {
             var grabInteractable = interactable as TorsionalGrabInteraction;
-            var lerp = Mathf.InverseLerp(grabInteractable.MinAngle, grabInteractable.MaxAngle, grabInteractable.Angle);
+            var lerp = Mathf.InverseLerp(grabInteractable.MinAngle, grabInteractable.MaxAngle, grabInteractable.TargetAngle);
             var value = Mathf.Lerp(_maxValue, _minValue, lerp);
             return Mathf.RoundToInt(value);
         }

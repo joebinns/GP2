@@ -8,7 +8,7 @@ namespace GameProject.Interactions
     public class RandomDelayInteraction : DelayInteraction
     {
         [Header("Randomisation")]
-        [SF] private ChaosSettings _settings = null;
+        [SF] private Vector2 _minMaxDelay = new Vector2(30, 60);
         
         private Random _random = null;
 
@@ -30,10 +30,11 @@ namespace GameProject.Interactions
         public override void Begin(){
             base.Begin();
 
-            var value = (float)_random.NextDouble();
-            var range = _settings.RandomLightTimer;
-
-            _time = Mathf.Lerp(range.x, range.y, value);
+            _time = Mathf.Lerp(
+                _minMaxDelay.x, 
+                _minMaxDelay.y,
+                (float)_random.NextDouble()
+            );
         }
     }
 }

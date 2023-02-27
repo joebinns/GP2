@@ -51,8 +51,9 @@ namespace GameProject.HUD
         /// </summary>
         public void OnPauseInput() {
             if (_current == null) return;
+
             _current.gameObject.SetActive(
-                !_menu.Opened
+                !_menu.PauseOpened
             );
         }
 
@@ -69,14 +70,16 @@ namespace GameProject.HUD
         /// Display win HUD based on parameter
         /// </summary>
         public void DisplayWon(bool display) {
-            _crew.DisplayWon(display);
+            if (_crew)     _crew.DisplayWon(display);
+            if (_engineer) _engineer.DisplayWon(display);
         }
         
         /// <summary>
         /// Display lose HUD based on parameter
         /// </summary>
         public void DisplayLost(bool display) {
-            _crew.DisplayLost(display);
+            if (_crew)     _crew.DisplayLost(display);
+            if (_engineer) _engineer.DisplayLost(display);
         }
 
         /// <summary>

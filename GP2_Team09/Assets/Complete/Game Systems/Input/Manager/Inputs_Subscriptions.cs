@@ -72,7 +72,7 @@ namespace GameProject.Inputs {
                 case InputType.Roll: Subscribe<ActionValue>(_onRoll, subscriber, priority); break;
                 case InputType.Lean: Subscribe<ActionValue>(_onLean, subscriber, priority); break;
                 case InputType.Jump: Subscribe<ActionValue>(_onJump, subscriber, priority); break;
-                case InputType.Reach: Subscribe<ActionValue>(_onReach, subscriber, priority); break;
+                case InputType.Zoom: Subscribe<ActionValue>(_onZoom, subscriber, priority); break;
 
                 default: MissingAction(subscriber.GetType(), input); break;
             }
@@ -88,7 +88,7 @@ namespace GameProject.Inputs {
                 case InputType.Roll: Unsubscribe<ActionValue>(_onRoll, subscriber); break;
                 case InputType.Lean: Unsubscribe<ActionValue>(_onLean, subscriber); break;
                 case InputType.Jump: Unsubscribe<ActionValue>(_onJump, subscriber); break;
-                case InputType.Reach: Unsubscribe<ActionValue>(_onReach, subscriber); break;
+                case InputType.Zoom: Unsubscribe<ActionValue>(_onZoom, subscriber); break;
 
                 default: MissingAction(subscriber.GetType(), input); break;
             }

@@ -8,12 +8,26 @@ namespace GameProject.Inputs
      menuName = "Managers/Input")]
     public sealed partial class InputManager : ScriptableObject
     {
-// INITIALISATION
+        public readonly InputType[] ActionGroup = {
+            InputType.Use, InputType.Primary, InputType.Secondary,
+            InputType.Switch, InputType.Zoom 
+        };
+        public readonly InputType[] InterfaceGroup = { 
+            InputType.Character, InputType.Inventory, 
+            InputType.Skills, InputType.Spells, 
+            InputType.Journal, InputType.Map
+        };
+        public readonly InputType[] MovementGroup = {
+            InputType.Turn, InputType.Tilt, InputType.Roll, InputType.Lean, 
+            InputType.Crouch, InputType.Walk, InputType.Move, InputType.Run, 
+            InputType.Jump, InputType.Dodge
+        };
+        public readonly InputType[] VariousGroup = {
+            InputType.Pause, InputType.Save, InputType.Load, 
+            InputType.Screenshot
+        };
 
-        public readonly InputType[] ActionGroup = {InputType.Use, InputType.Primary, InputType.Secondary, InputType.Switch, InputType.Reach};
-        public readonly InputType[] InterfaceGroup = {InputType.Character, InputType.Inventory, InputType.Skills, InputType.Spells, InputType.Journal, InputType.Map};
-        public readonly InputType[] MovementGroup = {InputType.Turn, InputType.Tilt, InputType.Roll, InputType.Lean, InputType.Crouch, InputType.Walk, InputType.Move, InputType.Run, InputType.Jump, InputType.Dodge};
-        public readonly InputType[] VariousGroup = {InputType.Pause, InputType.Save, InputType.Load, InputType.Screenshot};
+// INITIALISATION
 
         /// <summary>
         /// Initialises the input manager
@@ -78,7 +92,7 @@ namespace GameProject.Inputs
                 case InputType.Primary:  SetInput(_primary.Input, enabled);  break;
                 case InputType.Secondary:SetInput(_secondary.Input, enabled);break;
                 case InputType.Switch:   SetInput(_switch.Input, enabled);   break;
-                case InputType.Reach:    SetInput(_reach.Input, enabled);    break;
+                case InputType.Zoom:     SetInput(_zoom.Input, enabled);     break;
 
                 case InputType.Character:SetInput(_character.Input, enabled);break;
                 case InputType.Inventory:SetInput(_inventory.Input, enabled);break;

@@ -35,7 +35,7 @@ namespace GameProject.Hold
         /// </summary>
         private void OnEnable(){
             _controller.AddAction(this, UpdateMode.Update);
-            _input.SubscribeFloat(OnReachInput, InputType.Reach, Priority);
+            _input.SubscribeFloat(OnReachInput, InputType.Zoom, Priority);
             _playerHold.OnGrab += OnGrab;
             _playerHold.OnRelease += OnRelease;
         }
@@ -45,7 +45,7 @@ namespace GameProject.Hold
         /// </summary>
         private void OnDisable(){
             _controller.RemoveAction(this, UpdateMode.Update);
-            _input.UnsubscribeFloat(OnReachInput, InputType.Reach);
+            _input.UnsubscribeFloat(OnReachInput, InputType.Zoom);
             _playerHold.OnGrab -= OnGrab;
             _playerHold.OnRelease -= OnRelease;
         }

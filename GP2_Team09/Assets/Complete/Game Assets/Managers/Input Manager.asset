@@ -31,10 +31,10 @@ MonoBehaviour:
     Released: 1
     Sorted: 0
   _primary:
-    Input: {fileID: 0}
+    Input: {fileID: 3248461747018879020, guid: 1993c7cf629502b4cac190781179b6ba, type: 3}
     Pressed: 0
     Changed: 0
-    Released: 0
+    Released: 1
     Sorted: 0
   _secondary:
     Input: {fileID: 8897836525344711354, guid: 1993c7cf629502b4cac190781179b6ba, type: 3}
@@ -48,11 +48,11 @@ MonoBehaviour:
     Changed: 0
     Released: 0
     Sorted: 0
-  _reach:
+  _zoom:
     Input: {fileID: 6907808679849732277, guid: 1993c7cf629502b4cac190781179b6ba, type: 3}
     Pressed: 0
     Changed: 1
-    Released: 0
+    Released: 1
     Sorted: 0
   _character:
     Input: {fileID: 0}

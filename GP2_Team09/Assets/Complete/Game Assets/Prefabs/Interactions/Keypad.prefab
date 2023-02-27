@@ -2183,6 +2183,7 @@ MonoBehaviour:
   _failure: {r: 1, g: 0, b: 0, a: 1}
   _image: {fileID: 2796704320164655900}
   _text: {fileID: 8048269553867657636}
+  _flashDuration: 0.25
 --- !u!1 &1150841944428898931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2976,6 +2977,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08d9196efe192747b2032d8a657813b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _description: 
+  _playOnce: 0
   _usePitch: 0
   _pitchShift: {x: 0.95, y: 1.05}
   _sound: {fileID: 6004080859770429397}
@@ -3907,6 +3910,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08d9196efe192747b2032d8a657813b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _description: 
+  _playOnce: 0
   _usePitch: 0
   _pitchShift: {x: 0.95, y: 1.05}
   _sound: {fileID: 488169731037586755}
@@ -4582,6 +4587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08d9196efe192747b2032d8a657813b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _description: 
+  _playOnce: 0
   _usePitch: 1
   _pitchShift: {x: 0.95, y: 1.05}
   _sound: {fileID: 6371532070631411370}

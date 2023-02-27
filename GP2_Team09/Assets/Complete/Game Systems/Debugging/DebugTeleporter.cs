@@ -16,6 +16,10 @@ namespace GameProject
         private readonly Vector3    PipeRoomPos = new Vector3(57, 1.1f, -75f);
         private readonly Quaternion PipeRoomRot = Quaternion.Euler(0, 180, 0);
 
+        private readonly Vector3    CapsuleRoomPos = new Vector3(81.5f, -2.5f, -37.5f);
+        private readonly Quaternion CapsuleRoomRot = Quaternion.Euler(0, 60, 0);
+
+
         /// <summary>
         /// Teleports player to position
         /// </summary>
@@ -33,6 +37,10 @@ namespace GameProject
             } else if (keyboard[Key.F11].isPressed){
                 transform.position = PipeRoomPos;
                 transform.rotation = PipeRoomRot;
+
+            } else if (keyboard[Key.F12].isPressed){
+                transform.position = CapsuleRoomPos;
+                transform.rotation = CapsuleRoomRot;
             }
         }
     }

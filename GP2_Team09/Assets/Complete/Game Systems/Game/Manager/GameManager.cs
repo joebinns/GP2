@@ -54,7 +54,7 @@ namespace GameProject.Game
 
             _health = _lives;
             _hud?.UpdateHealth(_health);
-            _menu?.ShowMenu(false);
+            _menu?.ShowMainMenu(false);
         }
 
         /// <summary>
@@ -121,11 +121,11 @@ namespace GameProject.Game
         /// Triggers the win state
         /// </summary>
         public void PlayerWin(){
-            _hud.DisplayWon(true);
+            //_hud.DisplayWon(true);
             SetPlayerInput(false);
 
             _update.StartCoroutine(
-                ReturnToMenu(_wonReturnDelay)
+                ReturnToCredits(_wonReturnDelay)
             );
         }
         
@@ -136,15 +136,57 @@ namespace GameProject.Game
             _hud.UpdateHealth(--_health);
             if (_health > 0) return;
 
-            _hud.DisplayLost(true);
+            //_hud.DisplayLost(true);
             SetPlayerInput(false);
 
             _update.StartCoroutine(
-                ReturnToMenu(_lostReturnDelay)
+                ReturnToLose(_lostReturnDelay)
             );
         }
 
 // LEVEL HANDLING
+
+        /// <summary>
+        /// Returns the player to the credits scene
+        /// </summary>
+        public void ReturnToCredits(){
+            _menu.ShowMainMenu(false);
+
+            _update.StartCoroutine(
+                ReturnToCredits(0)
+            );
+        }
+
+        /// <summary>
+        /// Returns the player to the credits scene after delay
+        /// </summary>
+        private IEnumerator ReturnToCredits(float delay){
+            yield return new WaitForSeconds(delay);
+
+            _level.SubscribeOnLoaded(OnCreditsLoaded);
+            _level.LoadLevel(_level.Credits);
+        }
+
+        /// <summary>
+        /// Shows menu on credits scene loaded
+        /// </summary>
+        private void OnCreditsLoaded(){
+            _level.UnsubscribeOnLoaded(OnCreditsLoaded);
+            _menu.PauseMenu.gameObject.SetActive(false);
+            _menu.SetCursor(true);
+        }
+
+
+        /// <summary>
+        /// Returns the player to the main menu scene
+        /// </summary>
+        public void ReturnToMainMenu(){
+            _menu.ShowPauseMenu(false);
+
+            _update.StartCoroutine(
+                ReturnToMenu(0)
+            );
+        }
 
         /// <summary>
         /// Returns the player to the main menu scene after delay
@@ -161,7 +203,28 @@ namespace GameProject.Game
         /// </summary>
         private void OnMenuLoaded(){
             _level.UnsubscribeOnLoaded(OnMenuLoaded);
-            _menu?.ShowMenu(true);
+            _menu.PauseMenu.gameObject.SetActive(true);
+            _menu?.ShowMainMenu(true);
+        }
+
+
+        /// <summary>
+        /// Returns the player to the lose scene after delay
+        /// </summary>
+        private IEnumerator ReturnToLose(float delay){
+            yield return new WaitForSeconds(delay);
+
+            _level.SubscribeOnLoaded(OnLoseLoaded);
+            _level.LoadLevel(_level.Lose);
+        }
+
+        /// <summary>
+        /// Shows menu on main menu scene loaded
+        /// </summary>
+        private void OnLoseLoaded(){
+            _level.UnsubscribeOnLoaded(OnLoseLoaded);
+            _menu.PauseMenu.gameObject.SetActive(false);
+            _menu.SetCursor(true);
         }
 
 // UTILITY

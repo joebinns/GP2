@@ -9,16 +9,27 @@ namespace GameProject.Environment
     {
         [SF] private bool _locked = false;
         [SF] private bool _opened = false;
-        [SF] private TorsionalGrabInteraction _torsionalGrabInteraction;
+        [SF] private Animator _animator = null;
 
         [Space, SF] private List<ActionInfo> _onLocking   = null;
         [Space, SF] private List<ActionInfo> _onUnlocking = null;
         [Space, SF] private List<ActionInfo> _onOpening = null;
         [Space, SF] private List<ActionInfo> _onClosing = null;
 
+        private readonly int OPEN_HASH = Animator.StringToHash("Open");
+
 // PROPERTIES
 
         public bool Locked => _locked;
+
+// INITIALISATION
+
+        /// <summary>
+        /// Initialises the door
+        /// </summary>
+        private void Awake(){
+            _animator.SetBool(OPEN_HASH, _opened);
+        }
 
 // DOOR HANDLING
 
@@ -50,8 +61,7 @@ namespace GameProject.Environment
             if (_locked || _opened) return;
 
             _opened = true;
-            _torsionalGrabInteraction.enabled = _opened;
-            _torsionalGrabInteraction.TorsionalOscillator.LocalEquilibriumRotation = Vector3.up * 170f;
+            _animator.SetBool(OPEN_HASH, _opened);
 
             Interact(_onOpening);
         }
@@ -63,7 +73,7 @@ namespace GameProject.Environment
             if (_locked || !_opened) return;
 
             _opened = false;
-            _torsionalGrabInteraction.enabled = _opened;
+            _animator.SetBool(OPEN_HASH, _opened);
 
             Interact(_onClosing);
         }

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Level Manager
   m_EditorClassIdentifier: 
   _startup: {fileID: 11400000, guid: 864e5432b8964124f9543cbbbe75e373, type: 2}
+  _credits: {fileID: 11400000, guid: 440cf7fe353cee243b47e3cc9e4e896b, type: 2}
   _control: {fileID: 11400000, guid: 909298d0643274a4b8f3432d7008e228, type: 2}
   _spaceship: {fileID: 11400000, guid: 18e4ed4635252804fa82dad7782fcfb6, type: 2}
+  _lose: {fileID: 11400000, guid: 631c37e03a310aa4ab5cb16ff73e6f6c, type: 2}
   _scene: {fileID: 11400000, guid: f13c1ac908f9ac24a894f2dc927fbd28, type: 2}
   _menu: {fileID: 11400000, guid: b740b6b448bcab4419b74f202729663f, type: 2}

@@ -6,15 +6,16 @@ namespace GameProject.Interactions
 {
     public class SequenceInteraction : BaseInteraction
     {
+        [Header("Sequence Settings")]
         [SF] private GameObject[] _sequence = null;
         [Space]
-        [SF] private List<ActionInfo> _onSuccess  = null;
-        [SF] private List<ActionInfo> _onFailure  = null;
-        [SF] private List<ActionInfo> _onChange   = null;
-        [SF] private List<ActionInfo> _onComplete = null;
+        [SF] protected List<ActionInfo> _onSuccess  = null;
+        [SF] protected List<ActionInfo> _onFailure  = null;
+        [SF] protected List<ActionInfo> _onChange   = null;
+        [SF] protected List<ActionInfo> _onComplete = null;
 
-        private bool _isComplete = false;
-        private int _index = 0;
+        protected bool _isComplete = false;
+        protected int _index = 0;
         
 // PROPERTIES
 

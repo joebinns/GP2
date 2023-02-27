@@ -44,6 +44,18 @@ namespace GameProject.Interactions
             _image.enabled = true;
         }
 
+        /// <summary>
+        /// Resets the flipbook
+        /// </summary>
+        public override void Restore(){
+            _index = 0;
+            _current = _sprites[0];
+
+            if (_image) _image.sprite = _current;
+
+            Interact(_onChange, _index);
+            Interact(_onChange, _current);
+        }
 
         /// <summary>
         /// Changes the flipbook to next sprite

@@ -11,10 +11,13 @@ namespace GameProject.Interface
 		[SF] private InputManager _input = null;
 
         private Canvas _uiMainMenu = null;
+        private Canvas _uiPauseMenu = null;
+        private UIResetState _uiMainReset  = null;
+        private UIResetState _uiPauseReset = null;
 
 // PROPERTIES
 
-        public bool Opened {
+        public bool MenuOpened {
             get {
                 if (_uiMainMenu == null) 
                     return false;
@@ -22,22 +25,37 @@ namespace GameProject.Interface
                 return _uiMainMenu.enabled;
             }
         }
+        public bool PauseOpened {
+            get {
+                if (_uiPauseMenu == null) 
+                    return false;
+                
+                return _uiPauseMenu.enabled;
+            }
+        }
         public Canvas MainMenu => _uiMainMenu;
+        public Canvas PauseMenu => _uiPauseMenu;
 
 // INITIALISATION AND FINALISATION
 
         /// <summary>
         /// Initialises the menu manager
         /// </summary>
-        public void Initialise(Canvas mainmenu){
-            _uiMainMenu = mainmenu;
-            if (_uiMainMenu == null) return;
-            
+        public void Initialise(Canvas mainmenu, Canvas pausemenu){
+            _uiMainMenu  = mainmenu;
+            _uiPauseMenu = pausemenu;
+
+            if (_uiMainMenu  == null ||
+                _uiPauseMenu == null) 
+                return;
+
             _input.SubscribeKey(
-                OnMenuToggleInput, 
+                OnPauseToggleInput,
                 InputType.Pause
             );
-
+            
+            _uiMainReset  = _uiMainMenu.GetComponent<UIResetState>();
+            _uiPauseReset = _uiPauseMenu.GetComponent<UIResetState>();
             SetCursor(_uiMainMenu.enabled);
         }
 
@@ -46,9 +64,19 @@ namespace GameProject.Interface
         /// </summary>
         public void OnDestroy(){
             _input.UnsubscribeKey(
-                OnMenuToggleInput, 
+                OnPauseToggleInput, 
                 InputType.Pause
             );
+        }
+
+// INPUT HANDLING
+
+        /// <summary>
+        /// On input manager, toggle menu input event
+        /// </summary>
+        private void OnPauseToggleInput() {
+            if (_uiMainMenu.enabled) return;
+            ShowPauseMenu(!_uiPauseMenu.enabled);
         }
 
 // MENU MANAGEMENT
@@ -67,9 +95,12 @@ namespace GameProject.Interface
         /// <summary>
         /// Shows or hides the main menu
         /// </summary>
-        public void ShowMenu(bool show){
+        public void ShowMainMenu(bool show){
             if (_uiMainMenu == null) return;
 
+            _uiMainReset.ResetInterface();
+            _uiPauseMenu.gameObject.SetActive(!show);
+            _uiMainMenu.gameObject.SetActive(true);
             _uiMainMenu.enabled = show;
 
             if (!show){
@@ -85,10 +116,24 @@ namespace GameProject.Interface
         }
 
         /// <summary>
-        /// On input manager, toggle menu input event
+        /// Shows or hides the pause menu
         /// </summary>
-        private void OnMenuToggleInput() {
-            ShowMenu(!_uiMainMenu.enabled);
+        public void ShowPauseMenu(bool show){
+            if (_uiPauseMenu == null) return;
+
+            _uiMainReset.ResetInterface();
+            _uiPauseMenu.enabled = show;
+
+            if (!show){
+                var es = EventSystem.current;
+                es.SetSelectedGameObject(null);
+            }
+            
+            _input.SetInputStates(_input.ActionGroup, !show);
+            _input.SetInputStates(_input.InterfaceGroup, !show);
+            _input.SetInputStates(_input.MovementGroup, !show);
+
+            SetCursor(show);
         }
 
 // MENU EVENTS
@@ -96,7 +141,7 @@ namespace GameProject.Interface
         /// <summary>
         /// Quits the game on camera look at quit event
         /// </summary>
-        public void OnQuitGame(){
+        public void QuitGame(){
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else

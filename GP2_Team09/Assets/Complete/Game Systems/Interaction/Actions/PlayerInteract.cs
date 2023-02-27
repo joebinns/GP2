@@ -1,11 +1,11 @@
 using SF = UnityEngine.SerializeField;
+using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using GameProject.Actions;
 using GameProject.Movement;
 using GameProject.Inputs;
 using GameProject.Cameras;
-using System.Collections.Generic;
-using System.Linq;
 using GameProject.HUD;
 
 namespace GameProject.Interactions
@@ -114,18 +114,19 @@ namespace GameProject.Interactions
         /// Triggers interactable on input callback
         /// </summary>
         private void OnUseInput(){
-            _pressed = !_pressed;
+            _pressed = _triggered.Count == 0;
 
-            if (!_pressed || _triggered.Count > 0){
-                if (_triggered != null && _triggered.Count > 0){ 
+            if (_triggered.Count > 0){
+                if (_triggered != null && _triggered.Count > 0){
                     _hudManager.SwitchInteractable(
                         _triggered[0].InteractableType, 
                         InteractableMode.Hover
                     );
                 }
                 ClearSelected();
-
-            } else if (_pressed){
+            }
+            
+            if (_pressed){
                 GetSelected();
 
                 if (_triggered != null && _triggered.Count > 0){ 
@@ -144,7 +145,7 @@ namespace GameProject.Interactions
             for (int i = 0; i < _actions.Count; i++){
                 var action = _actions[i];
 
-                action.Perform(true);
+                action?.Perform(_pressed);
                 _triggered.Add(action);
             }
         }

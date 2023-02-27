@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7843711009259388644
 Transform:
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee60f5da81e5de343b9f6f823a1cf7bc, type: 2}
+  - {fileID: 2100000, guid: 3034da004225cc644b4327ad65eefb0e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.7247453, y: 0.802604, z: 0.9020524}
-  m_Center: {x: -1.3623729, y: 0.401302, z: 0.4510262}
+  m_Size: {x: 2.2203386, y: 0.802604, z: 0.7534528}
+  m_Center: {x: 1.1034476, y: 0.401302, z: 0.3767264}
 --- !u!65 &7353814277887042628
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -109,5 +109,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7608595, y: 0.802604, z: 2.2083092}
-  m_Center: {x: -0.38042998, y: 0.401302, z: 1.1041546}
+  m_Size: {x: 0.94139326, y: 0.802604, z: 2.7484968}
+  m_Center: {x: 0.4578486, y: 0.401302, z: 1.3742484}
