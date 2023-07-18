@@ -115,7 +115,10 @@ namespace GameProject.Hold
         /// Rotate hold pivot on controller update
         /// </summary>
         public override void OnUpdate(float deltaTime) {
-            var deltaAngle = new Vector3(_direction.y * _interactionSettings.Axes.x * _movementSettings.LookSensi * 0.5f, _direction.x * _interactionSettings.Axes.y * _movementSettings.TurnSensi * 0.5f, 0f);
+            var deltaAngle = new Vector3(
+            _direction.y * _interactionSettings.Axes.x * _movementSettings.LookSensi * 0.5f,
+            _direction.x * _interactionSettings.Axes.y * _movementSettings.TurnSensi * 0.5f,
+            0f);
             _holdPivot.Rotate(_holdPivot.parent.TransformDirection(deltaAngle), Space.World);
         }
     }
