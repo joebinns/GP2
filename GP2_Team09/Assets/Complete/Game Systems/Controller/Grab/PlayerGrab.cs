@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using GameProject.Interactions;
 using UnityEngine;
 
@@ -6,7 +5,7 @@ namespace GameProject.Grab
 {
     public abstract class PlayerGrab : MonoBehaviour
     {
-        [SF] protected Transform _cameraTarget;
+        [SerializeField] protected Transform _cameraTarget;
         
         protected GrabInteraction _grabbing;
         

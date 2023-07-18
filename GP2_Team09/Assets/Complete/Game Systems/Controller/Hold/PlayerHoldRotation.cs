@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using GameProject.Actions;
 using GameProject.Inputs;
 using GameProject.Interactions;
@@ -10,11 +9,11 @@ namespace GameProject.Hold
     [RequireComponent(typeof(PlayerHold), typeof(PlayerLook), typeof(PlayerTurn))]
     public class PlayerHoldRotation : BaseAction
     {
-        [SF] private PlayerController _controller = null;
+        [SerializeField] private PlayerController _controller = null;
         [Space]
-        [SF] private MovementSettings _movementSettings = null;
-        [SF] private InteractionSettings _interactionSettings = null;
-        [SF] private InputManager _input = null;
+        [SerializeField] private MovementSettings _movementSettings = null;
+        [SerializeField] private InteractionSettings _interactionSettings = null;
+        [SerializeField] private InputManager _input = null;
         
         private PlayerHold _playerHold;
         private PlayerLook _playerLook;

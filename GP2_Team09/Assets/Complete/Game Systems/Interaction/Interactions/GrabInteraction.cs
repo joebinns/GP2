@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using System.Collections.Generic;
 using GameProject.Grab;
 using UnityEngine;
@@ -12,9 +11,9 @@ namespace GameProject.Interactions
         [HideInInspector] public PlayerGrab PlayerGrab;
         
         [Header("Managers")]
-        [SF] private UpdateManager _update = null;
+        [SerializeField] private UpdateManager _update = null;
         [Header("Methods")]
-        [Space, SF] private List<ActionInfo> _onChange = null;
+        [Space, SerializeField] private List<ActionInfo> _onChange = null;
 
         protected InteractableType _interactableType;
         

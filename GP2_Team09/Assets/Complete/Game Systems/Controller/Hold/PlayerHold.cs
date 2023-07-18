@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using GameProject.Interactions;
 using UnityEngine;
 using System;
@@ -7,9 +6,9 @@ namespace GameProject.Hold
 {
     public class PlayerHold : MonoBehaviour
     {
-        [SF] private InteractionSettings _settings = null;
+        [SerializeField] private InteractionSettings _settings = null;
         [Space]
-        [SF] private Transform _holdPivot;
+        [SerializeField] private Transform _holdPivot;
         
         private HoldInteraction _holding;
         

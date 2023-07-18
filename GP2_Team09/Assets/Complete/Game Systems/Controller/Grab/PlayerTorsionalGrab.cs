@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using GameProject.Interactions;
 using UnityEngine;
 

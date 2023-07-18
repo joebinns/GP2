@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using GameProject.Actions;
 using GameProject.Inputs;
 using GameProject.Interactions;
@@ -10,10 +9,10 @@ namespace GameProject.Hold
     [RequireComponent(typeof(PlayerHold))]
     public class PlayerHoldDistance : BaseAction
     {
-        [SF] private PlayerController _controller = null;
+        [SerializeField] private PlayerController _controller = null;
         [Space]
-        [SF] private InteractionSettings _settings = null;
-        [SF] private InputManager _input = null;
+        [SerializeField] private InteractionSettings _settings = null;
+        [SerializeField] private InputManager _input = null;
 
         private PlayerHold _playerHold;
         private Transform _holdPivot;

@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using GameProject.Hold;
 using GameProject.Oscillators;
 using UnityEngine;

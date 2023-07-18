@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using GameProject.Oscillators;
 using UnityEngine;
 
@@ -8,7 +7,7 @@ namespace GameProject.Interactions
     public class LinearGrabInteraction : GrabInteraction
     {
         [Header("Movement")]
-        [SF] private Transform _movementAxis;
+        [SerializeField] private Transform _movementAxis;
 
 // PROPERTIES
 

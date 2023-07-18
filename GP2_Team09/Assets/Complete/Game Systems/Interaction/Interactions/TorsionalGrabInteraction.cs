@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using GameProject.Oscillators;
 using UnityEngine;
 
@@ -8,12 +7,12 @@ namespace GameProject.Interactions
     public class TorsionalGrabInteraction : GrabInteraction
     {
         [Header("Rotation")]
-        [SF] private Transform _rotationAxis;
+        [SerializeField] private Transform _rotationAxis;
         
         [Header("Limits")]
-        [SF] private bool _useLimits = false;
-        [SF] private float _minAngle = -180f;
-        [SF] private float _maxAngle = 180f;
+        [SerializeField] private bool _useLimits = false;
+        [SerializeField] private float _minAngle = -180f;
+        [SerializeField] private float _maxAngle = 180f;
         
         private Vector3 _localTargetRotation = Vector3.zero;
 
