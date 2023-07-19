@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using System.Collections;
 using UnityEngine;
 using GameProject.Actions;
@@ -8,11 +7,11 @@ namespace GameProject.Movement
 {
     public class PlayerCrouch : BaseAction
     {
-        [SF] private PlayerController _controller = null;
-        [SF] private CharacterController _characterController = null;
+        [SerializeField] private PlayerController _controller = null;
+        [SerializeField] private CharacterController _characterController = null;
         [Space]
-        [SF] private MovementSettings _settings = null;
-        [SF] private InputManager _input = null;
+        [SerializeField] private MovementSettings _settings = null;
+        [SerializeField] private InputManager _input = null;
 
         private bool _isCrouched;
         private float _height;

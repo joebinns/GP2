@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using System.Collections;
 using UnityEngine;
 
@@ -6,9 +5,9 @@ namespace GameProject.Movement
 {
     public class PlayerFall : MonoBehaviour
     {
-        [SF] private CharacterController _characterController = null;
+        [SerializeField] private CharacterController _characterController = null;
         [Space]
-        [SF] private MovementSettings _settings = null;
+        [SerializeField] private MovementSettings _settings = null;
 
         private Vector3 _gravity;
         private bool _isFalling;

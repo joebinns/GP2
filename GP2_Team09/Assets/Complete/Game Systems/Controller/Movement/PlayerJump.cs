@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using System.Collections;
 using UnityEngine;
 using GameProject.Actions;
@@ -9,11 +8,11 @@ namespace GameProject.Movement
     [RequireComponent(typeof(PlayerFall))]
     public class PlayerJump : BaseAction
     {
-        [SF] private PlayerController _controller = null;
-        [SF] private CharacterController _characterController = null;
+        [SerializeField] private PlayerController _controller = null;
+        [SerializeField] private CharacterController _characterController = null;
         [Space]
-        [SF] private MovementSettings _settings = null;
-        [SF] private InputManager _input = null;
+        [SerializeField] private MovementSettings _settings = null;
+        [SerializeField] private InputManager _input = null;
         
         private bool _isJumping;
         private bool _isRising;
@@ -107,12 +106,6 @@ namespace GameProject.Movement
             }
         }
         
-        /*
-        TODO: For greater control and cleaner code:
-        #1. Follow the rise curve until released or complete (AS BEFORE, REVERT)
-        #2. To fall off smoothly, interpolate between the last followed point on the rise curve and a desired target
-        #3. The desired target should be positioned at a future time and height formulated as a function of the progress through the rise curve
-        */
         /// <summary>
         /// Rise following the rise curve's initial gradient, fall off following the rise curve
         /// </summary>
