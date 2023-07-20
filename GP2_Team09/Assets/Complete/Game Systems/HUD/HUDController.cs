@@ -17,7 +17,7 @@ namespace GameProject.HUD
         private InteractableMode _mode;
 
         /// <summary>
-        /// Switch the reticle sprite and the displayed prompt based on the passed interactable type and mode parameters
+        /// Switch the reticle sprite and displayed prompt based on the passed interactable type and interactable mode parameters
         /// </summary>
         public void SwitchInteractable(InteractableType type, InteractableMode mode) {
             if (type == _type && mode == _mode) return;
