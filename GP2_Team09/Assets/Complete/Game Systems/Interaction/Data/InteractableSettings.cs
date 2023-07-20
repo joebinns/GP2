@@ -1,18 +1,16 @@
-using SF = UnityEngine.SerializeField;
 using UnityEngine;
 
 namespace GameProject.Interactions
 {
-    [CreateAssetMenu(fileName = "Interactable Settings",
-        menuName = "Settings/Interactable Settings")]
+    [CreateAssetMenu(fileName = "Interactable Settings", menuName = "Settings/Interactable Settings")]
     public class InteractableSettings : ScriptableObject
     {
         [Header("Reticle")]
-        [SF] private Sprite _hoverReticle;
-        [SF] private Sprite _actionReticle;
+        [SerializeField] private Sprite _hoverReticle;
+        [SerializeField] private Sprite _actionReticle;
         [Header("Prompt")]
-        [SF] private PromptInfo _hoverPromptInfo;
-        [SF] private PromptInfo _actionPromptInfo;
+        [SerializeField] private PromptInfo _hoverPromptInfo;
+        [SerializeField] private PromptInfo _actionPromptInfo;
 
 // PROPERTIES
         

@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using UnityEngine;
 using GameProject.Inputs;
 using GameProject.Interactions;
@@ -9,8 +8,8 @@ namespace GameProject.HUD
     [CreateAssetMenu(fileName = "HUD Manager", menuName = "Managers/HUD")]
     public sealed partial class HUDManager : ScriptableObject
     {
-        [SF] private InputManager _input = null;
-        [SF] private MenuManager _menu = null;
+        [SerializeField] private InputManager _input = null;
+        [SerializeField] private MenuManager _menu = null;
 
         private EngineerHUDController _engineer;
         private CrewHUDController _crew;

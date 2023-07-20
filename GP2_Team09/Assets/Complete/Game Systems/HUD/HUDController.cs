@@ -1,5 +1,3 @@
-using System;
-using SF = UnityEngine.SerializeField;
 using GameProject.Interactions;
 using UnityEngine;
 
@@ -7,18 +5,20 @@ namespace GameProject.HUD
 {
     public abstract class HUDController : MonoBehaviour
     {
-        [SF] private PlayerInteract _playerInteract;
-        [SF] private Reticle _reticleScript;
-        [SF] private Prompt _promptScript;
+        [SerializeField] private Reticle _reticleScript;
+        [SerializeField] private Prompt _promptScript;
         [Space]
-        [SF] private InteractableSettings _holdSettings;
-        [SF] private InteractableSettings _torsionalGrabSettings;
-        [SF] private InteractableSettings _linearGrabSettings;
-        [SF] private InteractableSettings _pressSettings;
+        [SerializeField] private InteractableSettings _holdSettings;
+        [SerializeField] private InteractableSettings _torsionalGrabSettings;
+        [SerializeField] private InteractableSettings _linearGrabSettings;
+        [SerializeField] private InteractableSettings _pressSettings;
         
         private InteractableType _type;
         private InteractableMode _mode;
 
+        /// <summary>
+        /// Switch the reticle sprite and the displayed prompt based on the passed interactable type and mode parameters
+        /// </summary>
         public void SwitchInteractable(InteractableType type, InteractableMode mode) {
             if (type == _type && mode == _mode) return;
 
@@ -35,9 +35,12 @@ namespace GameProject.HUD
             else _promptScript.SetPrompt(prompt);
         }
 
+        /// <summary>
+        /// Get the appropriate interactable settings based on the passed interactable type parameter
+        /// </summary>
         private InteractableSettings GetSettings(InteractableType type) {
             InteractableSettings settings = null;
-            switch (_type) {
+            switch (type) {
                 case InteractableType.None:
                     settings = null;
                     break;
@@ -57,9 +60,12 @@ namespace GameProject.HUD
             return settings;
         }
         
+        /// <summary>
+        /// Get the appropriate reticle sprite and prompt info to display based on the passed interactable settings and interactable mode parameters
+        /// </summary>
         private (Sprite, PromptInfo) GetInfo(InteractableSettings settings, InteractableMode mode) {
             (Sprite, PromptInfo) info = (null, null);
-            switch (_mode) {
+            switch (mode) {
                 case InteractableMode.None:
                     info = (null, null);
                     break;

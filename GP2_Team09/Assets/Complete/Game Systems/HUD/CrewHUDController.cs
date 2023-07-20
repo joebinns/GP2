@@ -1,4 +1,3 @@
-using SF = UnityEngine.SerializeField;
 using UnityEngine;
 using TMPro;
 
@@ -7,10 +6,10 @@ namespace GameProject.HUD
     public class CrewHUDController : HUDController
     {
         [Header("Crew Settings")]
-        [SF] private TMP_Text   _health = null;
-        [SF] private UITimer    _timer  = null;
-        [SF] private GameObject _uiLost = null;
-        [SF] private GameObject _uiWon  = null;
+        [SerializeField] private TMP_Text   _health = null;
+        [SerializeField] private UITimer    _timer  = null;
+        [SerializeField] private GameObject _uiLost = null;
+        [SerializeField] private GameObject _uiWon  = null;
 
         /// <summary>
         /// Starts the timer
