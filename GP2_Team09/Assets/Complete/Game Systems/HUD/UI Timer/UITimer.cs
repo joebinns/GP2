@@ -1,4 +1,5 @@
 using GameProject.Interactions;
+using UnityEngine;
 using TMPro;
 
 namespace GameProject.HUD
