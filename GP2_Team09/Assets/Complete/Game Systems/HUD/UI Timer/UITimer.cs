@@ -1,13 +1,11 @@
-using SF = UnityEngine.SerializeField;
 using GameProject.Interactions;
-using UnityEngine;
 using TMPro;
 
 namespace GameProject.HUD
 {
     public class UITimer : TimerInteraction
     {
-        [SF] private TMP_Text _text;
+        [SerializeField] private TMP_Text _text;
 
 // TIMER HANDLING
 
