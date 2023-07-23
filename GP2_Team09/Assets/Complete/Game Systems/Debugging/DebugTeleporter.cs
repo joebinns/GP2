@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using SF = UnityEngine.SerializeField;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -45,4 +45,4 @@ namespace GameProject
         }
     }
 }
-#endif
+//#endif

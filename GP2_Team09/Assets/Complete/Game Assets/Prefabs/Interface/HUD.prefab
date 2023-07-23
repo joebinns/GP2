@@ -788,6 +788,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add074ea3637e544dbd83b5d3d544bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DesktopImage: {fileID: 7660858541735083264}
-  ConsoleImage: {fileID: 5857805419523054092}
-  VerbTMP: {fileID: 2376701313943356336}
+  _desktopImage: {fileID: 7660858541735083264}
+  _consoleImage: {fileID: 5857805419523054092}
+  _verbTMP: {fileID: 2376701313943356336}
